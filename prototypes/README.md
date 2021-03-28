@@ -23,7 +23,7 @@
 
 - Beurteilung
   - Readymedia, mediatomb und uShare sind leider nur für das lokale NEtzwerk vorgesehen
-  - WebRTC (Web Real-Time Communications)  +wird wohl nicht benötigt
+  - WebRTC (Web Real-Time Communications)  wird wohl nicht benötigt
   
 - Fazit
   - kein eigener Server notwendig
