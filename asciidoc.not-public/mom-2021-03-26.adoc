@@ -1,0 +1,156 @@
+= Online Perfektion - KickOff-Meeting
+Thomas W. Stütz, credits to Mr. Christian Aberger
+1.0.1, 2021-03-03: How to use ssh in project work @ HTL Leonding college
+ifndef::imagesdir[:imagesdir: images]
+//:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
+:sourcedir: ../src/main/java
+:icons: font
+:sectnums:    // Nummerierung der Überschriften / section numbering
+:toc: left
+:toclevels: 5
+:experimental: true
+:linkattrs:   // so window="_blank" will be executed
+
+
+== Struktur
+
+* Level
+** Grundkurs
+** Bronze
+** Silber
+** Gold
+** Goldstar
+** TopClass
+
+* Kurse
+** Latein
+*** Samba
+*** Rumba
+*** Cha Cha Cha
+*** Paso
+*** Jive
+
+** Standard
+*** Langsamer Walzer
+*** Wiener Walzer
+*** Slow Fox
+*** Quick Step
+*** Tango
+
+** Latino
+*** Salza
+*** Patschata
+
+
+
+* User
+** Besucher eines Tanzschulkurses
+*** mit Login
+*** unterstützend zu seinem/ihrem Tanzschulkurs werden Tanzvideos angeboten
+** Interessenten ohne Tanzschulbezug
+
+
+== Tanzschul-Partner
+
+* Tanzschule Chris
+* https://www.nimbuscloud.at/ueber-uns
+
+
+== Login-Möglichkeiten
+
+=== SSO
+
+* Keycloak
+* Google, Facebook, ...
+
+IMPORTANT: Derzeit vorzuziehende Methode
+
+=== Portal
+
+* Die Tanzschule kann auswählen, welche Kurse ohne Tanzschul-Teilnahme zu sehen sind
+
+
+=== Individual-Login
+
+=== Gruppen-Login
+
+* Tanzschulkurs = Gruppe
+
+
+== Vorgangsweise
+
+* Prinzip: kleine Schritte, lauffähige Lösungen
+
+////
+[plantuml,ucd,png]
+----
+@startuml
+(An Kurs teilnehmen)
+(Kursvideo ansehen)
+@enduml
+----
+////
+
+* Ansehen von Kursvideos
+** 2 Kurse im System enthalten
+** mit jeweils mehreren Audios
+** mit mehreren Videos
+
+
+== Funktionale Anforderungen
+
+=== Mandantenfähig
+
+* Es können mehrere Tanzschulen verwaltet werden
+* Jede Tanzschule hat ein eigenes Design
+
+TIP: Dies ist derzeit noch eine nice-to-have Funktion.
+In der ersten Ausbaustufe (im Rahmen der Diplomarbeit) ist die Umsetzung noch nicht vereinbart.
+
+=== Nutzungsstatistik
+
+* Audios
+* Videos
+* Webseiten
+
+
+* ev. Google Analytics
+
+=== Einblenden von Informationen / Werbung
+
+* während des Abspielens von Audios können Images angezeigt werden
+
+* Recherche durchführen, ob es möglich ist von Google Werbung darzustellen
+
+
+== Nichtfunktionale Anforderungen
+
+=== Besonders auch für ältere Personen
+
+* ev. 2 Modi
+** eleganter Modus
+** Modus mit großer Schrift
+
+
+=== Clients
+
+* Android
+* iOS
+* Web
+
+-> reaktive Web-Anwendung
+
+* Anwendungsfall testen
+** Smartphones auf TV streamen
+
+
+
+
+
+
+
+
+
+
+
+

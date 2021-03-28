@@ -1,0 +1,11 @@
+.idea/
+*.iml
+target/
+build-docs-html/
+build-docs-pdf/
+build-docs-revealjs/
+asciidocs/revealjs/
+revealjs.zip
+gh-pages/
+.DS_Store
+.env
