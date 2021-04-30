@@ -23,6 +23,7 @@ git config --global user.name ${GIT_GLOBAL_USER_NAME}
 git init
 git add .
 git commit -m "$USER - rebuilding gh-pages $(date)"
+git branch -M main
 git remote add origin $ORIGIN_URL
 
 
