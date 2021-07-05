@@ -36,15 +36,29 @@ public class InitBean {
         User julia = new User();
         userRepository.persist(julia);
 
-
-        List<Content> contents = new ArrayList<Content>();
-        contents.add( Content.valueOf("VIDEO"));
-        contents.add( Content.valueOf("VIDEO"));
-        contents.add( Content.valueOf("VIDEO"));
-
-        Course latein = new Course("Langsamer Walzer",contents, Level.valueOf("GRUNDKURS"));
+        List<Content> contentsForLatein = new ArrayList<Content>();
+        contentsForLatein.add( Content.valueOf("VIDEO"));
+        contentsForLatein.add( Content.valueOf("AUDIO"));
+        contentsForLatein.add( Content.valueOf("VIDEO"));
+        contentsForLatein.add( Content.valueOf("VIDEO"));
+        Course latein = new Course("Langsamer Walzer",contentsForLatein, Level.valueOf("GRUNDKURS"));
         courseRepository.persist(latein);
 
+        List<Content> contentsForStandard = new ArrayList<Content>();
+        contentsForStandard.add( Content.valueOf("VIDEO"));
+        contentsForStandard.add( Content.valueOf("AUDIO"));
+        contentsForStandard.add( Content.valueOf("AUDIO"));
+        contentsForStandard.add( Content.valueOf("AUDIO"));
+        Course standard = new Course("Langsamer Walzer",contentsForStandard, Level.valueOf("Silber"));
+        courseRepository.persist(standard);
+
+        List<Content> contentsForLatino = new ArrayList<Content>();
+        contentsForLatino.add( Content.valueOf("VIDEO"));
+        contentsForLatino.add( Content.valueOf("AUDIO"));
+        contentsForLatino.add( Content.valueOf("VIDEO"));
+        contentsForLatino.add( Content.valueOf("VIDEO"));
+        Course latino = new Course("Langsamer Walzer",contentsForLatino, Level.valueOf("Bronze"));
+        courseRepository.persist(latino);
     }
 
 }
