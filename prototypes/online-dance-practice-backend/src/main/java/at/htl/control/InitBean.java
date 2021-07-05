@@ -9,6 +9,8 @@ import io.quarkus.runtime.StartupEvent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InitBean {
 
@@ -35,12 +37,14 @@ public class InitBean {
         userRepository.persist(julia);
 
 
-        Course latein = new Course("Langsamer Walzer", Content.valueOf("VIDEO"), Level.valueOf("GRUNDKURS"));
+        List<Content> contents = new ArrayList<Content>();
+        contents.add( Content.valueOf("VIDEO"));
+        contents.add( Content.valueOf("VIDEO"));
+        contents.add( Content.valueOf("VIDEO"));
+
+        Course latein = new Course("Langsamer Walzer",contents, Level.valueOf("GRUNDKURS"));
         courseRepository.persist(latein);
-        Course samba = new Course("Slow Fox", Content.valueOf("AUDIO"), Level.valueOf("BRONZE"));
-        courseRepository.persist(samba);
-        Course rumba = new Course("Tango", Content.valueOf("AUDIO"), Level.valueOf("SILBER"));
-        courseRepository.persist(rumba);
+
     }
 
 }
