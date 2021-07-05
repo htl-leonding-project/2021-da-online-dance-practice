@@ -4,6 +4,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,19 +15,22 @@ public class Course extends PanacheEntityBase {
     @Id
     public String type;
 
-    @Enumerated(EnumType.STRING)
-    Content content;
+    @ElementCollection(targetClass=Content.class)
+    @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
+    @CollectionTable(name="person_interest")
+    @Column(name = "content")
+    List<Content> contents = new ArrayList<Content>();
 
     @Enumerated(EnumType.STRING)
     Level level;
 
-    public Course(String type, Content content, Level level) {
-        this.type = type;
-        this.content = content;
-        this.level = level;
+    public Course() {
     }
 
-    public Course() {
+    public Course(String type, List<Content> contents, Level level) {
+        this.type = type;
+        this.contents = contents;
+        this.level = level;
     }
 
     @Override
@@ -33,11 +38,11 @@ public class Course extends PanacheEntityBase {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(type, course.type) && content == course.content && level == course.level;
+        return Objects.equals(type, course.type) && Objects.equals(contents, course.contents) && level == course.level;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, content, level);
+        return Objects.hash(type, contents, level);
     }
 }
