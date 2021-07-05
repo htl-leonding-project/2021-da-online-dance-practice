@@ -50,7 +50,7 @@ Fr. Victoria Lauda (Schülerin an der graph. ZLA, Wien) ist Projektpartnerin und
 
 |===
 
-#### Projektpartner
+##### Projektpartner
 VL
 
 
@@ -99,8 +99,7 @@ Die Kunden der Tanzschule werden stärker an das Unternehmen gebunden. Der Lerne
 
     28.02.2022 Fertigstellung Rohentwurf Diplomarbeit
 
-
-#### Rechtliche Regelung (mit dem/den Projektpartner/n erfolgt durch)
+##### Rechtliche Regelung (mit dem/den Projektpartner/n erfolgt durch)
 Erstellung eines Prototyps für Auftraggeber, es gibt keinen Fertigstellungszwang, keine Haftung bei Nicht-Fertigstellung oder fehlerhaftem Betrieb.
 
 
