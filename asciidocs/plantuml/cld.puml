@@ -1,0 +1,39 @@
+@startuml
+
+enum Content {
+   VIDEO
+   AUDIO
+}
+
+enum Level {
+  GRUNDKURS
+  BRONZE
+  SILBER
+  GOLD
+  GOLDSTAR
+  TOPCLASS
+}
+
+enum Level {
+  GRUNDKURS
+  BRONZE
+  SILBER
+  GOLD
+  GOLDSTAR
+  TOPCLASS
+}
+
+class Course {
+  String: type
+  Content: content
+  Level: level
+}
+
+class User {
+  Long: id
+}
+
+Course  <-up-  Level: gehört zu
+Course  <-down-  Content: hat
+
+@enduml
