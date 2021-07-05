@@ -13,10 +13,10 @@ public class Course extends PanacheEntityBase {
     @Id
     public String type;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     Content content;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     Level level;
 
     public Course(String type, Content content, Level level) {
