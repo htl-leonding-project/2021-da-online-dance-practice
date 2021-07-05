@@ -1,0 +1,124 @@
+= Online Dance Practice
+
+
+### Schule
+Höhere technische Bundeslehranstalt LEONDING
+
+
+### Abteilung(en)
+Hauptverantwortlich: Höhere Abteilung für Informatik / Medientechnik / Abendschule Informatik / Kolleg
+
+
+### AV
+Hauptverantwortlich: PB
+
+
+### Abschließende Prüfung
+2022
+
+
+### Betreuer/innen
+Hauptverantwortlich: TS
+
+
+### Ausgangslage
+Das Geschäftsmodell von Tanzschulen basiert auf persönlichem Kontakt. Derzeit ist dieser Kontakt kaum möglich, daher benötigt eine Tanzschule in Wien ein Unterstützungssystem für ihre Kursteilnehmer.
+
+Fr. Victoria Lauda (Schülerin an der graph. ZLA, Wien) ist Projektpartnerin und für sämtliche Contents verantwortlich sowie die Kontaktperson zum "Testkunden" - einer Tanzschule in Wien.
+
+
+### Projektteam (Arbeitsaufwand)
+
+.Projektteam
+|===
+|Name |Individuelle Themenstellung| Klasse| Arbeitsaufwand
+
+|RM (Hauptverantwortlich)
+|Backend mit restful API
+|5AHITM_WS
+|180 Stunden
+
+|ST
+|Frontend (Tutorial)
+|5AHITM_WS
+|180 Stunden
+
+|KT
+|Frontend (Perfektion)
+|5AHITM_WS
+|180 Stunden
+
+|===
+
+#### Projektpartner
+VL
+
+
+### Untersuchungsanliegen der individuellen Themenstellungen
+Es wird die mögliche informationstechnische Unterstützung von Tanzkursen erarbeitet und anschließend als Prototyp implementiert.
+
+- Untersuchung der derzeitigen Situation (Marktanalyse) - Welche informationstechnische Unterstützung existiert bereits
+
+- Wie kann eine Unterstützung zum Üben des Gelernten in den Kursen gestaltet werden (Perfektion)
+
+- Wie kann eine Unterstützung zum selbstständigem Lernen von Tänzen gestaltet werden (Tutorial)
+
+- Welche Nutzungsdaten sind für die Tanzschule interessant?
+
+
+### Zielsetzung
+##### Leistungswirkung
+
+Die Kunden der Tanzschule werden stärker an das Unternehmen gebunden. Der Lernerfolg steigt, da ein Zugriff auf passende Musikstücke und Instruktionsvideos durch die Teilnehmer möglich ist. Die Motivation der Kursteilnehmer ist höher, da ein Üben jederzeit möglich ist und so die Erfolgswahrscheinlichkeit (Der Teilnehmer / die Teilnehmerin kann tanzen) steigt.
+
+
+### Geplantes Ergebnis der Prüfungskandidatin/des Prüfungskandidaten
+##### Softwarelösung mit folgenden Komponenten:
+
+- Backend (Quarkus) mit relationaler DB (postgres) zur Benutzerverwaltung und Speicherung von Musik und Videos.
+
+- Frontend (Angular) zur Präsentation der Inhalte sowohl für Perfektion als auch Tutorial.
+
+- ev. Authentifizierungsserver (Keycloak) und Reverse-Proxy (Traefik oder nginx)
+
+
+### Meilensteine
+    26.03.2021 Kick-off-Meeting
+
+    05.07.2021 Erster Prototyp - simples Backend und simples Frontend für Musikstücke und Videos
+
+    09.07.2021 Erstellung Datenmodell mit Unit-Tests
+
+    23.07.2021 Erstellung Endpoints Backend für Perfektion
+
+    30.07.2021 Erstellung Frontend Perfektion
+
+    13.08.2021 Erstellung Endpoints Backend für Tutorial
+
+    10.09.2021 Erstellung Frontend für Tutorial
+
+    28.02.2022 Fertigstellung Rohentwurf Diplomarbeit
+
+
+#### Rechtliche Regelung (mit dem/den Projektpartner/n erfolgt durch)
+Erstellung eines Prototyps für Auftraggeber, es gibt keinen Fertigstellungszwang, keine Haftung bei Nicht-Fertigstellung oder fehlerhaftem Betrieb.
+
+
+### Use-Case-Diagramm
+
+[plantuml]
+
+[plantuml,ucd]
+----
+include::../asciidocs/plantuml/ucd.puml[]
+----
+
+
+### Class-Diagramm
+
+[plantuml]
+
+[plantuml,cld]
+----
+include::../asciidocs/plantuml/cld.puml[]
+----
