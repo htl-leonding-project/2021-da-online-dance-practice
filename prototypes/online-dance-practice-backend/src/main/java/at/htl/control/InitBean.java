@@ -49,7 +49,7 @@ public class InitBean {
         contentsForStandard.add( Content.valueOf("AUDIO"));
         contentsForStandard.add( Content.valueOf("AUDIO"));
         contentsForStandard.add( Content.valueOf("AUDIO"));
-        Course standard = new Course("Langsamer Walzer",contentsForStandard, Level.valueOf("Silber"));
+        Course standard = new Course("Langsamer Walzer",contentsForStandard, Level.valueOf("SILBER"));
         courseRepository.persist(standard);
 
         List<Content> contentsForLatino = new ArrayList<Content>();
@@ -57,7 +57,7 @@ public class InitBean {
         contentsForLatino.add( Content.valueOf("AUDIO"));
         contentsForLatino.add( Content.valueOf("VIDEO"));
         contentsForLatino.add( Content.valueOf("VIDEO"));
-        Course latino = new Course("Langsamer Walzer",contentsForLatino, Level.valueOf("Bronze"));
+        Course latino = new Course("Langsamer Walzer",contentsForLatino, Level.valueOf("BRONZE"));
         courseRepository.persist(latino);
     }
 
