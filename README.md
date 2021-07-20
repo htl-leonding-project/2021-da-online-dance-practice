@@ -15,3 +15,6 @@ https://htl-leonding-project.github.io/2021-da-online-dance-practice
     - Nur ein kleines Datenmodell programmieren
     - Dieses dann sofort ausprobieren
     - schrittweise erweitern
+
+- Medien
+  - http://edufs.edu.htl-leonding.ac.at/~t.stuetz/download/diverses/online-dancing/
