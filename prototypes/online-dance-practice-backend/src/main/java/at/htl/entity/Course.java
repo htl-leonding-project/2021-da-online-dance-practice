@@ -45,4 +45,14 @@ public class Course extends PanacheEntityBase {
     public int hashCode() {
         return Objects.hash(type, contents, level);
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "type='" + type + '\'' +
+                ", contents=" + contents +
+                ", level=" + level +
+                '}';
+    }
 }
+
