@@ -27,6 +27,7 @@ public class InitBean {
 
     private void initDb() {
 
+        //User
         User samuel = new User();
         userRepository.persist(samuel);
         User anna = new User();
@@ -35,7 +36,20 @@ public class InitBean {
         userRepository.persist(max);
         User julia = new User();
         userRepository.persist(julia);
+        User lena = new User();
+        userRepository.persist(lena);
+        User sebastian = new User();
+        userRepository.persist(sebastian);
+        User manuel = new User();
+        userRepository.persist(manuel);
+        User david = new User();
+        userRepository.persist(david);
+        User eva = new User();
+        userRepository.persist(eva);
+        User marie = new User();
+        userRepository.persist(marie);
 
+        //Courses
         List<Content> contentsForLatein = new ArrayList<Content>();
         contentsForLatein.add( Content.valueOf("VIDEO"));
         contentsForLatein.add( Content.valueOf("AUDIO"));
@@ -59,6 +73,14 @@ public class InitBean {
         contentsForLatino.add( Content.valueOf("VIDEO"));
         Course latino = new Course("Slow Fox",contentsForLatino, Level.valueOf("BRONZE"));
         courseRepository.persist(latino);
+
+        List<Content> contentsForQuickStep = new ArrayList<Content>();
+        contentsForQuickStep.add( Content.valueOf("VIDEO"));
+        contentsForQuickStep.add( Content.valueOf("AUDIO"));
+        contentsForQuickStep.add( Content.valueOf("AUDIO"));
+        contentsForQuickStep.add( Content.valueOf("VIDEO"));
+        Course quickStep = new Course("Slow Fox",contentsForQuickStep, Level.valueOf("BRONZE"));
+        courseRepository.persist(quickStep);
     }
 
 }
