@@ -74,13 +74,6 @@ public class InitBean {
         Course latino = new Course("Slow Fox",contentsForLatino, Level.valueOf("BRONZE"));
         courseRepository.persist(latino);
 
-        List<Content> contentsForQuickStep = new ArrayList<Content>();
-        contentsForQuickStep.add( Content.valueOf("VIDEO"));
-        contentsForQuickStep.add( Content.valueOf("AUDIO"));
-        contentsForQuickStep.add( Content.valueOf("AUDIO"));
-        contentsForQuickStep.add( Content.valueOf("VIDEO"));
-        Course quickStep = new Course("Slow Fox",contentsForQuickStep, Level.valueOf("BRONZE"));
-        courseRepository.persist(quickStep);
     }
 
 }
