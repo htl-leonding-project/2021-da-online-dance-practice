@@ -1,6 +1,6 @@
 package at.htl.entity;
 
-public enum Content {
+public enum ContentType {
     VIDEO,
     AUDIO
 }
