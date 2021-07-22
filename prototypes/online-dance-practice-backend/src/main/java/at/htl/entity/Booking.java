@@ -21,6 +21,15 @@ public class Booking extends PanacheEntityBase {
     @JoinColumn(name = "B_COURSEID")
     public Course course;
 
+    //region constructors
+    public Booking() {
+    }
+
+    public Booking(User user, Course course) {
+        this.user = user;
+        this.course = course;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
@@ -29,5 +38,6 @@ public class Booking extends PanacheEntityBase {
                 ", course=" + course +
                 '}';
     }
+    //region constructors
 
 }
