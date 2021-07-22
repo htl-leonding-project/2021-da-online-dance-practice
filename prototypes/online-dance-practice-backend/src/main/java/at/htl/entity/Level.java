@@ -18,13 +18,13 @@ public class Level extends PanacheEntityBase {
     public String description;
 
     //region constructors
-
     public Level() {
     }
 
     public Level(String description) {
         this.description = description;
     }
+    //endregion
 
     @Override
     public String toString() {
@@ -33,5 +33,5 @@ public class Level extends PanacheEntityBase {
                 ", description='" + description + '\'' +
                 '}';
     }
-    //endregion
+
 }
