@@ -13,9 +13,42 @@ import java.util.Objects;
 public class Course extends PanacheEntityBase {
 
     @Id
-    public String type;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "C_COURSEID")
+    public Long courseId;
+
+    @Column(name = "C_TITLE")
+    public String title;
+
+    @Column(name = "C_DESCR")
+    public String descr;
+
+    @ManyToOne
+    @JoinColumn(name ="C_LEVEL")
+    public Level level;
 
 
+    //region constructors
+    public Course(Long courseId, String title, String descr, Level level) {
+        this.courseId = courseId;
+        this.title = title;
+        this.descr = descr;
+        this.level = level;
+    }
 
+    public Course() {
+    }
+    //endregion
+
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", title='" + title + '\'' +
+                ", descr='" + descr + '\'' +
+                ", level=" + level +
+                '}';
+    }
 }
 
