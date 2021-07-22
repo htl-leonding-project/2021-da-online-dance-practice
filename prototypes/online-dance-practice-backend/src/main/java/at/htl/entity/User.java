@@ -12,11 +12,11 @@ public class User extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long userId;
 
-    String username;
+    public String username;
 
-    String firstname;
+    public String firstname;
 
-    String lastname;
+    public String lastname;
 
     public User() {
     }
