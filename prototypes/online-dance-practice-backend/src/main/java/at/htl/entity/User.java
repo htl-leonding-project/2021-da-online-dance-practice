@@ -31,6 +31,7 @@ public class User extends PanacheEntityBase {
         this.firstname = firstname;
         this.lastname = lastname;
     }
+    //endregion
 
     @Override
     public String toString() {
@@ -42,5 +43,4 @@ public class User extends PanacheEntityBase {
                 '}';
     }
 
-    //endregion
 }
