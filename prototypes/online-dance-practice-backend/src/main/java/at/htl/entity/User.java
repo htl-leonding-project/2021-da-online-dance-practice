@@ -22,7 +22,14 @@ public class User extends PanacheEntityBase {
     @Column(name = "U_LASTNAME")
     public String lastname;
 
+    //region constructors
     public User() {
+    }
+
+    public User(String username, String firstname, String lastname) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     @Override
@@ -35,4 +42,5 @@ public class User extends PanacheEntityBase {
                 '}';
     }
 
+    //endregion
 }
