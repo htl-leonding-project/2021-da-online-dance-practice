@@ -29,8 +29,7 @@ public class Course extends PanacheEntityBase {
 
 
     //region constructors
-    public Course(Long courseId, String title, String descr, Level level) {
-        this.courseId = courseId;
+    public Course(String title, String descr, Level level) {
         this.title = title;
         this.descr = descr;
         this.level = level;
