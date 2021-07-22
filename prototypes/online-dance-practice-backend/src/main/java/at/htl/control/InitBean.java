@@ -19,6 +19,9 @@ public class InitBean {
     @Inject
     LevelRepository levelRepository;
 
+    @Inject
+    UserRepository userRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
@@ -32,9 +35,9 @@ public class InitBean {
         levelRepository.persist(new Level("GOLD"));
         levelRepository.persist(new Level("GOLDSTAR"));
         levelRepository.persist(new Level("TOPCLASS"));
-        //User
+
 //        User samuel = new User();
-//        userRepository.persist(samuel);
+//        userRe.persist(samuel);
 //        User anna = new User();
 //        userRepository.persist(anna);
 //        User max = new User();
