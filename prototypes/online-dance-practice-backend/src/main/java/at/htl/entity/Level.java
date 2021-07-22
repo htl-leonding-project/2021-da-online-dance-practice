@@ -3,31 +3,35 @@ package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "D_LEVEL")
 public class Level extends PanacheEntityBase {
 
     @Id
-    public String id;
-    public String descr;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "L_LEVELID")
+    public String levelId;
+
+    @Column(name = "L_DESCRIPTION")
+    public String description;
 
     //region constructors
-    public Level(String id) {
-        this.id = id;
-    }
-
-    public Level(String id, String descr) {
-        this.id = id;
-        this.descr = descr;
-    }
 
     public Level() {
     }
+
+    public Level(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Level{" +
+                "levelId='" + levelId + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
     //endregion
-
-
 }
