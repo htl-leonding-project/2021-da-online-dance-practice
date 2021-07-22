@@ -36,4 +36,14 @@ public class File extends PanacheEntityBase {
 
     //endregion
 
+
+    @Override
+    public String toString() {
+        return "File{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", contentType=" + contentType +
+                '}';
+    }
 }
