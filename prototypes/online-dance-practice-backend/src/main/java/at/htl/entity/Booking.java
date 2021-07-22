@@ -29,6 +29,7 @@ public class Booking extends PanacheEntityBase {
         this.user = user;
         this.course = course;
     }
+    //endregion
 
     @Override
     public String toString() {
@@ -38,6 +39,5 @@ public class Booking extends PanacheEntityBase {
                 ", course=" + course +
                 '}';
     }
-    //region constructors
 
 }
