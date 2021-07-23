@@ -59,6 +59,15 @@ public class InitBean {
         User jonas = new User("JonasT123","Jonas", "Berg ");
         userRepository.persist(jonas);
 
+        //Course
+        Course discofox = new Course ("Grundschritte & Figuren","Für alle Gelengheiten", grundkurs);
+        courseRepository.persist(discofox);
+        Course westcoastswing = new Course ("Der internationale Trend ","Sehr cool!", grundkurs);
+        courseRepository.persist(westcoastswing);
+        Course tanzclubs = new Course ("Plus Ballroom & Slowfox","In Ried, Regau ubd Wels", grundkurs);
+        courseRepository.persist(tanzclubs);
+        Course pirvatstunden = new Course ("Individuell buchbar", "Termin vereinbaren!", grundkurs);
+        courseRepository.persist(pirvatstunden);
 
 
 
