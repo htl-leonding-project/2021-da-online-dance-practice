@@ -1,9 +1,6 @@
 package at.htl.control;
 
-import at.htl.entity.ContentType;
-import at.htl.entity.Course;
-import at.htl.entity.Level;
-import at.htl.entity.User;
+import at.htl.entity.*;
 import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -24,6 +21,9 @@ public class InitBean {
 
     @Inject
     CourseRepository courseRepository;
+
+    @Inject
+    BookingRepository bookingRepository;
 
     void onStart(@Observes StartupEvent event) {
         initDb();
@@ -68,6 +68,18 @@ public class InitBean {
         courseRepository.persist(tanzclubs);
         Course pirvatstunden = new Course ("Individuell buchbar", "Termin vereinbaren!", grundkurs);
         courseRepository.persist(pirvatstunden);
+
+
+        //File
+        Booking booking01 = new Booking(kelly,discofox);
+        bookingRepository.persist(booking01);
+        Booking booking02 = new Booking(rosalie,westcoastswing);
+        bookingRepository.persist(booking02);
+        Booking booking03 = new Booking(sandy,tanzclubs);
+        bookingRepository.persist(booking03);
+        Booking booking04 = new Booking(anton,pirvatstunden);
+        bookingRepository.persist(booking04);
+
 
 
 
