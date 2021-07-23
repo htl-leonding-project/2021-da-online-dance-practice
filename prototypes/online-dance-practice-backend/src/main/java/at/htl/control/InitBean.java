@@ -22,6 +22,9 @@ public class InitBean {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    CourseRepository courseRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
@@ -55,6 +58,10 @@ public class InitBean {
         userRepository.persist(lisa);
         User jonas = new User("JonasT123","Jonas", "Berg ");
         userRepository.persist(jonas);
+
+
+
+
 
 
 //
