@@ -25,6 +25,9 @@ public class InitBean {
     @Inject
     BookingRepository bookingRepository;
 
+    @Inject
+    FileRepository fileRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
@@ -70,7 +73,7 @@ public class InitBean {
         courseRepository.persist(pirvatstunden);
 
 
-        //File
+        //Booking
         Booking booking01 = new Booking(kelly,discofox);
         bookingRepository.persist(booking01);
         Booking booking02 = new Booking(rosalie,westcoastswing);
@@ -79,6 +82,22 @@ public class InitBean {
         bookingRepository.persist(booking03);
         Booking booking04 = new Booking(anton,pirvatstunden);
         bookingRepository.persist(booking04);
+
+
+        //File
+        File file01 = new File("File01", "/abc", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(file01);
+        File file02 = new File("File02", "/cdb", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(file02);
+        File file03 = new File("File03", "/bdc", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(file03);
+        File file04 = new File("File04", "/gfh", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(file04);
+        File file05 = new File("File05", "/gfh", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(file05);
+
+
+
 
 
 
