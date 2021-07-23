@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class Usage extends PanacheEntityBase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "U_ID")
     public Long id;
 
     @JoinColumn(name = "U_COURSE")
