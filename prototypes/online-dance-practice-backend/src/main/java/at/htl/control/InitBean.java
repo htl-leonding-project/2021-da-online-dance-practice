@@ -29,42 +29,22 @@ public class InitBean {
     @Transactional
     void initDb() {
 
-        levelRepository.persist(new Level("GRUNDKURS"));
-        levelRepository.persist(new Level("BRONZE"));
-        levelRepository.persist(new Level("SILBER"));
-        levelRepository.persist(new Level("GOLD"));
-        levelRepository.persist(new Level("GOLDSTAR"));
-        levelRepository.persist(new Level("TOPCLASS"));
+        Level grundkurs = new Level("GRUNDKURS");
+        levelRepository.persist(grundkurs);
+        Level bronze = new Level("BRONZE");
+        levelRepository.persist(bronze);
+        Level silber = new Level("SILBER");
+        levelRepository.persist(silber);
+        Level gold = new Level("GOLD");
+        levelRepository.persist(gold);
+        Level goldstar = new Level("GOLDSTAR");
+        levelRepository.persist(goldstar);
+        Level topclass = new Level("TOPCLASS");
+        levelRepository.persist(topclass);
 
-//        User samuel = new User();
-//        userRe.persist(samuel);
-//        User anna = new User();
-//        userRepository.persist(anna);
-//        User max = new User();
-//        userRepository.persist(max);
-//        User julia = new User();
-//        userRepository.persist(julia);
-//        User lena = new User();
-//        userRepository.persist(lena);
-//        User sebastian = new User();
-//        userRepository.persist(sebastian);
-//        User manuel = new User();
-//        userRepository.persist(manuel);
-//        User david = new User();
-//        userRepository.persist(david);
-//        User eva = new User();
-//        userRepository.persist(eva);
-//        User marie = new User();
-//        userRepository.persist(marie);
 
-        //Courses
-//        List<ContentType> contentsForLatein = new ArrayList<ContentType>();
-//        contentsForLatein.add( ContentType.valueOf("VIDEO"));
-//        contentsForLatein.add( ContentType.valueOf("AUDIO"));
-//        contentsForLatein.add( ContentType.valueOf("VIDEO"));
-//        contentsForLatein.add( ContentType.valueOf("VIDEO"));
-//        Course latein = new Course("Langsamer Walzer",contentsForLatein, Level.valueOf("GRUNDKURS"));
-//        courseRepository.persist(latein);
+
+
 //
 //        List<ContentType> contentsForStandard = new ArrayList<ContentType>();
 //        contentsForStandard.add( ContentType.valueOf("VIDEO"));
