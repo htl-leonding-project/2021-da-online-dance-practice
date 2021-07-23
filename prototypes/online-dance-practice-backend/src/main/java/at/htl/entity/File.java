@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class File extends PanacheEntityBase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "F_ID")
     public Long id;
 
     @Column(name = "F_NAME")
