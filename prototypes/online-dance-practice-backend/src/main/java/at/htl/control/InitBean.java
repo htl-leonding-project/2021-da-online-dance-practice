@@ -32,17 +32,17 @@ public class InitBean {
     @Transactional
     void initDb() {
 
-        Level grundkurs = new Level("GRUNDKURS");
+        Level grundkurs = new Level("1","GRUNDKURS");
         levelRepository.persist(grundkurs);
-        Level bronze = new Level("BRONZE");
+        Level bronze = new Level("2","BRONZE");
         levelRepository.persist(bronze);
-        Level silber = new Level("SILBER");
+        Level silber = new Level("3","SILBER");
         levelRepository.persist(silber);
-        Level gold = new Level("GOLD");
+        Level gold = new Level("4","GOLD");
         levelRepository.persist(gold);
-        Level goldstar = new Level("GOLDSTAR");
+        Level goldstar = new Level("5","GOLDSTAR");
         levelRepository.persist(goldstar);
-        Level topclass = new Level("TOPCLASS");
+        Level topclass = new Level("6","TOPCLASS");
         levelRepository.persist(topclass);
 
         //User
