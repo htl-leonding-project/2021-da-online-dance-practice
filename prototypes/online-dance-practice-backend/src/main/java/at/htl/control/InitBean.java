@@ -70,6 +70,16 @@ public class InitBean {
         courseRepository.persist(pirvatstunden);
 
 
+        //File
+        Booking booking01 = new Booking(kelly,discofox);
+        bookingRepository.persist(booking01);
+        Booking booking02 = new Booking(rosalie,westcoastswing);
+        bookingRepository.persist(booking02);
+        Booking booking03 = new Booking(sandy,tanzclubs);
+        bookingRepository.persist(booking03);
+        Booking booking04 = new Booking(anton,pirvatstunden);
+        bookingRepository.persist(booking04);
+
 
 
 
