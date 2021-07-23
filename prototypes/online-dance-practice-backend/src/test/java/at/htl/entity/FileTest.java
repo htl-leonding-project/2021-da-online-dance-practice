@@ -24,7 +24,7 @@ class FileTest {
     @Order(20)
     @Test
     @Transactional
-    public void FiletoString(){
+    public void FileToString(){
 
         File file = new File("Latein Example","/assets/LateinvideoExample.mp4",ContentType.VIDEO);
         file.persist();
