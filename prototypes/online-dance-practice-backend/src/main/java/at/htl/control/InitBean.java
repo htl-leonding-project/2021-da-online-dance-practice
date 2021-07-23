@@ -22,6 +22,9 @@ public class InitBean {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    CourseRepository courseRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
@@ -41,6 +44,22 @@ public class InitBean {
         levelRepository.persist(goldstar);
         Level topclass = new Level("TOPCLASS");
         levelRepository.persist(topclass);
+
+        //User
+        User kelly = new User("KellyTran03","Kelly", "Tran ");
+        userRepository.persist(kelly);
+        User rosalie = new User("RosalieMandel14","Rosalie", "Mandel ");
+        userRepository.persist(rosalie);
+        User sandy = new User("SandyTang24","Sandy", "Tang ");
+        userRepository.persist(sandy);
+        User anton = new User("Anton123","Anton", "Traxler");
+        userRepository.persist(anton);
+        User lisa = new User("Lisa124","Lisa", "Müller ");
+        userRepository.persist(lisa);
+        User jonas = new User("JonasT123","Jonas", "Berg ");
+        userRepository.persist(jonas);
+
+
 
 
 
