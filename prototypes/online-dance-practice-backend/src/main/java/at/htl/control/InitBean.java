@@ -38,6 +38,7 @@ public class InitBean {
     @Transactional
     void initDb() {
 
+        //Level
         Level grundkurs = new Level("1","GRUNDKURS");
         levelRepository.persist(grundkurs);
         Level bronze = new Level("2","BRONZE");
@@ -110,27 +111,6 @@ public class InitBean {
         usageRepository.persist(usage03);
         Usage usage04 = new Usage(pirvatstunden,file04);
         usageRepository.persist(usage04);
-
-
-
-
-
-//
-//        List<ContentType> contentsForStandard = new ArrayList<ContentType>();
-//        contentsForStandard.add( ContentType.valueOf("VIDEO"));
-//        contentsForStandard.add( ContentType.valueOf("AUDIO"));
-//        contentsForStandard.add( ContentType.valueOf("AUDIO"));
-//        contentsForStandard.add( ContentType.valueOf("AUDIO"));
-//        Course standard = new Course("Wiener Walzer",contentsForStandard, Level.valueOf("SILBER"));
-//        courseRepository.persist(standard);
-//
-//        List<ContentType> contentsForLatino = new ArrayList<ContentType>();
-//        contentsForLatino.add( ContentType.valueOf("VIDEO"));
-//        contentsForLatino.add( ContentType.valueOf("AUDIO"));
-//        contentsForLatino.add( ContentType.valueOf("VIDEO"));
-//        contentsForLatino.add( ContentType.valueOf("VIDEO"));
-//        Course latino = new Course("Slow Fox",contentsForLatino, Level.valueOf("BRONZE"));
-//        courseRepository.persist(latino);
 
     }
 
