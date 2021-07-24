@@ -28,6 +28,9 @@ public class InitBean {
     @Inject
     FileRepository fileRepository;
 
+    @Inject
+    UsageRepository usageRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
