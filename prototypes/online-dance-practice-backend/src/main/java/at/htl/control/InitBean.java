@@ -101,7 +101,15 @@ public class InitBean {
 
 
 
-
+        //Usage
+        Usage usage01 = new Usage(discofox,file01);
+        usageRepository.persist(usage01);
+        Usage usage02 = new Usage(westcoastswing,file02);
+        usageRepository.persist(usage02);
+        Usage usage03 = new Usage(tanzclubs,file03);
+        usageRepository.persist(usage03);
+        Usage usage04 = new Usage(pirvatstunden,file04);
+        usageRepository.persist(usage04);
 
 
 
