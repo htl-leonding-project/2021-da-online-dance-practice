@@ -38,4 +38,12 @@ public class BookingEnpoint {
         return Response.created(URI.create(info.getPath() + "/"+ booking.bookingId)).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") long id) {
+        return Response.ok( bookingRepository.findById(id)).build();
+    }
+
 }
