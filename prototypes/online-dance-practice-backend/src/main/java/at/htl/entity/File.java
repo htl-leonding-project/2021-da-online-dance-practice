@@ -42,7 +42,7 @@ public class File extends PanacheEntityBase {
     @Override
     public String toString() {
         return "File{" +
-                "id=" + fileId +
+                "fileId=" + fileId +
                 ", name='" + name + '\'' +
                 ", path='" + path + '\'' +
                 ", contentType=" + contentType +
