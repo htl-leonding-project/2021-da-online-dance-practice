@@ -39,5 +39,33 @@ public class LevelEndpoint {
     }
 
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") String id) {
+        return Response.ok( levelRepository.findById(id)).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(@PathParam("id") String id) {
+        try {
+            levelRepository.deleteById(id);
+            return Response
+                    .noContent()
+                    .build();
+        } catch (IllegalArgumentException e) {
+            return Response
+                    .status(400)
+                    .header("Reason","Level with id" +id  + "does not exist")
+                    .build();
+        }
+    }
+
+
 
 }
