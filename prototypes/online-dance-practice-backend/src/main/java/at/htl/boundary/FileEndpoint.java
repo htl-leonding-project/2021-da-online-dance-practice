@@ -46,4 +46,22 @@ public class FileEndpoint {
         return Response.ok(fileRepository.findById(id)).build();
     }
 
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(@PathParam("id") Long id) {
+        try {
+            fileRepository.deleteById(id);
+            return Response
+                    .noContent()
+                    .build();
+        } catch (IllegalArgumentException e) {
+            return Response
+                    .status(400)
+                    .header("Reason","File with id" +id  + "does not exist")
+                    .build();
+        }
+    }
 }
