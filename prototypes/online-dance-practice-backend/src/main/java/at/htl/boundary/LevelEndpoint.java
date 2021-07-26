@@ -17,6 +17,14 @@ public class LevelEndpoint {
     @Inject
     LevelRepository levelRepository;
 
+    @GET
+    @Path("/findAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAll() {
+        return Response.ok(levelRepository.findAll()).build();
+    }
+
+
 
 
 
