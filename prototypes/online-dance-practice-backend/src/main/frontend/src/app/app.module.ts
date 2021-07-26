@@ -21,7 +21,15 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {path: 'video-input', component: VideoInputComponent },
+      {path: 'audio-input', component: AudioInputComponent },
+      {path: '', component: DanceLevelComponent },
+      {path: 'dance-course', component: DanceCourseComponent },
+      {path: 'content', component: ContentComponent },
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
