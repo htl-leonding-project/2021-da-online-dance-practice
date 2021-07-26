@@ -39,5 +39,15 @@ public class LevelEndpoint {
     }
 
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") String id) {
+        return Response.ok( levelRepository.findById(id)).build();
+    }
+
+
+
 
 }
