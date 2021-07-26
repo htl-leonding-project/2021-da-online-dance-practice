@@ -5,12 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AudioInputComponent } from './audio-input/audio-input.component';
 import { VideoInputComponent } from './video-input/video-input.component';
+import { DanceLevelComponent } from './dance-level/dance-level.component';
+import { DanceCourseComponent } from './dance-course/dance-course.component';
+import { ContentComponent } from './content/content.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     AudioInputComponent,
-    VideoInputComponent
+    VideoInputComponent,
+    DanceLevelComponent,
+    DanceCourseComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
