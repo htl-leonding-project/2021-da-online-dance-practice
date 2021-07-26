@@ -37,4 +37,11 @@ public class UsageEndpoint {
         return Response.created(URI.create(info.getPath() + "/"+ usage.usageId)).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") long id) {
+        return Response.ok(usageRepository.findById(id)).build();
+    }
 }
