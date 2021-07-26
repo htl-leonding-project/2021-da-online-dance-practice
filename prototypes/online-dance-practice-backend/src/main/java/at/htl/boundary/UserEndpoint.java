@@ -44,4 +44,23 @@ public class UserEndpoint {
     public Response findById(@PathParam("id") long id) {
         return Response.ok(userRepository.findById(id)).build();
     }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(@PathParam("id") Long id) {
+        try {
+            userRepository.deleteById(id);
+            return Response
+                    .noContent()
+                    .build();
+        } catch (IllegalArgumentException e) {
+            return Response
+                    .status(400)
+                    .header("Reason","User with id" +id  + "does not exist")
+                    .build();
+        }
+    }
 }
