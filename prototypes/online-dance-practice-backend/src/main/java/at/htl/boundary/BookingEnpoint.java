@@ -46,4 +46,24 @@ public class BookingEnpoint {
         return Response.ok( bookingRepository.findById(id)).build();
     }
 
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(@PathParam("id") Long id) {
+        try {
+            bookingRepository.deleteById(id);
+            return Response
+                    .noContent()
+                    .build();
+        } catch (IllegalArgumentException e) {
+            return Response
+                    .status(400)
+                    .header("Reason","Booking with id" +id  + "does not exist")
+                    .build();
+        }
+    }
+
 }
