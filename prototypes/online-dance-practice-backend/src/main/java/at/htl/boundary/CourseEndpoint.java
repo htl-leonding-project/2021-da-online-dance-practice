@@ -2,6 +2,7 @@ package at.htl.boundary;
 
 import at.htl.control.CourseRepository;
 import at.htl.entity.Course;
+import at.htl.entity.Level;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import java.util.List;
 
 @RequestScoped
 @Path("/course")
@@ -62,5 +64,12 @@ public class CourseEndpoint {
                     .header("Reason","Course with id" +id  + "does not exist")
                     .build();
         }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findCourseByLevel(Level level) {
+        return Response.ok().entity(courseRepository.findCourseByLevel(level)).build();
     }
 }
