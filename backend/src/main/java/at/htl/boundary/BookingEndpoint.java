@@ -15,7 +15,7 @@ import java.net.URI;
 
 @RequestScoped
 @Path("/")
-public class BookingEnpoint {
+public class BookingEndpoint {
 
     @Inject
     BookingRepository bookingRepository;
