@@ -14,20 +14,14 @@ enum Level {
   TOPCLASS
 }
 
-enum Level {
-  GRUNDKURS
-  BRONZE
-  SILBER
-  GOLD
-  GOLDSTAR
-  TOPCLASS
-}
 
 class Course {
   String: type
   Content: content
   Level: level
 }
+
+class File
 
 class User {
   Long: id

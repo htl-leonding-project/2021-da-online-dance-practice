@@ -1,14 +1,17 @@
 @startuml
 left to right direction
 
-        actor User
+        actor TanschuelerIn
+        actor Tanzschule
 
+        rectangle online-dancing-practice {
 
-        rectangle {
-
-        User -- (wählt den Kurs und das Level)
-        User -- (schaut Tanzvideos)
-        User -- (hört Lieder )
-
+        TanschuelerIn -- (wählt den Kurs und das Level)
+        TanschuelerIn -- (schaut Tanzvideos)
+        TanschuelerIn -- (hört Lieder )
+        Tanzschule -- (betrachtet Nutzungsdaten)
+        Tanzschule -- (legt neue Kurse an)
+        Tanzschule -- (lädt Files hoch)
+        Tanzschule -- (ordnet Files Kursen zu)
         }
 @enduml

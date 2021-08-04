@@ -1,0 +1,47 @@
+package at.htl.entity;
+
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "D_USAGE")
+public class Usage extends PanacheEntityBase {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "U_ID")
+    public Long usageId;
+
+    @JoinColumn(name = "U_COURSE")
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    public Course course;
+
+    @JoinColumn(name = "U_FILE")
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    public File file;
+
+
+    //region constructor
+
+    public Usage(Course course, File file) {
+        this.course = course;
+        this.file = file;
+    }
+
+    public Usage() {
+    }
+
+    //endregion
+
+
+    @Override
+    public String toString() {
+        return "Usage{" +
+                "id=" + usageId +
+                ", course=" + course +
+                ", file=" + file +
+                '}';
+    }
+}

@@ -1,0 +1,16 @@
+@startuml
+
+node backend {
+  [quarkus]
+  [nginx]
+  database postgresql
+}
+
+node client {
+  [angular-app]
+}
+
+postgresql -right- [quarkus]
+[quarkus] -left- [angular-app]
+
+@enduml

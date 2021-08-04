@@ -1,0 +1,67 @@
+@startuml
+left to right direction
+
+enum ContentType {
+   VIDEO
+   AUDIO
+}
+
+class Level {
+  id: String
+  descr: String
+}
+
+note left
+  id ist
+  GRUNDKURS
+  BRONZE
+  SILBER
+  GOLD
+  GOLDSTAR
+  TOPCLASS
+end note
+
+class Course {
+
+  id: Long
+  title: String
+  descr: String
+  level: Level
+}
+
+class File {
+  id: Long
+  name: String
+  path: String
+  contentType: ContentType
+}
+
+class User {
+  id: Long
+  username: String
+  firstName: String
+  lastName: String
+}
+
+class Usage {
+  id: Long
+  course: Course
+  file: File
+}
+
+Course  -up->  Level
+File  <-left-  ContentType
+Course "0 .. *" -- "0 .. *" File
+(Course, File) . Usage
+User -up- Course
+(Course, User) . Booking
+
+class Booking {
+
+  id: Long
+  user: User
+  course: Course
+
+}
+
+@enduml
