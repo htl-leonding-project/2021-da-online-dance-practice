@@ -9,13 +9,13 @@ export class AudioInputComponent implements OnInit {
   @Input() pathMp3!: string;
 
 
-  pathM! : string;
+  pathM!: string;
 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.pathM = "assets/"+this.pathMp3+".mp3";
+    this.pathM = 'assets/' + this.pathMp3 + '.mp3';
   }
 
 }

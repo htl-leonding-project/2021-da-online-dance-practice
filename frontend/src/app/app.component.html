@@ -8,13 +8,25 @@
 <!--<app-video-input [pathMp4]="'beispiel'"></app-video-input>-->
 
 
-<div style="text-align: center">
-  <h1> Welcome to Online Dance Practice</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Dance Practice</title>
+</head>
+<body>
 
-  <div>
-    <button routerLink="/content">Click for ContentType </button>
-  </div>
+<nav>
+  <ul>
+    <li><a routerLink="/level-wrapper" routerLinkActive="active">Level</a></li>
+    <li><a routerLink="/course-wrapper" routerLinkActive="active">Course</a></li>
+    <li><a routerLink="/content-component" routerLinkActive="active">Content</a></li>
+  </ul>
+</nav>
+
+<h1>Dance Practice App</h1>
+
+<router-outlet></router-outlet>
 
 
-  <router-outlet></router-outlet>
-</div>
+</body>
+</html>

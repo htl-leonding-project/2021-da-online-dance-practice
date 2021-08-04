@@ -9,6 +9,9 @@ import { DanceLevelComponent } from './dance-level/dance-level.component';
 import { DanceCourseComponent } from './dance-course/dance-course.component';
 import { ContentComponent } from './content/content.component';
 import { RouterModule } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import { LevelWrapperComponent } from './level-wrapper/level-wrapper.component';
+import { CourseWrapperComponent } from './course-wrapper/course-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { RouterModule } from '@angular/router';
     VideoInputComponent,
     DanceLevelComponent,
     DanceCourseComponent,
-    ContentComponent
+    ContentComponent,
+    LevelWrapperComponent,
+    CourseWrapperComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { RouterModule } from '@angular/router';
       {path: 'dance-course', component: DanceCourseComponent },
       {path: 'content', component: ContentComponent },
 
-    ])
+    ]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

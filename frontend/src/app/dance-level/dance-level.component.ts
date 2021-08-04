@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-dance-level',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dance-level.component.css']
 })
 export class DanceLevelComponent implements OnInit {
+  @Input() levelname!: string;
+
+  name!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.name = this.levelname;
   }
 
 }
