@@ -10,7 +10,7 @@ public class User extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "U_USERID")
+    @Column(name = "U_ID")
     public Long userId;
 
     @Column(name = "U_USERNAME")

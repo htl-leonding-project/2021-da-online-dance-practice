@@ -14,7 +14,7 @@ public class Course extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "C_COURSEID")
+    @Column(name = "C_ID")
     public Long courseId;
 
     @Column(name = "C_TITLE")

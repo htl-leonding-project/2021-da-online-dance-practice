@@ -11,14 +11,14 @@ public class Usage extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "U_ID")
+    @Column(name = "UG_ID")
     public Long usageId;
 
-    @JoinColumn(name = "U_COURSE")
+    @JoinColumn(name = "UG_COURSE")
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     public Course course;
 
-    @JoinColumn(name = "U_FILE")
+    @JoinColumn(name = "UG_FILE")
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     public File file;
 
