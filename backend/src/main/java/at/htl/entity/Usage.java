@@ -12,7 +12,7 @@ public class Usage extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UG_ID")
-    public Long usageId;
+    public Long id;
 
     @JoinColumn(name = "UG_COURSE")
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
@@ -39,7 +39,7 @@ public class Usage extends PanacheEntityBase {
     @Override
     public String toString() {
         return "Usage{" +
-                "id=" + usageId +
+                "id=" + id +
                 ", course=" + course +
                 ", file=" + file +
                 '}';
