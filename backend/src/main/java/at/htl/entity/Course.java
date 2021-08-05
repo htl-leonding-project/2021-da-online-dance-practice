@@ -1,12 +1,8 @@
 package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "D_COURSE")
@@ -15,7 +11,7 @@ public class Course extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "C_ID")
-    public Long courseId;
+    public Long id;
 
     @Column(name = "C_TITLE")
     public String title;
@@ -43,7 +39,7 @@ public class Course extends PanacheEntityBase {
     @Override
     public String toString() {
         return "Course{" +
-                "courseId=" + courseId +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", descr='" + descr + '\'' +
                 ", level=" + level +
