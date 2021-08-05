@@ -1,6 +1,5 @@
 package at.htl.boundary;
 
-import at.htl.control.CourseRepository;
 import at.htl.control.FileRepository;
 import at.htl.entity.File;
 
@@ -35,7 +34,7 @@ public class FileEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(File file, @Context UriInfo info) {
         fileRepository.persist(file);
-        return Response.created(URI.create(info.getPath() + "/"+ file.fileId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ file.id)).build();
     }
 
     @GET
