@@ -17,7 +17,7 @@ public class Course extends PanacheEntityBase {
     public String title;
 
     @Column(name = "C_DESCR")
-    public String descr;
+    public String description;
 
     @ManyToOne
     @JoinColumn(name ="C_LEVEL")
@@ -25,9 +25,9 @@ public class Course extends PanacheEntityBase {
 
 
     //region constructors
-    public Course(String title, String descr, Level level) {
+    public Course(String title, String description, Level level) {
         this.title = title;
-        this.descr = descr;
+        this.description = description;
         this.level = level;
     }
 
@@ -41,7 +41,7 @@ public class Course extends PanacheEntityBase {
         return "Course{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", descr='" + descr + '\'' +
+                ", descr='" + description + '\'' +
                 ", level=" + level +
                 '}';
     }
