@@ -35,7 +35,7 @@ public class LevelEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Level level, @Context UriInfo info) {
         levelRepository.persist(level);
-        return Response.created(URI.create(info.getPath() + "/"+ level.levelId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ level.id)).build();
     }
 
 
