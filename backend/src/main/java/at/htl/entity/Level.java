@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Level extends PanacheEntityBase {
 
     @Id
-    @Column(name = "L_LEVELID")
+    @Column(name = "L_ID")
     public String id;
 
     @Column(name = "L_DESCRIPTION")
