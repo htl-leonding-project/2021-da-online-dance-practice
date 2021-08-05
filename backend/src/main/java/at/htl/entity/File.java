@@ -12,7 +12,7 @@ public class File extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "F_ID")
-    public Long fileId;
+    public Long id;
 
     @Column(name = "F_NAME")
     public String name;
@@ -42,7 +42,7 @@ public class File extends PanacheEntityBase {
     @Override
     public String toString() {
         return "File{" +
-                "fileId=" + fileId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", path='" + path + '\'' +
                 ", contentType=" + contentType +
