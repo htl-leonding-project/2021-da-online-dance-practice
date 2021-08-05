@@ -11,7 +11,7 @@ public class User extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "U_ID")
-    public Long userId;
+    public Long id;
 
     @Column(name = "U_USERNAME")
     public String username;
@@ -36,7 +36,7 @@ public class User extends PanacheEntityBase {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
