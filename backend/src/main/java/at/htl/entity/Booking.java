@@ -10,8 +10,8 @@ public class Booking extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "B_BOOKINGID")
-    public Long bookingId;
+    @Column(name = "B_ID")
+    public Long id;
 
     @ManyToOne
     @JoinColumn(name = "B_USERID")
@@ -34,7 +34,7 @@ public class Booking extends PanacheEntityBase {
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId=" + bookingId +
+                "id=" + id +
                 ", user=" + user +
                 ", course=" + course +
                 '}';

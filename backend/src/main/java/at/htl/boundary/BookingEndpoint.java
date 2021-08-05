@@ -35,7 +35,7 @@ public class BookingEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Booking booking, @Context UriInfo info) {
         bookingRepository.persist(booking);
-        return Response.created(URI.create(info.getPath() + "/"+ booking.bookingId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ booking.id)).build();
     }
 
     @GET
