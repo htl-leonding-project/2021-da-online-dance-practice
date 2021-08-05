@@ -34,7 +34,7 @@ public class UserEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(User user, @Context UriInfo info) {
         userRepository.persist(user);
-        return Response.created(URI.create(info.getPath() + "/"+ user.userId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ user.id)).build();
     }
 
     @GET
