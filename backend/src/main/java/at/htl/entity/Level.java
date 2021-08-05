@@ -1,7 +1,6 @@
 package at.htl.entity;
 
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
@@ -12,7 +11,7 @@ public class Level extends PanacheEntityBase {
 
     @Id
     @Column(name = "L_LEVELID")
-    public String levelId;
+    public String id;
 
     @Column(name = "L_DESCRIPTION")
     public String description;
@@ -21,8 +20,8 @@ public class Level extends PanacheEntityBase {
     public Level() {
     }
 
-    public Level(String levelId, String description) {
-        this.levelId = levelId;
+    public Level(String id, String description) {
+        this.id = id;
         this.description = description;
     }
 
@@ -31,7 +30,7 @@ public class Level extends PanacheEntityBase {
     @Override
     public String toString() {
         return "Level{" +
-                "levelId='" + levelId + '\'' +
+                "id='" + id + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
