@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
-import java.util.List;
 
 @RequestScoped
 @Path("/course")
@@ -36,7 +35,7 @@ public class CourseEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Course course, @Context UriInfo info) {
         courseRepository.persist(course);
-        return Response.created(URI.create(info.getPath() + "/"+ course.courseId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ course.id)).build();
     }
 
     @GET
