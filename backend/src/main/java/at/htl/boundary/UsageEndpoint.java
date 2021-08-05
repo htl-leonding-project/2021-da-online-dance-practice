@@ -34,7 +34,7 @@ public class UsageEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Usage usage, @Context UriInfo info) {
         usageRepository.persist(usage);
-        return Response.created(URI.create(info.getPath() + "/"+ usage.usageId)).build();
+        return Response.created(URI.create(info.getPath() + "/"+ usage.id)).build();
     }
 
     @GET
