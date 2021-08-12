@@ -20,12 +20,12 @@ public class Usage extends PanacheEntityBase {
 
     @JoinColumn(name = "UG_FILE")
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    public File file;
+    public D_File file;
 
 
     //region constructor
 
-    public Usage(Course course, File file) {
+    public Usage(Course course, D_File file) {
         this.course = course;
         this.file = file;
     }

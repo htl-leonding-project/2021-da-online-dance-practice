@@ -1,7 +1,7 @@
 package at.htl.boundary;
 
 import at.htl.control.FileRepository;
-import at.htl.entity.File;
+import at.htl.entity.D_File;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @RequestScoped
-@Path("/File")
+@Path("/file")
 public class FileEndpoint {
 
     @Inject
@@ -32,7 +32,7 @@ public class FileEndpoint {
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(File file, @Context UriInfo info) {
+    public Response create(D_File file, @Context UriInfo info) {
         fileRepository.persist(file);
         return Response.created(URI.create(info.getPath() + "/"+ file.id)).build();
     }
@@ -63,4 +63,7 @@ public class FileEndpoint {
                     .build();
         }
     }
+
+
+
 }

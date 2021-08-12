@@ -7,8 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 
 @ApplicationScoped
 public class InitBean {
@@ -89,15 +87,15 @@ public class InitBean {
 
 
         //File
-        File file01 = new File("File01", "/abc", ContentType.valueOf("AUDIO"));
+        D_File file01 = new D_File("hogwartsMandel.mp4", "import", ContentType.valueOf("VIDEO"));
         fileRepository.persist(file01);
-        File file02 = new File("File02", "/cdb", ContentType.valueOf("VIDEO"));
+        D_File file02 = new D_File("File02", "/cdb", ContentType.valueOf("VIDEO"));
         fileRepository.persist(file02);
-        File file03 = new File("File03", "/bdc", ContentType.valueOf("AUDIO"));
+        D_File file03 = new D_File("File03", "/bdc", ContentType.valueOf("AUDIO"));
         fileRepository.persist(file03);
-        File file04 = new File("File04", "/gfh", ContentType.valueOf("VIDEO"));
+        D_File file04 = new D_File("File04", "/gfh", ContentType.valueOf("VIDEO"));
         fileRepository.persist(file04);
-        File file05 = new File("File05", "/gfh", ContentType.valueOf("AUDIO"));
+        D_File file05 = new D_File("File05", "/gfh", ContentType.valueOf("AUDIO"));
         fileRepository.persist(file05);
 
 
