@@ -3,7 +3,7 @@ package at.htl.boundary;
 import at.htl.control.FileRepository;
 import at.htl.entity.D_File;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import javax.json.*;
 
-@RequestScoped
 @Path("/file")
 public class FileEndpoint {
 
@@ -21,10 +21,11 @@ public class FileEndpoint {
     FileRepository fileRepository;
 
     @GET
-    @Path("/findAll")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(fileRepository.findAll()).build();
+        return Response.ok(fileRepository.listAll()).build();
+        /*JsonObject hello = Json.createObjectBuilder().add("name", "sandy").build();
+        return Response.ok(hello).build();*/
     }
 
     @POST
