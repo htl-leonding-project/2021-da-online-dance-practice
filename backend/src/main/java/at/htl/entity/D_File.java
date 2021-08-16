@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "D_FILE")
-public class File extends PanacheEntityBase {
+public class D_File extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +27,13 @@ public class File extends PanacheEntityBase {
     // region constructor
 
 
-    public File(String name, String path, ContentType contentType) {
+    public D_File(String name, String path, ContentType contentType) {
         this.name = name;
         this.path = path;
         this.contentType = contentType;
     }
 
-    public File() {
+    public D_File() {
     }
 
     //endregion

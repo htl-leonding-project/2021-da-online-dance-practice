@@ -1,9 +1,9 @@
 package at.htl.boundary;
 
 import at.htl.control.FileRepository;
-import at.htl.entity.File;
+import at.htl.entity.D_File;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -12,19 +12,20 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import javax.json.*;
 
-@RequestScoped
-@Path("/File")
+@Path("/file")
 public class FileEndpoint {
 
     @Inject
     FileRepository fileRepository;
 
     @GET
-    @Path("/findAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
-        return Response.ok(fileRepository.findAll()).build();
+    public Response findall() {
+        return Response.ok(fileRepository.listAll()).build();
+        /*JsonObject hello = Json.createObjectBuilder().add("name", "sandy").build();
+        return Response.ok(hello).build();*/
     }
 
     @POST
@@ -32,7 +33,7 @@ public class FileEndpoint {
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(File file, @Context UriInfo info) {
+    public Response create(D_File file, @Context UriInfo info) {
         fileRepository.persist(file);
         return Response.created(URI.create(info.getPath() + "/"+ file.id)).build();
     }
@@ -63,4 +64,5 @@ public class FileEndpoint {
                     .build();
         }
     }
+
 }

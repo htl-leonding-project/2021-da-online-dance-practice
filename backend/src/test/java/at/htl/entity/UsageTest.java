@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import javax.transaction.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 class UsageTest {
@@ -18,7 +17,7 @@ class UsageTest {
     @Transactional
     public void create() {
 
-        File file = new File("Hipopvideo Example", "/assets/HipopvideoExample.mp4", ContentType.VIDEO);
+        D_File file = new D_File("Hipopvideo Example", "/assets/HipopvideoExample.mp4", ContentType.VIDEO);
         file.persist();
         Level level = new Level("Goldstar", "5. Level");
         level.persist();
@@ -34,7 +33,7 @@ class UsageTest {
     @Test
     @Transactional
     public void usageToString() {
-        File file = new File("Hipopvideo Example", "/assets/HipopvideoExample.mp4", ContentType.VIDEO);
+        D_File file = new D_File("Hipopvideo Example", "/assets/HipopvideoExample.mp4", ContentType.VIDEO);
         file.persist();
         Level level = new Level("Topclass", "6. Level");
         level.persist();

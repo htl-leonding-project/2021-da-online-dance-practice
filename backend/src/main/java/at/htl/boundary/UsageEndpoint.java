@@ -14,14 +14,14 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @RequestScoped
-@Path("/Usage")
+@Path("/usage")
 public class UsageEndpoint {
 
     @Inject
     UsageRepository usageRepository;
 
     @GET
-    @Path("/findAll")
+    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
         return Response.ok(usageRepository.findAll()).build();

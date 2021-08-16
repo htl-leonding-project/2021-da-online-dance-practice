@@ -1,0 +1,69 @@
+drop table d_usage;
+drop table d_file;
+drop table d_level;
+drop table d_course;
+
+
+create table d_file(
+	fileid number(10) not null, 
+	name varchar2(30),
+	path varchar2(100),
+    contenttype VARCHAR2(10) CHECK( contenttype IN ('audio','video') ),
+	constraint pk_d_file primary key (fileid)
+)
+insert into d_file (fileid, name, path, contenttype) Values (1, 'Start with Samba - Samba01', 'videos/Samba01', 'video');
+insert into d_file (fileid, name, path, contenttype) Values (2, 'Step by Step - Samba02', 'videos/Samba02', 'video');
+insert into d_file (fileid, name, path, contenttype) Values (3, 'Recap - Samba03', 'videos/Samba03', 'video');
+insert into d_file (fileid, name, path, contenttype) Values (4, 'Samba01', 'audio/Samba01', 'audio');
+insert into d_file (fileid, name, path, contenttype) Values (5, 'Samba02', 'audio/Samba02', 'audio');
+insert into d_file (fileid, name, path, contenttype) Values (6, 'Samba03', 'audio/Samba03', 'audio');
+
+
+create table d_level(
+	levelid number(10) not null, 
+	description varchar2(50),
+	constraint pk_d_level primary key (levelid)
+)
+insert into d_level (levelid, description) Values (1, 'Grundkurs');
+insert into d_level (levelid, description) Values (2, 'Bronze');
+insert into d_level (levelid, description) Values (3, 'Silber');
+insert into d_level (levelid, description) Values (4, 'Gold');
+insert into d_level (levelid, description) Values (5, 'Goldstar');
+insert into d_level (levelid, description) Values (6, 'TopClass');
+
+
+create table d_course(
+	courseid number(10) not null, 
+	levelid number(10) not null, 
+	title varchar2(30),
+	description varchar2(50),
+	constraint pk_d_course primary key (courseid),
+    constraint fk_d_level foreign key (levelid) references d_level(levelid)
+)
+insert into d_course (courseid, levelid, title, description) Values (1, 1, 'Latein', 'Samba');
+insert into d_course (courseid, levelid, title, description) Values (2, 1, 'Latein', 'Rumba');
+insert into d_course (courseid, levelid, title, description) Values (3, 1, 'Latein', 'Cha Cha Cha');
+insert into d_course (courseid, levelid, title, description) Values (4, 1, 'Latein', 'Paso');
+insert into d_course (courseid, levelid, title, description) Values (5, 1, 'Latein', 'Jive');
+insert into d_course (courseid, levelid, title, description) Values (6, 2, 'Standard', 'Langsamer Walzer');
+insert into d_course (courseid, levelid, title, description) Values (7, 2, 'Standard', 'Wiener Walzer');
+insert into d_course (courseid, levelid, title, description) Values (8, 2, 'Standard', 'Slow Fox');
+insert into d_course (courseid, levelid, title, description) Values (9, 2, 'Standard', 'Quick Step');
+insert into d_course (courseid, levelid, title, description) Values (10, 2, 'Standard', 'Tango');
+insert into d_course (courseid, levelid, title, description) Values (11, 4, 'Latino', 'Salza');
+insert into d_course (courseid, levelid, title, description) Values (12, 4, 'Latino', 'Patschata');
+
+
+create table d_usage(
+	usageid number(10) not null, 
+	fileid number(10) not null, 
+	courseid number(10) not null, 
+	constraint pk_d_usage primary key (usageid),
+    constraint fk_d_file foreign key (fileid) references d_file(fileid),
+    constraint fk_d_course foreign key (courseid) references d_course(courseid)
+)
+insert into d_usage (usageid, fileid, courseid) Values (1,2,2);
+insert into d_usage (usageid, fileid, courseid) Values (2,3,1);
+insert into d_usage (usageid, fileid, courseid) Values (3,4,2);
+insert into d_usage (usageid, fileid, courseid) Values (4,1,1);
+

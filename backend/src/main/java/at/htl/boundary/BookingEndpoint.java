@@ -14,14 +14,14 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @RequestScoped
-@Path("/")
+@Path("/booking")
 public class BookingEndpoint {
 
     @Inject
     BookingRepository bookingRepository;
 
     @GET
-    @Path("/findAll")
+    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
         return Response.ok(bookingRepository.findAll()).build();

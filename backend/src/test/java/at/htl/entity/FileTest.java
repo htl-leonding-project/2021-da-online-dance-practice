@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import javax.transaction.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @QuarkusTest
@@ -17,7 +16,7 @@ class FileTest {
     @Transactional
     public void create(){
 
-        File file = new File("Hipopvideo Example","/assets/HipopvideoExample.mp4",ContentType.VIDEO);
+        D_File file = new D_File("Hipopvideo Example","/assets/HipopvideoExample.mp4",ContentType.VIDEO);
         file.persist();
     }
 
@@ -26,7 +25,7 @@ class FileTest {
     @Transactional
     public void FileToString(){
 
-        File file = new File("Latein Example","/assets/LateinvideoExample.mp4",ContentType.VIDEO);
+        D_File file = new D_File("Latein Example","/assets/LateinvideoExample.mp4",ContentType.VIDEO);
         file.persist();
 
 
