@@ -21,7 +21,7 @@ public class UserEndpoint {
     UserRepository userRepository;
 
     @GET
-    @Path("/findAll")
+    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
         return Response.ok(userRepository.findAll()).build();
