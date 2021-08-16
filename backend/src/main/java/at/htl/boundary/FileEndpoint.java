@@ -22,7 +22,7 @@ public class FileEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
+    public Response findall() {
         return Response.ok(fileRepository.listAll()).build();
         /*JsonObject hello = Json.createObjectBuilder().add("name", "sandy").build();
         return Response.ok(hello).build();*/
@@ -64,7 +64,5 @@ public class FileEndpoint {
                     .build();
         }
     }
-
-
 
 }
