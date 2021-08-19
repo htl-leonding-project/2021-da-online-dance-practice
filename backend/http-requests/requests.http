@@ -35,8 +35,8 @@ POST http://localhost:8080/api/level/create
 Content-Type: application/json
 
 {
-    "id": "AH",
-    "description": "bahahaha"
+  "id": "AH",
+  "description": "bahahaha"
 }
 
 
@@ -77,9 +77,9 @@ Content-Type: application/json
     }
   },
   "file": {
-  "name": "File123",
-  "path": "example/path/123",
-  "contentType": "VIDEO"
+    "name": "File123",
+    "path": "example/path/123",
+    "contentType": "VIDEO"
   }
 }
 
@@ -94,6 +94,7 @@ Accept: application/json
 
 GET http://localhost:8080/api/user
 Accept: application/json
+
 ####
 
 POST http://localhost:8080/api/user/create
@@ -113,6 +114,35 @@ Accept: application/json
 #####
 
 DELETE http://localhost:8080/api/user/8
+Accept: application/json
+
+#####
+GET http://localhost:8080/api/course
+Accept: application/json
+
+####
+
+POST http://localhost:8080/api/course/create
+Content-Type: application/json
+
+{
+
+"title": "Rosalie",
+"description": "Mandel",
+  "level": {
+    "id": "1",
+    "description": "bahahaha"
+  }
+}
+
+
+####
+GET http://localhost:8080/api/course/7
+Accept: application/json
+
+#####
+
+DELETE http://localhost:8080/api/course/7
 Accept: application/json
 
 #####
