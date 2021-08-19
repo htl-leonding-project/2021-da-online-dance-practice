@@ -4,7 +4,7 @@ Accept: application/json
 ###
 
 
-GET http://localhost:8080/api/file/6
+GET http://localhost:8080/api/file/8
 Accept: application/json
 
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ######
 
-DELETE http://localhost:8080/api/file/6
+DELETE http://localhost:8080/api/file/8
 Accept: application/json
 
 ###
@@ -59,7 +59,7 @@ Accept: application/json
 ####
 
 
-GET http://localhost:8080/api/usage/2
+GET http://localhost:8080/api/usage/6
 Accept: application/json
 
 ####
@@ -73,7 +73,7 @@ Content-Type: application/json
     "description": "Kurs für Anfänger",
     "level": {
       "id": "1",
-      "description": "bahahaha"
+      "description": "sehr einfach"
     }
   },
   "file": {
@@ -86,7 +86,7 @@ Content-Type: application/json
 
 ####
 
-DELETE http://localhost:8080/api/usage/2
+DELETE http://localhost:8080/api/usage/6
 Accept: application/json
 
 ####
@@ -108,12 +108,12 @@ Content-Type: application/json
 
 
 ####
-GET http://localhost:8080/api/user/2
+GET http://localhost:8080/api/user/10
 Accept: application/json
 
 #####
 
-DELETE http://localhost:8080/api/user/8
+DELETE http://localhost:8080/api/user/10
 Accept: application/json
 
 #####
@@ -131,18 +131,75 @@ Content-Type: application/json
 "description": "Mandel",
   "level": {
     "id": "1",
-    "description": "bahahaha"
+    "description": "einfach"
   }
 }
 
 
 ####
-GET http://localhost:8080/api/course/7
+GET http://localhost:8080/api/course/9
 Accept: application/json
 
 #####
 
-DELETE http://localhost:8080/api/course/7
+DELETE http://localhost:8080/api/course/9
 Accept: application/json
 
 #####
+
+GET http://localhost:8080/api/booking
+Accept: application/json
+
+#####
+
+POST http://localhost:8080/api/booking/create
+Content-Type: application/json
+
+{
+  "user": {
+    "username": "Rosi12",
+    "firstname": "Rosalie",
+    "lastname": "Mandel"
+  },
+  "course":{
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "GRUNDKURS",
+      "description": "einfach"
+    }
+  }
+}
+
+####
+
+POST http://localhost:8080/api/booking/create
+Content-Type: application/json
+
+{
+"user":{
+  "username": "Rosi12",
+  "firstname": "Rosalie",
+  "lastname": "Mandel"
+}
+,
+  "course":{
+"title": "Rosalie",
+  "description": "Mandel",
+  "level": {
+    "id": "1",
+    "description": "einfach"
+  }
+}
+}
+#####
+
+GET http://localhost:8080/api/booking/2
+Accept: application/json
+
+###
+
+DELETE http://localhost:8080/api/booking/2
+Accept: application/json
+
+

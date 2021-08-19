@@ -53,7 +53,7 @@ public class FileEndpoint {
     }
 
     @DELETE
-    @Path("delete/{id}")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response delete(@PathParam("id") Long id) {
