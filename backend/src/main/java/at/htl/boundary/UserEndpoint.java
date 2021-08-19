@@ -14,17 +14,16 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @RequestScoped
-@Path("/consumation")
+@Path("/user")
 public class UserEndpoint {
 
     @Inject
     UserRepository userRepository;
 
     @GET
-    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(userRepository.findAll()).build();
+        return Response.ok(userRepository.listAll()).build();
     }
 
     @POST
