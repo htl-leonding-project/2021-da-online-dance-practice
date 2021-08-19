@@ -21,10 +21,9 @@ public class LevelEndpoint {
     LevelRepository levelRepository;
 
     @GET
-    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(levelRepository.findAll()).build();
+        return Response.ok(levelRepository.listAll()).build();
     }
 
 

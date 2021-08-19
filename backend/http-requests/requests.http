@@ -28,4 +28,28 @@ DELETE http://localhost:8080/api/file/
 
 ####
 
+GET http://localhost:8080/api/level
+Accept: application/json
+
+
+#####
+POST http://localhost:8080/api/level/create
+Content-Type: application/json
+
+{
+    "id": "AH",
+    "description": "bahahaha"
+}
+
+
+###
+
+GET http://localhost:8080/api/level/AH
+Accept: application/json
+
+####
+
+DELETE http://localhost:8080/api/level/AH
+Accept: application/json
+
 
