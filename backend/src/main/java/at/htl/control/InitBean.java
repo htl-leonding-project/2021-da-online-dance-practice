@@ -37,17 +37,17 @@ public class InitBean {
     void initDb() {
 
         //Level
-        Level grundkurs = new Level("1","GRUNDKURS");
+        Level grundkurs = new Level("GRUNDKURS","GRUNDKURS");
         levelRepository.persist(grundkurs);
-        Level bronze = new Level("2","BRONZE");
+        Level bronze = new Level("BRONZE","BRONZE");
         levelRepository.persist(bronze);
-        Level silber = new Level("3","SILBER");
+        Level silber = new Level("SILBER","SILBER");
         levelRepository.persist(silber);
-        Level gold = new Level("4","GOLD");
+        Level gold = new Level("GOLD","GOLD");
         levelRepository.persist(gold);
-        Level goldstar = new Level("5","GOLDSTAR");
+        Level goldstar = new Level("GOLDSTAR","GOLDSTAR");
         levelRepository.persist(goldstar);
-        Level topclass = new Level("6","TOPCLASS");
+        Level topclass = new Level("TOPCLASS","TOPCLASS");
         levelRepository.persist(topclass);
 
         //User
@@ -87,8 +87,64 @@ public class InitBean {
 
 
         //File
-        D_File file01 = new D_File("hogwartsMandel.mp4", "import", ContentType.valueOf("VIDEO"));
-        fileRepository.persist(file01);
+        //audio
+        D_File senorita = new D_File("01_CHA-Señorita(original).mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(senorita);
+        D_File ice = new D_File("03_LikeIceinthesunshine.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(ice);
+        D_File coupe = new D_File("04_CoupedeVille.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(coupe);
+        D_File california = new D_File("05_HotelCalifornia-DJRoy-(LatinGoodVibration2)-AO-WM,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(california);
+        D_File wonder = new D_File("06_lwonderwhy-03-slow-waltz.wav", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(wonder);
+        D_File promises = new D_File("07-Promises-TanzorchesterKlausHallen-(ChartbreakerVol. 21)-ZL- PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(promises);
+        D_File fading = new D_File("08-Fading-TanzorchesterKlausHallen-(ChartbreakerVol.21)-ZL-PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(california);
+        D_File bachataDeja = new D_File("09Bachata-Dejavu.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(bachataDeja);
+        D_File sal = new D_File("10_SAL-Feliceslos4(SalsaVersio.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(sal);
+        D_File havana = new D_File("11-31-Havana-DJBernat-(LatinMusic14)-Casaphon-PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(havana);
+        D_File mama = new D_File("12-51-Mama-DJRicoLatino-(LatinMusic14)-Casaphon-PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(mama);
+        D_File sweet = new D_File("13SweetButPsycho-TanzorchesterKlausHallen-(ChartbreakerVol.21)-ZL-PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(sweet);
+        D_File tango = new D_File("14_TangoPorUnaCabeza-instrumentalviolincover-stringquartet.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(tango);
+        D_File lieblingmensch = new D_File("15-29-Lieblingsmensch-Lila-(BallroomNights8)-Casaphon-PP,DE.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(lieblingmensch);
+        D_File roses = new D_File("16_WW-RosesFromTheSouth.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(roses);
+        D_File paso = new D_File("17-PASO-Manolita60.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(paso);
+        D_File aldo = new D_File("18-AldoCapioccioni-05-MyWay-SW28.wav", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(aldo);
+        D_File tuesday = new D_File("19-Tuesday(feat.DanelleSandoval).mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(tuesday);
+        D_File dancelife = new D_File("20-IStillHaven'tFound(shortversion)-DancelifeStudioOrchestra-(Bring16smilestoyoufeet)-Dancelife-LP,SP.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(dancelife);
+        D_File bailando = new D_File("21_SAL-Bailando(feat.DescemerBu.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(bailando);
+        D_File ready = new D_File("22_I'mReady.mp3","mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(ready);
+        D_File df = new D_File("23_DF-Warumhastdunichtneinges.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(df);
+        D_File ex = new D_File("24-50-Ex'sAndOh's-Swingpop!-(BallroomNights8)-Casaphon-SW,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(ex);
+        D_File hold = new D_File("25-29-HoldMyGirl-TanzorchesterKlausHallen-(ChartbreakerVol.21)-ZL-PP,EN.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(hold);
+        D_File sed = new D_File("26_SeddeTi...DustinRichie...(bachatanew2019)(audio).mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(sed);
+        D_File bang = new D_File("27-BangBang,Part2-Genio&Pierrots-(LatinMegaHits6)-CM-IT,PP.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        fileRepository.persist(bang);
+
+        D_File bachata = new D_File("Bachata-OnlineTanzkurs.mov", "mediafiles/video", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(bachata);
+        D_File hiphop = new D_File("HipHopBartSimpson.mov", "mediafiles/video", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(hiphop);
         D_File file02 = new D_File("File02", "/cdb", ContentType.valueOf("VIDEO"));
         fileRepository.persist(file02);
         D_File file03 = new D_File("File03", "/bdc", ContentType.valueOf("AUDIO"));
@@ -101,7 +157,7 @@ public class InitBean {
 
 
         //Usage
-        Usage usage01 = new Usage(discofox,file01);
+        Usage usage01 = new Usage(discofox,file03);
         usageRepository.persist(usage01);
         Usage usage02 = new Usage(westcoastswing,file02);
         usageRepository.persist(usage02);
