@@ -21,10 +21,9 @@ public class UsageEndpoint {
     UsageRepository usageRepository;
 
     @GET
-    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(usageRepository.findAll()).build();
+        return Response.ok(usageRepository.listAll()).build();
     }
 
     @POST
