@@ -4,10 +4,202 @@ Accept: application/json
 ###
 
 
-GET http://localhost:8080/api/2
+GET http://localhost:8080/api/file/8
+Accept: application/json
+
+
+####
+POST localhost:8080/api/file/create
+Content-Type: application/json
+
+{
+  "name": "File123",
+  "path": "example/path/123",
+  "contentType": "VIDEO"
+}
+
+
+######
+
+DELETE http://localhost:8080/api/file/8
 Accept: application/json
 
 ###
 
+GET http://localhost:8080/api/level
+Accept: application/json
+
+
+#####
+POST http://localhost:8080/api/level/create
+Content-Type: application/json
+
+{
+  "id": "AH",
+  "description": "bahahaha"
+}
+
+
+###
+
+GET http://localhost:8080/api/level/AH
+Accept: application/json
+
+####
+
+DELETE http://localhost:8080/api/level/AH
+Accept: application/json
+
+
+####
+
+GET http://localhost:8080/api/usage
+Accept: application/json
+
+####
+
+
+GET http://localhost:8080/api/usage/6
+Accept: application/json
+
+####
+
+POST http://localhost:8080/api/usage/create
+Content-Type: application/json
+
+{
+  "course": {
+    "title": "Latein",
+    "description": "Kurs für Anfänger",
+    "level": {
+      "id": "1",
+      "description": "sehr einfach"
+    }
+  },
+  "file": {
+    "name": "File123",
+    "path": "example/path/123",
+    "contentType": "VIDEO"
+  }
+}
+
+
+####
+
+DELETE http://localhost:8080/api/usage/6
+Accept: application/json
+
+####
+
+
+GET http://localhost:8080/api/user
+Accept: application/json
+
+####
+
+POST http://localhost:8080/api/user/create
+Content-Type: application/json
+
+{
+  "username": "Rosi12",
+  "firstname": "Rosalie",
+  "lastname": "Mandel"
+}
+
+
+####
+GET http://localhost:8080/api/user/10
+Accept: application/json
+
+#####
+
+DELETE http://localhost:8080/api/user/10
+Accept: application/json
+
+#####
+GET http://localhost:8080/api/course
+Accept: application/json
+
+####
+
+POST http://localhost:8080/api/course/create
+Content-Type: application/json
+
+{
+
+"title": "Rosalie",
+"description": "Mandel",
+  "level": {
+    "id": "1",
+    "description": "einfach"
+  }
+}
+
+
+####
+GET http://localhost:8080/api/course/9
+Accept: application/json
+
+#####
+
+DELETE http://localhost:8080/api/course/9
+Accept: application/json
+
+#####
+
+GET http://localhost:8080/api/booking
+Accept: application/json
+
+#####
+
+POST http://localhost:8080/api/booking/create
+Content-Type: application/json
+
+{
+  "user": {
+    "username": "Rosi12",
+    "firstname": "Rosalie",
+    "lastname": "Mandel"
+  },
+  "course":{
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "GRUNDKURS",
+      "description": "einfach"
+    }
+  }
+}
+
+####
+
+POST http://localhost:8080/api/booking/create
+Content-Type: application/json
+
+{
+"user":{
+  "username": "Rosi12",
+  "firstname": "Rosalie",
+  "lastname": "Mandel"
+}
+,
+  "course":{
+"title": "Rosalie",
+  "description": "Mandel",
+  "level": {
+    "id": "1",
+    "description": "einfach"
+  }
+}
+}
+#####
+
+GET http://localhost:8080/api/booking/2
+Accept: application/json
+
+###
+
+DELETE http://localhost:8080/api/booking/2
+Accept: application/json
 
 

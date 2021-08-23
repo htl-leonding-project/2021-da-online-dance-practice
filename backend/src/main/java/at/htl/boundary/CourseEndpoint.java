@@ -22,10 +22,9 @@ public class CourseEndpoint {
     CourseRepository courseRepository;
 
     @GET
-    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(courseRepository.findAll()).build();
+        return Response.ok(courseRepository.listAll()).build();
     }
 
     @POST

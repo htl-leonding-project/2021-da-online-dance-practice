@@ -1,10 +1,12 @@
 package at.htl.boundary;
 
 import at.htl.control.FileRepository;
+import at.htl.control.UsageRepository;
 import at.htl.entity.D_File;
 import com.thoughtworks.xstream.io.path.Path;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -15,11 +17,15 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import javax.json.*;
 
+@RequestScoped
 @Path("/file")
 public class FileEndpoint {
 
     @Inject
     FileRepository fileRepository;
+
+    @Inject
+    UsageRepository usageRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -50,11 +56,13 @@ public class FileEndpoint {
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response delete(@PathParam("id") Long id) {
         try {
-            fileRepository.deleteById(id);
+
+            //usageRepository.find("select * from usage u where u.file = )
+
+            fileRepository.delete(fileRepository.findById(id));
             return Response
                     .noContent()
                     .build();

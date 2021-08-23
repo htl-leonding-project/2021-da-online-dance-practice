@@ -21,10 +21,9 @@ public class BookingEndpoint {
     BookingRepository bookingRepository;
 
     @GET
-    @Path("/findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        return Response.ok(bookingRepository.findAll()).build();
+        return Response.ok(bookingRepository.listAll()).build();
     }
 
 
