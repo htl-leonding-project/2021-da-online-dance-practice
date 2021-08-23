@@ -2,6 +2,7 @@ package at.htl.boundary;
 
 import at.htl.control.FileRepository;
 import at.htl.entity.D_File;
+import com.thoughtworks.xstream.io.path.Path;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -65,4 +66,9 @@ public class FileEndpoint {
         }
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadfile(D_File file) {
+        return Response.ok(fileRepository.persist(file)).build();
+    }
 }
