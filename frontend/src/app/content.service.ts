@@ -15,8 +15,8 @@ export class ContentService {
   public getPath(id: number): Observable<string> {
     const pathsSubject: Subject<string> = new Subject<string>();
 
-    this.http.get<File>('http://localhost:8080/file/' + id).subscribe(file => {
-      pathsSubject.next('http://localhost:8080/' + file.path + '/' + file.name);
+    this.http.get<File>('http://localhost:8080/api/file/' + id).subscribe(file => {
+      pathsSubject.next('http://localhost:8080/api/mediafiles/audio/' + file.name);
     });
     return pathsSubject;
   }
