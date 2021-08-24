@@ -88,7 +88,7 @@ public class InitBean {
 
         //File
         //audio
-        D_File senorita = new D_File("01_CHA-Señorita(original).mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
+        D_File senorita = new D_File("01_CHA-Senorita(original).mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
         fileRepository.persist(senorita);
         D_File ice = new D_File("03_LikeIceinthesunshine.mp3", "mediafiles/audio", ContentType.valueOf("AUDIO"));
         fileRepository.persist(ice);
