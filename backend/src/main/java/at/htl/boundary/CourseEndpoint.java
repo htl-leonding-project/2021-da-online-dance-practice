@@ -1,6 +1,7 @@
 package at.htl.boundary;
 
 import at.htl.control.CourseRepository;
+import at.htl.control.LevelRepository;
 import at.htl.entity.Course;
 import at.htl.entity.Level;
 
@@ -21,6 +22,10 @@ public class CourseEndpoint {
     @Inject
     CourseRepository courseRepository;
 
+    @Inject
+    LevelRepository levelRepository;
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
@@ -32,7 +37,9 @@ public class CourseEndpoint {
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(Course course, @Context UriInfo info) {
+    public Response create(String levelId, @Context UriInfo info, String title, String description) {
+        Level level = levelRepository.findById(levelId);
+        Course course = new Course (title, description, level);
         courseRepository.persist(course);
         return Response.created(URI.create(info.getPath() + "/"+ course.id)).build();
     }
