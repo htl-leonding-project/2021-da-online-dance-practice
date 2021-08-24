@@ -127,17 +127,16 @@ Content-Type: application/json
 
 {
 
-"title": "Rosalie",
-"description": "Mandel",
+"title": "Grundschritte & Figuren",
+"description": "Für alle Gelengheiten",
   "level": {
-    "id": "1",
-    "description": "einfach"
+    "id": "1"
   }
 }
 
 
 ####
-GET http://localhost:8080/api/course/9
+GET http://localhost:8080/api/course/1
 Accept: application/json
 
 #####
@@ -202,4 +201,7 @@ Accept: application/json
 DELETE http://localhost:8080/api/booking/2
 Accept: application/json
 
+###
+
+GET http://localhost:8080/dummy
 
