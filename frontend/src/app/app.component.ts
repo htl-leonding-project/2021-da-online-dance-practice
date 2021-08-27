@@ -11,7 +11,7 @@ export class AppComponent {
   videoSource = '';
 
   constructor(public contentService: ContentService) {
-    contentService.getPath(1).subscribe(path => {
+    contentService.getPath(2).subscribe(path => {
       console.log(path);
       this.videoSource = path;
     });
