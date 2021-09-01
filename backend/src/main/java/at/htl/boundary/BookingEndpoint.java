@@ -41,7 +41,6 @@ public class BookingEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(@PathParam("courseId") long courseId ,@PathParam("userId") long userId, @Context UriInfo info) {
-
         Course course = courseRepository.findById(courseId);
         User user = userRepository.findById(userId);
         Booking booking = new Booking(user,course);
