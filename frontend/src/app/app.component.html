@@ -1,20 +1,3 @@
-<!--<app-audio-input [pathMp3]="'beispiel'" ></app-audio-input>-->
-<!--<app-audio-input [pathMp3]="'beispiel'" ></app-audio-input>-->
-<!--<app-audio-input [pathMp3]="'beispiel'" ></app-audio-input>-->
-<!--<app-audio-input [pathMp3]="'beispiel'" ></app-audio-input>-->
-<!--<app-video-input [pathMp4]="'beispiel'"></app-video-input>-->
-<!--<app-video-input [pathMp4]="'beispiel'"></app-video-input>-->
-<!--<app-video-input [pathMp4]="'beispiel'"></app-video-input>-->
-<!--<app-video-input [pathMp4]="'beispiel'"></app-video-input>-->
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Online Dance Practice</title>
-</head>
-<body>
-
 <nav>
   <ul>
     <li><a routerLink="/level-wrapper" routerLinkActive="active">Level</a></li>
@@ -27,7 +10,10 @@
 
 <router-outlet></router-outlet>
 
-<audio controls><source src={{videoSource}}>Your browser does not support the audio tag.</audio>
-
-</body>
-</html>
+<div >
+<audio controls *ngIf="audioSource" ><source [src]="audioSource">Your browser does not support the audio tag.</audio>
+</div>
+<video width="320" height="240" controls *ngIf="videoSource">
+  <source [src]="videoSource" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

@@ -16,7 +16,8 @@ export class ContentService {
     const pathsSubject: Subject<string> = new Subject<string>();
 
     this.http.get<File>('http://localhost:8080/api/file/' + id).subscribe(file => {
-      pathsSubject.next('http://localhost:8080/api/mediafiles/audio/' + file.name);
+      const url = 'http://localhost:8080/api/' + file.path + '/' + file.name;
+      pathsSubject.next(url);
     });
     return pathsSubject;
   }
