@@ -9,7 +9,7 @@ Accept: application/json
 
 
 ####
-POST localhost:8080/api/file/create
+POST localhost:8080/api/file/uploadfile
 Content-Type: application/json
 
 {
