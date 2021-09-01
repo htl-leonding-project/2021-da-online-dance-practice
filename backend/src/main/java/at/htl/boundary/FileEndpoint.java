@@ -2,10 +2,12 @@ package at.htl.boundary;
 
 import at.htl.control.FileRepository;
 import at.htl.control.UsageRepository;
+import at.htl.entity.ContentType;
+import at.htl.entity.Course;
 import at.htl.entity.D_File;
+import at.htl.entity.Level;
 
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -14,6 +16,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.io.File;
 import java.net.URI;
 
 
@@ -27,6 +30,8 @@ public class FileEndpoint {
     @Inject
     UsageRepository usageRepository;
 
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findall() {
@@ -36,14 +41,17 @@ public class FileEndpoint {
     }
 
     @POST
-    @Path("/create")
+    @Path("/uploadfile")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(D_File file, @Context UriInfo info) {
+    public Response uploadfile(String name, String path,  @Context UriInfo info, ContentType contentType) {
+
+        D_File file = new D_File(name,path,contentType);
         fileRepository.persist(file);
         return Response.created(URI.create(info.getPath() + "/"+ file.id)).build();
     }
+
 
     @GET
     @Path("/{id}")
