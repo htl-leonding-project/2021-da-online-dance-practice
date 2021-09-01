@@ -64,24 +64,8 @@ Accept: application/json
 
 ####
 
-POST http://localhost:8080/api/usage/create
+POST http://localhost:8080/api/usage/create/1/29
 Content-Type: application/json
-
-{
-  "course": {
-    "title": "Latein",
-    "description": "Kurs für Anfänger",
-    "level": {
-      "id": "1",
-      "description": "sehr einfach"
-    }
-  },
-  "file": {
-    "name": "File123",
-    "path": "example/path/123",
-    "contentType": "VIDEO"
-  }
-}
 
 
 ####

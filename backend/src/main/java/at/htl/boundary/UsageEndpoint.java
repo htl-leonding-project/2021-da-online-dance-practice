@@ -1,7 +1,13 @@
 package at.htl.boundary;
 
+import at.htl.control.CourseRepository;
+import at.htl.control.FileRepository;
 import at.htl.control.UsageRepository;
+import at.htl.entity.Course;
+import at.htl.entity.D_File;
 import at.htl.entity.Usage;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -11,6 +17,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.io.File;
 import java.net.URI;
 
 @RequestScoped
@@ -20,6 +27,12 @@ public class UsageEndpoint {
     @Inject
     UsageRepository usageRepository;
 
+    @Inject
+    CourseRepository courseRepository;
+
+    @Inject
+    FileRepository fileRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
@@ -27,11 +40,15 @@ public class UsageEndpoint {
     }
 
     @POST
-    @Path("/create")
+    @Path("/create/{courseId}/{fileId}")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(Usage usage, @Context UriInfo info) {
+    public Response create(@PathParam("courseId") long courseId ,@PathParam("fileId") long fileId, @Context UriInfo info) {
+
+        Course course = courseRepository.findById(courseId);
+        D_File file =  fileRepository.findById(fileId);
+        Usage usage = new Usage(course,file);
         usageRepository.persist(usage);
         return Response.created(URI.create(info.getPath() + "/"+ usage.id)).build();
     }
