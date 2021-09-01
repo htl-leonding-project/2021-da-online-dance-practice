@@ -1,7 +1,9 @@
 package at.htl.boundary;
 
 import at.htl.control.BookingRepository;
-import at.htl.entity.Booking;
+import at.htl.control.CourseRepository;
+import at.htl.control.UserRepository;
+import at.htl.entity.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -20,6 +22,12 @@ public class BookingEndpoint {
     @Inject
     BookingRepository bookingRepository;
 
+    @Inject
+    CourseRepository courseRepository;
+
+    @Inject
+    UserRepository userRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
@@ -28,14 +36,19 @@ public class BookingEndpoint {
 
 
     @POST
-    @Path("/create")
+    @Path("/create/{courseId}/{userId}")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(Booking booking, @Context UriInfo info) {
+    public Response create(@PathParam("courseId") long courseId ,@PathParam("userId") long userId, @Context UriInfo info) {
+
+        Course course = courseRepository.findById(courseId);
+        User user = userRepository.findById(userId);
+        Booking booking = new Booking(user,course);
         bookingRepository.persist(booking);
         return Response.created(URI.create(info.getPath() + "/"+ booking.id)).build();
     }
+
 
     @GET
     @Path("/{id}")
