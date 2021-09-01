@@ -3,7 +3,7 @@ package at.htl.boundary;
 import at.htl.control.FileRepository;
 import at.htl.control.UsageRepository;
 import at.htl.entity.D_File;
-import com.thoughtworks.xstream.io.path.Path;
+
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
-import javax.json.*;
+
 
 @RequestScoped
 @Path("/file")
@@ -74,9 +74,5 @@ public class FileEndpoint {
         }
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response uploadfile(D_File file) {
-        return Response.ok(fileRepository.persist(file)).build();
-    }
+
 }
