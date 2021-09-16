@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ContentService} from './content.service';
+import {Component, Input} from '@angular/core';
+import {HttpClient, HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +7,22 @@ import {ContentService} from './content.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  title = 'frontend';
-  videoSource = '';
-  audioSource = '';
 
-  constructor(public contentService: ContentService) {
 
-      contentService.getPath(32).subscribe(path => {
-        console.log(path);
-        this.videoSource = path;
-      });
+  fileName = '';
 
-      contentService.getPath(2).subscribe(path => {
-        console.log(path);
-        this.audioSource = path;
-      });
+  constructor(private http: HttpClient) {}
+
+  onFileSelected(event: any): void {
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append('thumbnail', file);
+      const upload$ = this.http.post('http://localhost:8080/api/file/upload', formData);
+      upload$.subscribe();
+    }
   }
 }

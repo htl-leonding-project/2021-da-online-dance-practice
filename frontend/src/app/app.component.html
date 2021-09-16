@@ -8,12 +8,15 @@
 
 <h1>Dance Practice App</h1>
 
-<router-outlet></router-outlet>
 
-<div >
-<audio controls *ngIf="audioSource" ><source [src]="audioSource">Your browser does not support the audio tag.</audio>
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+  {{fileName || "No file uploaded yet."}}
+
+  <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+    upload
+  </button>
 </div>
-<video width="320" height="240" controls *ngIf="videoSource">
-  <source [src]="videoSource" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
