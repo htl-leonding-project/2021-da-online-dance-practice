@@ -10,10 +10,13 @@
 
 <router-outlet></router-outlet>
 
-<div >
-<audio controls *ngIf="audioSource" ><source [src]="audioSource">Your browser does not support the audio tag.</audio>
+<div *ngFor="let file of files">
+<app-audio-input *ngIf="file.contentType == 'AUDIO'" [audio]="file.id"></app-audio-input>
 </div>
-<video width="320" height="240" controls *ngIf="videoSource">
-  <source [src]="videoSource" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+<div *ngFor="let file of files">
+  <app-video-input *ngIf="file.contentType == 'VIDEO'" [video]="file.id"></app-video-input>
+</div>
+<p *ngFor="let file of files">{{file|json}}</p>
+
+

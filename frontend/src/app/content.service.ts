@@ -21,8 +21,13 @@ export class ContentService {
     });
     return pathsSubject;
   }
+
+  public getFiles(): Observable<Array<File>>{
+
+    return this.http.get<Array<File>>('http://localhost:8080/api/file/');
+  }
 }
-interface File{
+export interface File{
   id: number;
   name: string;
   path: string;

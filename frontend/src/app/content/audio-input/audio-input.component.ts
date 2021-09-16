@@ -1,21 +1,32 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ContentService} from '../../content.service';
 
 @Component({
   selector: 'app-audio-input',
   templateUrl: './audio-input.component.html',
   styleUrls: ['./audio-input.component.css']
 })
-export class AudioInputComponent implements OnInit {
-  @Input() pathMp3!: string;
+export class AudioInputComponent implements OnInit, OnChanges {
+  @Input() public audio!: number;
+  audioSource = '';
 
 
-  pathM!: string;
 
 
-  constructor() { }
+  constructor(public contentService: ContentService) {
+
+  }
 
   ngOnInit(): void {
-    this.pathM = 'assets/' + this.pathMp3 + '.mp3';
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.audio){
+      this.contentService.getPath(this.audio).subscribe(path => {
+        console.log(path);
+        this.audioSource = path;
+      });
+    }
   }
 
 }
