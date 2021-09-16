@@ -26,3 +26,7 @@ nav li a:hover:not(.active) {
 nav .active {
   background-color: cornflowerblue;
 }
+
+.file-input {
+  display: none;
+}

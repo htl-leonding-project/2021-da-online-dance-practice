@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { LevelWrapperComponent } from './level-wrapper/level-wrapper.component';
 import { CourseWrapperComponent } from './course-wrapper/course-wrapper.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,20 +23,20 @@ import { CourseWrapperComponent } from './course-wrapper/course-wrapper.componen
     DanceCourseComponent,
     ContentComponent,
     LevelWrapperComponent,
-    CourseWrapperComponent
+    CourseWrapperComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: 'video-input', component: VideoInputComponent },
-      {path: 'audio-input', component: AudioInputComponent },
-      {path: '', component: DanceLevelComponent },
-      {path: 'dance-course', component: DanceCourseComponent },
-      {path: 'content', component: ContentComponent },
-
+      {path: 'video-input', component: VideoInputComponent},
+      {path: 'audio-input', component: AudioInputComponent},
+      {path: '', component: DanceLevelComponent},
+      {path: 'dance-course', component: DanceCourseComponent},
+      {path: 'content', component: ContentComponent},
     ]),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
