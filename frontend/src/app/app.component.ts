@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ContentService, File} from './content.service';
+import {Component, Input} from '@angular/core';
+import {ContentService, DFile} from './content.service';
 import {HttpClient, HttpEventType} from '@angular/common/http';
 
 @Component({
@@ -12,10 +12,10 @@ export class AppComponent{
   videoSource = '';
   audioSource = '';
   audio: any;
-  files: Array<File>;
+  files: DFile[];
   fileName = '';
 
-  constructor(public contentService: ContentService, private http: HttpClient) {
+  constructor(private http: HttpClient, public contentService: ContentService) {
       this.files = [];
 
       contentService.getPath(32).subscribe(path => {

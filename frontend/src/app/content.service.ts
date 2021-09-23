@@ -15,19 +15,19 @@ export class ContentService {
   public getPath(id: number): Observable<string> {
     const pathsSubject: Subject<string> = new Subject<string>();
 
-    this.http.get<File>('http://localhost:8080/api/file/' + id).subscribe(file => {
+    this.http.get<DFile>('http://localhost:8080/api/file/' + id).subscribe(file => {
       const url = 'http://localhost:8080/api/' + file.path + '/' + file.name;
       pathsSubject.next(url);
     });
     return pathsSubject;
   }
+  public getFiles(): Observable<Array<DFile>>{
 
-  public getFiles(): Observable<Array<File>>{
-
-    return this.http.get<Array<File>>('http://localhost:8080/api/file/');
+    return this.http.get<Array<DFile>>('http://localhost:8080/api/file/');
   }
 }
-export interface File{
+
+export interface DFile {
   id: number;
   name: string;
   path: string;
