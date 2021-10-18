@@ -33,12 +33,3 @@
         - name: create .ssh/known_hosts
           run: |
               ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
-#        - name: copy binaries to online-dance-practice
-#          working-directory: application-server
-#          run: |
-#            echo "Hallo ich bin hier"
-#            ls -l target/
-#            mkdir -p /usr/local/bin/online-dance-practice
-#            scp target/nfc-meal-counter-1.0-SNAPSHOT-runner.jar ${{ secrets.NFCMEAL_USER }}@${{ secrets.NFCMEAL_IP }}:
-#            mkdir -p /usr/local/bin/nfc-meal-counter
-
