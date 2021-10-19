@@ -24,7 +24,7 @@
               ${{ runner.os }}-maven-
         - name: Build
           run: mvn package -B
-          working-directory: application-server
+          working-directory: backend
 
         - name: install ssh key
           uses: webfactory/ssh-agent@v0.4.1
