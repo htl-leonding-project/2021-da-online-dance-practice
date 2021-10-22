@@ -36,7 +36,7 @@ class UserTest {
 
         System.out.println(user);
 
-        assertThat(user.toString()).isEqualTo("User{userId=8, username='rosi1234', firstname='Rosalie', lastname='Mandel'}");
+        assertThat(user.toString()).isEqualTo("User{id=10, username='rosi1234', firstname='Rosalie', lastname='Mandel'}");
 
     }
 }

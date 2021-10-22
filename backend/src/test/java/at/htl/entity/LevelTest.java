@@ -34,7 +34,7 @@ class LevelTest {
 
         System.out.println(level);
 
-        assertThat(level.toString()).isEqualTo("Level{levelId='Silber', description='2. Level'}");
+        assertThat(level.toString()).isEqualTo("Level{id='Silber', description='2. Level'}");
 
     }
 

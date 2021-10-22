@@ -49,7 +49,7 @@ class BookingTest {
 
         System.out.println(booking);
 
-        assertThat(booking.toString()).isEqualTo("Booking{bookingId=2, user=User{userId=8, username='samu123', firstname='Samuel', lastname='Haus'}, course=Course{courseId=6, title='Latino für Anfänger', descr='Latino für Anfänger', level=Level{levelId='Grundkurs', description='1. Level'}}}");
+        assertThat(booking.toString()).isEqualTo("Booking{id=6, user=User{id=8, username='samu123', firstname='Samuel', lastname='Haus'}, course=Course{id=6, title='Latino für Anfänger', descr='Latino für Anfänger', level=Level{id='Grundkurs', description='1. Level'}}}");
 
     }
 

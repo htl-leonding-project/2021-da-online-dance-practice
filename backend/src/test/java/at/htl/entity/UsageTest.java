@@ -44,7 +44,7 @@ class UsageTest {
         usage.persist();
         System.out.println(usage);
 
-        assertThat(usage.toString()).isEqualTo("Usage{id=2, course=Course{courseId=6, title='Latino für Anfänger', descr='Latino für Anfänger', level=Level{levelId='Topclass', description='6. Level'}}, file=File{id=2, name='Hipopvideo Example', path='/assets/HipopvideoExample.mp4', contentType=VIDEO}}");
+        assertThat(usage.toString()).isEqualTo("Usage{id=4, course=Course{id=10, title='Latino für Anfänger', descr='Latino für Anfänger', level=Level{id='Topclass', description='6. Level'}}, file=File{id=35, name='Hipopvideo Example', path='/assets/HipopvideoExample.mp4', contentType=VIDEO}}");
 
     }
 }

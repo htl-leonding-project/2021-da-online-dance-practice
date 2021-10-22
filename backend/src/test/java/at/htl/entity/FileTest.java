@@ -29,7 +29,7 @@ class FileTest {
         file.persist();
 
 
-        assertThat(file.toString()).isEqualTo("File{id=1, name='Latein Example', path='/assets/LateinvideoExample.mp4', contentType=VIDEO}");
+        assertThat(file.toString()).isEqualTo("File{id=33, name='Latein Example', path='/assets/LateinvideoExample.mp4', contentType=VIDEO}");
 
     }
 
