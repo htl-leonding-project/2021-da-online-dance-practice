@@ -24,19 +24,6 @@ class LevelTest {
 
     }
 
-    @Order(20)
-    @Test
-    @Transactional
-    public void LevelToString() {
-        Level level = new Level("Silber", "2. Level");
-        level.persist();
-
-
-        System.out.println(level);
-
-        assertThat(level.toString()).isEqualTo("Level{id='Silber', description='2. Level'}");
-
-    }
 
 
 }

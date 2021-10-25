@@ -30,18 +30,6 @@ class CourseTest {
         course.persist();
     }
 
-    @Order(20)
-    @Test
-    @Transactional
-    public void CourseToString(){
 
-        Course course = new Course("Sambo für Anfänger","Sambo für Anfänger",levelRepository.findById("BRONZE"));
-        course.persist();
-
-        System.out.println(course);
-
-        assertThat(course.toString()).isEqualTo("Course{id=8, title='Sambo für Anfänger', descr='Sambo für Anfänger', level=Level{id='BRONZE', description='BRONZE'}}");
-
-    }
 
 }

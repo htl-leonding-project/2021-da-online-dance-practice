@@ -20,17 +20,6 @@ class FileTest {
         file.persist();
     }
 
-    @Order(20)
-    @Test
-    @Transactional
-    public void FileToString(){
 
-        D_File file = new D_File("Latein Example","/assets/LateinvideoExample.mp4",ContentType.VIDEO);
-        file.persist();
-
-
-        assertThat(file.toString()).isEqualTo("File{id=33, name='Latein Example', path='/assets/LateinvideoExample.mp4', contentType=VIDEO}");
-
-    }
 
 }
