@@ -22,6 +22,9 @@
             key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
             restore-keys: |
               ${{ runner.os }}-maven-
+        - name: start Postgres
+          working-directory: backend/src/main/docker/
+          run: docker-compose up -d
         - name: Build
           run: mvn package -B
           working-directory: backend
