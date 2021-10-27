@@ -24,7 +24,7 @@
               ${{ runner.os }}-maven-
         - name: start Postgres
           working-directory: backend/src/main/docker/
-          run: docker-compose up -d
+          run: docker-compose --file docker-compose-postgres.yml up -d
         - name: Build
           run: mvn package -B
           working-directory: backend
