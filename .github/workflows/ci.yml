@@ -35,4 +35,10 @@
            ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
         - name: create .ssh/known_hosts
           run: |
-              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
+              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_host
+        - name: copy binaries to online-dance-practice
+          run: |
+            ls -l target/
+            scp target/gh-actions-demo-1.0.0-SNAPSHOT-runner.jar ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}@${{ secrets.ONLINE_DANCE_PRACTICE_IP }}:
+
+
