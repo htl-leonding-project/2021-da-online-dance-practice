@@ -26,7 +26,7 @@
           working-directory: backend/src/main/docker/
           run: docker-compose --file docker-compose-postgres.yml up -d
         - name: Build
-          run: mvn package -B
+          run: mvn package -Dquarkus.package.type=uber-jar -B
           working-directory: backend
 
         - name: install ssh key
@@ -40,6 +40,6 @@
           working-directory: backend
           run: |
             ls -l target/
-            scp target/online-dance-practice-backend-dev.jar ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}@${{ secrets.ONLINE_DANCE_PRACTICE_IP }}:
+            scp target/online-dance-practice-backend-1.0-SNAPSHOT-runner.jar ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}@${{ secrets.ONLINE_DANCE_PRACTICE_IP }}:
 
 
