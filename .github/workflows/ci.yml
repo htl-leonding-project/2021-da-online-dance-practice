@@ -40,6 +40,9 @@
           working-directory: backend
           run: |
             ls -l target/
+            echo ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}
+            echo ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}
             scp target/online-dance-practice-backend-1.0-SNAPSHOT-runner.jar ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}@${{ secrets.ONLINE_DANCE_PRACTICE_IP }}:
+
 
 
