@@ -35,7 +35,7 @@
            ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
         - name: create .ssh/known_hosts
           run: |
-              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_host
+            ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
         - name: copy binaries to online-dance-practice
           working-directory: backend
           run: |
