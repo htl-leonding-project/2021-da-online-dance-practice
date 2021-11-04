@@ -30,9 +30,10 @@
           working-directory: backend
 
         - name: install ssh key
-          uses: webfactory/ssh-agent@v0.4.1
+          uses: webfactory/ssh-agent@v0.5.3
           with:
            ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
+
         - name: create .ssh/known_hosts
           run: |
               ls -lah ~
