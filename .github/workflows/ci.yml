@@ -15,6 +15,18 @@
           uses: actions/setup-java@v1
           with:
             java-version: 17
+
+        - name: install ssh key
+          uses: webfactory/ssh-agent@v0.5.3
+          with:
+           ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
+
+        - name: create .ssh/known_hosts
+          run: |
+              ls -lah ~
+              ls -lah ~/.ssh
+              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
+
         # Step that does that actual cache save and restore
         - uses: actions/cache@v1
           with:
@@ -29,16 +41,6 @@
           run: mvn package -Dquarkus.package.type=uber-jar -B
           working-directory: backend
 
-        - name: install ssh key
-          uses: webfactory/ssh-agent@v0.5.3
-          with:
-           ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
-
-        - name: create .ssh/known_hosts
-          run: |
-              ls -lah ~
-              ls -lah ~/.ssh
-              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
         - name: copy binaries to online-dance-practice
           working-directory: backend
           run: |
