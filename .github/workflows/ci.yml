@@ -45,7 +45,7 @@
           working-directory: backend
           run: |
             ls -l target/
-            scp -v -i ${{ ~/.ssh/github_key } target/online-dance-practice-backend-1.0-SNAPSHOT-runner.jar ubuntu@152.70.178.55:/home/ubuntu
+            scp -v -i ${{ ~/.ssh/github_key }} target/online-dance-practice-backend-1.0-SNAPSHOT-runner.jar ubuntu@152.70.178.55:/home/ubuntu
 
 
 
