@@ -15,6 +15,18 @@
           uses: actions/setup-java@v1
           with:
             java-version: 17
+
+        - name: install ssh key
+          uses: webfactory/ssh-agent@v0.5.3
+          with:
+           ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
+
+        - name: create .ssh/known_hosts
+          run: |
+              ls -lah ~
+              ls -lah ~/.ssh
+              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
+
         # Step that does that actual cache save and restore
         - uses: actions/cache@v1
           with:
@@ -22,14 +34,19 @@
             key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
             restore-keys: |
               ${{ runner.os }}-maven-
+        - name: start Postgres
+          working-directory: backend/src/main/docker/
+          run: docker-compose --file docker-compose-postgres.yml up -d
         - name: Build
-          run: mvn package -B
+          run: mvn package -Dquarkus.package.type=uber-jar -B
           working-directory: backend
 
-        - name: install ssh key
-          uses: webfactory/ssh-agent@v0.4.1
-          with:
-           ssh-private-key: ${{ secrets.ONLINE_DANCE_PRACTICE }}
-        - name: create .ssh/known_hosts
+        - name: copy binaries to online-dance-practice
+          working-directory: backend
           run: |
-              ssh-keyscan -H -t rsa -v ${{ secrets.ONLINE_DANCE_PRACTICE_IP }}  >> ~/.ssh/known_hosts
+            ls -l target/
+            scp -i ${{ secrets.ONLINE_DANCE_PRACTICE }} ./target/online-dance-practice-backend-1.0-SNAPSHOT-runner.jar ${{ secrets.ONLINE_DANCE_PRACTICE_USER }}@${{ secrets.ONLINE_DANCE_PRACTICE_IP }}:/home/ubuntu
+
+
+
+

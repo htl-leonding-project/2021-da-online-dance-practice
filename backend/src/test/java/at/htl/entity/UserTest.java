@@ -27,16 +27,5 @@ class UserTest {
 
     }
 
-    @Order(20)
-    @Test
-    @Transactional
-    public void userToString() {
-        User user = new User("rosi1234", "Rosalie", "Mandel");
-        user.persist();
 
-        System.out.println(user);
-
-        assertThat(user.toString()).isEqualTo("User{userId=8, username='rosi1234', firstname='Rosalie', lastname='Mandel'}");
-
-    }
 }
