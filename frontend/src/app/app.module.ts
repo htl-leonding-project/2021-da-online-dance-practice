@@ -12,7 +12,12 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { LevelWrapperComponent } from './level-wrapper/level-wrapper.component';
 import { CourseWrapperComponent } from './course-wrapper/course-wrapper.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MaterialExampleModule} from '../../materialmodule';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -37,8 +42,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ]),
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [DanceCourseComponent]
 })
 export class AppModule { }
