@@ -20,16 +20,19 @@ public class D_File extends PanacheEntityBase {
     @Column(name = "F_PATH")
     public String path;
 
+    @Column(name = "F_DESCRIPTION")
+    public String description;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "F_CONTENT_TYPE")
     public ContentType contentType;
 
     // region constructor
 
-
-    public D_File(String name, String path, ContentType contentType) {
+    public D_File(String name, String path, String description, ContentType contentType) {
         this.name = name;
         this.path = path;
+        this.description = description;
         this.contentType = contentType;
     }
 
@@ -37,7 +40,6 @@ public class D_File extends PanacheEntityBase {
     }
 
     //endregion
-
 
     @Override
     public String toString() {
