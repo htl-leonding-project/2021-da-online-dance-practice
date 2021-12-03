@@ -1,30 +1,47 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-checkbox class="checklist-leaf-node"
-                  [checked]="checklistSelection.isSelected(node)"
-                  (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
-  </mat-tree-node>
+<h1>{{courseSelected}}</h1>
+<input type="text" name="lname" id="lname"><br><br>
 
-  <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-form-field appearance="fill">
-      <mat-label>New Course...</mat-label>
-      <input matInput #itemValue placeholder="Ex. Jive">
-    </mat-form-field>
-    <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
-  </mat-tree-node>
+<table id="table" border="1">
+  <tr>
+    <th>Courses</th>
+  </tr>
 
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-    <button mat-icon-button matTreeNodeToggle
-            [attr.aria-label]="'Toggle ' + node.item">
-      <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-      </mat-icon>
-    </button>
-    <mat-checkbox [checked]="descendantsAllSelected(node)"
-                  [indeterminate]="descendantsPartiallySelected(node)"
-                  (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
-    <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
-  </mat-tree-node>
-</mat-tree>
+  <tr (click)="courses('Latein')">
+    <td>Latein</td>
+  </tr>
+
+  <tr (click)="courses('Samba')">
+    <td> Samba</td>
+  </tr>
+
+  <tr (click)="courses('Rumba')">
+    <td>Rumba</td>
+  </tr>
+
+  <tr (click)="courses('Cha Cha Cha')">
+    <td>Cha Cha Cha</td>
+  </tr>
+
+  <tr (click)="courses('Paso')">
+    <td>Paso</td>
+  </tr>
+
+  <tr (click)="courses('Jive')">
+    <td>Jive</td>
+  </tr>
+</table>
+
+
+
+<!--<script>-->
+
+<!--  var table = document.getElementById('table');-->
+
+<!--  for (var i = 1; i < table.rows.length; i++) {-->
+<!--    table.rows[i].onclick = function () {-->
+<!--      //rIndex = this.rowIndex;-->
+<!--      document.getElementById("fname").value = this.cells[0].innerHTML;-->
+<!--    };-->
+<!--  }-->
+
+<!--</script>-->

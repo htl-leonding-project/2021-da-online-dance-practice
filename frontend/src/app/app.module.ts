@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialExampleModule} from '../../materialmodule';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [DanceCourseComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
