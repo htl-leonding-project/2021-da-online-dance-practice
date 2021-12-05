@@ -1,11 +1,12 @@
 <h1>Dance Practice App</h1>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
 
-<app-dance-level (levelSelected)="levelSelected($event)" *ngIf="value === null"></app-dance-level>
+<app-dance-level (levelSelected)="levelSelected($event)" *ngIf="value01 === null"></app-dance-level>
 <br>
-<app-dance-course [courseSelected]="value" *ngIf="value !== null"></app-dance-course>
+<app-dance-course [courseSelected]="value01" *ngIf="value01 !== null && value02 === null" (courseS)="courseS($event)"></app-dance-course>
+<!--<app-dance-course (courseS)="courseS($event)" *ngIf="value02 === null"></app-dance-course>-->
 <br>
-<app-content [contentSelected]="value" *ngIf="value !== null"></app-content>
+<app-content [contentSelected]="value02" [contentSelected02]="value01" *ngIf="value02 !== null && value01 !== null " ></app-content>
 
 <!--
 

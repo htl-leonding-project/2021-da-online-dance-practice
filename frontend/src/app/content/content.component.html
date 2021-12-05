@@ -1,15 +1,19 @@
+<h1>Ihr gewählter Kurs: {{contentSelected02}} </h1>
+<h1>Ihr gewähltes Level: {{contentSelected}}</h1>
+
 <mat-toolbar color="primary">
   <span>Card view demo</span>
-  <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
-    <span *ngIf="gridColumns === 4">Three Columns</span>
-    <span *ngIf="gridColumns === 3">Four Columns</span>
-  </button>
+  <div fxHide.lt-md>
+    <span class="column-label">Columns</span>
+    <mat-slider [max]="5" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true">
+    </mat-slider>
+  </div>
 </mat-toolbar>
 
 <div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let num of [1,2,3,4,5,6,7]">
-      <mat-card *ngFor="let file of files" class="mat-elevation-z4">
+  <div fxLayout="row wrap" fxLayoutGap="100px grid">
+      <mat-card *ngFor="let file of files" [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%">
+        <div *ngFor="let num of [files.length]">
         <mat-card-header *ngFor="let card of cards">
           <mat-card-subtitle>
             {{file.contentType}}
@@ -23,7 +27,7 @@
           <app-audio-input *ngIf="file.contentType === 'AUDIO'" [audio]="file.id"></app-audio-input>
         </mat-card-content>
         {{file.description}}
+        </div>
       </mat-card>
-    </div>
   </div>
 </div>

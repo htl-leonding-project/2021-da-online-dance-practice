@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ContentService, DFile} from '../content.service';
 import {HttpClient} from '@angular/common/http';
 
@@ -17,7 +17,9 @@ export class ContentComponent implements OnInit {
   cards: ImyCard[];
   value: string | null = null;
   @Input() contentSelected!: string | null;
-  gridColumns = 3;
+  @Input() contentSelected02!: string | null;
+  @Output() contSelected: EventEmitter<string> = new EventEmitter<string>();
+  gridColumns = 4;
 
 
   constructor(private http: HttpClient, public contentService: ContentService) {
@@ -39,7 +41,7 @@ export class ContentComponent implements OnInit {
   }
 
   toggleGridColumns(): any {
-    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+    this.gridColumns = this.gridColumns === 4 ? 5 : 4;
   }
 
   onFileSelected(event: any): void {
@@ -55,8 +57,11 @@ export class ContentComponent implements OnInit {
     }
   }
 
-  levelSelected($event: string): void  {
-    this.value = $event;
+  // tslint:disable-next-line:typedef
+  content(s: string) {
+    // @ts-ignore
+    document.getElementById('lname').value = s;
+    this.contSelected.emit(s);
   }
 
   ngOnInit(): void {
