@@ -154,15 +154,22 @@ public class InitBean {
         D_File file05 = new D_File("File05", "/gfh","description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(file05);
 
+        D_File trybsp = new D_File("Komp.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(trybsp);
+        D_File salsa = new D_File("SalsaChrisFigurdesMonats.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(salsa);
+        D_File wienerwalz = new D_File("WienerWalzer.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(wienerwalz);
+
 
         //Usage
-        Usage usage01 = new Usage(discofox,file03);
+        Usage usage01 = new Usage(discofox,salsa);
         usageRepository.persist(usage01);
-        Usage usage02 = new Usage(westcoastswing,file02);
+        Usage usage02 = new Usage(westcoastswing,wienerwalz);
         usageRepository.persist(usage02);
-        Usage usage03 = new Usage(tanzclubs,file03);
+        Usage usage03 = new Usage(tanzclubs,salsa);
         usageRepository.persist(usage03);
-        Usage usage04 = new Usage(pirvatstunden,file04);
+        Usage usage04 = new Usage(pirvatstunden,wienerwalz);
         usageRepository.persist(usage04);
 
     }

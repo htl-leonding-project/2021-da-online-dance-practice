@@ -2,7 +2,7 @@
   <span>Card view demo</span>
   <div fxHide.lt-md>
     <span class="column-label">Columns</span>
-    <mat-slider [max]="5" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true">
+    <mat-slider [max]="4" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true">
     </mat-slider>
   </div>
 </mat-toolbar>
@@ -12,12 +12,14 @@
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="100px grid">
-      <mat-card *ngFor="let file of files" [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%">
+      <mat-card *ngFor="let file of files" [fxFlex]="(100/(gridColumns+1)) + '%'" fxFlex.xs="100%" fxFlex.sm="33%">
         <div *ngFor="let num of [files.length]">
-        <mat-card-header *ngFor="let card of cards">
-          <mat-card-subtitle>
-            {{file.contentType}}
-          </mat-card-subtitle>
+          <mat-card-header *ngFor="let card of cards">
+            <mat-card-subtitle>
+              {{file.contentType}}
+              <mat-icon *ngIf="file.contentType === 'AUDIO'">audiotrack</mat-icon>
+              <mat-icon *ngIf="file.contentType === 'VIDEO'">music_video</mat-icon>
+            </mat-card-subtitle>
           <mat-card-title>
             {{file.name}}
           </mat-card-title>

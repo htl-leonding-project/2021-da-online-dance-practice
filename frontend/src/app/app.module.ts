@@ -41,7 +41,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       {path: 'dance-course', component: DanceCourseComponent},
       {path: 'content', component: ContentComponent},
     ]),
-    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,

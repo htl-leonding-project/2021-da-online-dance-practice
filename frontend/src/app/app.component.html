@@ -2,7 +2,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
 
 <app-dance-level (levelSelected)="levelSelected($event)" *ngIf="value01 === null"></app-dance-level>
-<br>
 <app-dance-course [courseSelected]="value01" *ngIf="value01 !== null && value02 === null" (courseS)="courseS($event)"></app-dance-course>
 <!--<app-dance-course (courseS)="courseS($event)" *ngIf="value02 === null"></app-dance-course>-->
 <br>
