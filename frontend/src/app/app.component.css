@@ -43,3 +43,12 @@ mat-card{
 .inline-block {
   display: inline-block;
 }
+
+#head {
+  font-size: 40px;
+  font-style: normal;
+  font-family: Arial, 'light';
+  text-align: center;
+  color: #027568;
+}
+

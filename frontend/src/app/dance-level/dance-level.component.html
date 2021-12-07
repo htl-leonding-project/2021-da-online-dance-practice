@@ -1,33 +1,38 @@
-<h1>Wähle dein Level aus</h1>
-<p type="text" name="fname" id="fname">
+<div class="flexContainer">
+  <div class="content-head-container">
+      <h1>Level</h1>
+      <h2>Wähle dein Level aus</h2>
+  </div>
+  <div class="content-body">
+    <p type="text" name="fname" id="fname">
 
+    <table id="table" border="1">
+      <tr>
+        <th>Levels</th>
+      </tr>
 
-<table id="table" border="1">
-  <tr>
-    <th>Levels</th>
-  </tr>
+      <tr (click)="levels('Grundkurs')">
+        <td>Grundkurs</td>
+      </tr>
 
-  <tr (click)="levels('Grundkurs')">
-    <td>Grundkurs</td>
-  </tr>
+      <tr (click)="levels('Bronze')">
+        <td>Bronze</td>
+      </tr>
 
-  <tr (click)="levels('Bronze')">
-    <td>Bronze</td>
-  </tr>
+      <tr (click)="levels('Silber')">
+        <td>Silber</td>
+      </tr>
 
-  <tr (click)="levels('Silber')">
-    <td>Silber</td>
-  </tr>
+      <tr (click)="levels('Gold')">
+        <td>Gold</td>
+      </tr>
 
-  <tr (click)="levels('Gold')">
-    <td>Gold</td>
-  </tr>
-
-  <tr (click)="levels('Topclass')">
-    <td>Topclass</td>
-  </tr>
-</table>
-
+      <tr (click)="levels('Topclass')">
+        <td>Topclass</td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 
 <!--<script>-->

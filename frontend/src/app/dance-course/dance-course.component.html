@@ -1,37 +1,44 @@
-<h1>Ihr gewähltes Level: {{courseSelected}}</h1>
-<h1>Wähle dein Kurs aus</h1>
-<p type="text" name="lname" id="lname">
+<div class="flexContainer">
+  <div class="content-head-container">
+    <h1>Wähle deinen Kurs aus</h1>
+    <h2>gewähltes Level: {{courseSelected}}</h2>
+  </div>
+  <div class="content-body">
 
-<table id="table" border="1">
-  <tr>
-    <th>Courses</th>
-  </tr>
+    <p type="text" name="lname" id="lname">
 
-  <tr (click)="courses('Latein')">
-    <td>Latein</td>
-  </tr>
+    <table id="table" border="1">
+      <tr>
+        <th>Courses</th>
+      </tr>
 
-  <tr (click)="courses('Samba')">
-    <td> Samba</td>
-  </tr>
+      <tr (click)="courses('Latein')">
+        <td>Latein</td>
+      </tr>
 
-  <tr (click)="courses('Rumba')">
-    <td>Rumba</td>
-  </tr>
+      <tr (click)="courses('Samba')">
+        <td> Samba</td>
+      </tr>
 
-  <tr (click)="courses('Cha Cha Cha')">
-    <td>Cha Cha Cha</td>
-  </tr>
+      <tr (click)="courses('Rumba')">
+        <td>Rumba</td>
+      </tr>
 
-  <tr (click)="courses('Paso')">
-    <td>Paso</td>
-  </tr>
+      <tr (click)="courses('Cha Cha Cha')">
+        <td>Cha Cha Cha</td>
+      </tr>
 
-  <tr (click)="courses('Jive')">
-    <td>Jive</td>
-  </tr>
-</table>
+      <tr (click)="courses('Paso')">
+        <td>Paso</td>
+      </tr>
 
+      <tr (click)="courses('Jive')">
+        <td>Jive</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
 
 
 <!--<script>-->
