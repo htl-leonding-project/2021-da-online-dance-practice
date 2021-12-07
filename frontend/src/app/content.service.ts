@@ -31,5 +31,6 @@ export interface DFile {
   id: number;
   name: string;
   path: string;
+  description: string;
   contentType: string;
 }

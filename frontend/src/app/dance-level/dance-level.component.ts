@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-dance-level',
@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class DanceLevelComponent implements OnInit {
   @Input() levelname!: string;
+  @Output() levelSelected: EventEmitter<string> = new EventEmitter<string>();
 
   name!: string;
 
@@ -14,6 +15,14 @@ export class DanceLevelComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.levelname;
+
   }
 
+  // tslint:disable-next-line:typedef
+  levels(s: string) {
+    // @ts-ignore
+    document.getElementById('fname').value = s;
+    this.levelSelected.emit(s);
+  }
 }
+

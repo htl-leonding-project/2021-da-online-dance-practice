@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ContentService, DFile} from './content.service';
 import {HttpClient, HttpEventType} from '@angular/common/http';
+import {publish} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +15,26 @@ export class AppComponent{
   audio: any;
   files: DFile[];
   fileName = '';
+  cards: ImyCard[];
+  value01: string | null = null;
+  value02: string | null = null;
 
   constructor(private http: HttpClient, public contentService: ContentService) {
-      this.files = [];
+    this.files = [];
 
-      contentService.getPath(32).subscribe(path => {
-        console.log(path);
-        this.videoSource = path;
-      });
+    contentService.getPath(32).subscribe(path => {
+      console.log(path);
+      this.videoSource = path;
+    });
 
-      contentService.getFiles().subscribe(files => {
+    contentService.getFiles().subscribe(files => {
       this.files = files;
     });
+
+    this.cards = [{
+      title: 'abc',
+      text: 'cde'
+    }];
   }
   onFileSelected(event: any): void {
 
@@ -39,4 +48,17 @@ export class AppComponent{
       upload$.subscribe();
     }
   }
+
+  levelSelected($event: string): void  {
+    this.value01 = $event;
+  }
+
+  courseS($event: string): void  {
+    this.value02 = $event;
+  }
+}
+
+export interface ImyCard{
+  title: string;
+  text: string;
 }

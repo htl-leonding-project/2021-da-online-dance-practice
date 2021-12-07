@@ -10,7 +10,7 @@ describe('DanceLevelComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ DanceLevelComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

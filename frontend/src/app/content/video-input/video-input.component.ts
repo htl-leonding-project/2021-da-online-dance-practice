@@ -8,9 +8,11 @@ import {ContentService} from '../../content.service';
 })
 export class VideoInputComponent implements OnInit, OnChanges {
   @Input() public video!: number;
-  videoSource = '';
+  videoSource: string | null;
 
-  constructor(public contentService: ContentService) { }
+  constructor(public contentService: ContentService) {
+    this.videoSource = null;
+  }
 
   ngOnInit(): void {
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-dance-course',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DanceCourseComponent implements OnInit {
 
-  constructor() { }
+  @Input() courseSelected!: string | null;
+  @Input() coursename!: string;
+  @Output() courseS: EventEmitter<string> = new EventEmitter<string>();
 
+  constructor() {
+    this.courseSelected = null;
+  }
   ngOnInit(): void {
+  }
+
+  // tslint:disable-next-line:typedef
+  courses(s: string) {
+    // @ts-ignore
+    document.getElementById('lname').value = s;
+    this.courseS.emit(s);
   }
 
 }

@@ -12,7 +12,13 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { LevelWrapperComponent } from './level-wrapper/level-wrapper.component';
 import { CourseWrapperComponent } from './course-wrapper/course-wrapper.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MaterialExampleModule} from '../../materialmodule';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +43,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ]),
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
