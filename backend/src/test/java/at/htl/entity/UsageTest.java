@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @QuarkusTest
 class UsageTest {
+/*
 
 
     @Order(10)
@@ -29,5 +30,6 @@ class UsageTest {
 
     }
 
+*/
 
 }
