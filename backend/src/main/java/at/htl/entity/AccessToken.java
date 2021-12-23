@@ -1,6 +1,7 @@
 package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,35 +11,35 @@ import java.time.LocalDate;
 public class AccessToken extends PanacheEntityBase {
 
     @Id
-    String token;
+    public String token;
 
     @ManyToOne
     @JoinColumn(name = "AT_COURSE")
-    Course course;
+    public Course course;
 
     @Column(name = "AT_ACTIVATION_DATE")
-    LocalDate activationDate;
+    public LocalDate activationDate;
 
     @Column(name = "AT_DAYS_VALID")
-    int daysValid;
+    public Integer daysValid;
 
     @Column(name = "AT_EXPIRE_DATE")
-    LocalDate expireDate;
+    public LocalDate expireDate;
 
-    public AccessToken(Course course, int daysValid, LocalDate expireDate) {
+    public AccessToken(Course course, Integer daysValid, LocalDate expireDate) {
         this();
         this.course = course;
         this.daysValid = daysValid;
         this.expireDate = expireDate;
     }
 
-    public AccessToken( Course course) {
+    public AccessToken(Course course) {
         this();
         this.course = course;
     }
 
     public AccessToken() {
-        this.token = null;
+        this.token = RandomStringUtils.randomAlphabetic(5);
     }
 
 
