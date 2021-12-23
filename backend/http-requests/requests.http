@@ -175,3 +175,60 @@ Accept: application/json
 
 GET http://localhost:8080/dummy
 
+###
+
+POST  http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 2,
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "1",
+      "description": "einfach"
+    }
+  }
+}
+
+####
+
+POST  http://localhost:8080/api/accessToken/validate
+Content-Type: application/json
+
+{
+  "token": "LXFlh"
+}
+
+
+####
+
+GET http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+####
+
+PUT http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+{
+  "token": "jArmy",
+  "daysValid": 15,
+  "course": {
+    "id": 2,
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "1",
+      "description": "einfach"
+    }
+  }
+}
+
+
+####
+
+DELETE http://localhost:8080/api/accessToken/GWZgA
+
+###
