@@ -5,11 +5,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-
 import javax.transaction.Transactional;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 class UserTest {
@@ -22,7 +18,7 @@ class UserTest {
     public void create() {
 
 
-        User user = new User("rosi1234", "Rosalie", "Mandel");
+        User user = new User("rosi1234", "Rosalie", "Mandel", "fkjan", Role.TEACHER);
         user.persist();
 
     }
