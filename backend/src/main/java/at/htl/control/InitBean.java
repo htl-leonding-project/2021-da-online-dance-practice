@@ -51,17 +51,17 @@ public class InitBean {
         levelRepository.persist(topclass);
 
         //User
-        User kelly = new User("KellyTran03","Kelly", "Tran ");
+        User kelly = new User("KellyTran03", "Kelly", "Tran", "12324", Role.STUDENT);
         userRepository.persist(kelly);
-        User rosalie = new User("RosalieMandel14","Rosalie", "Mandel ");
+        User rosalie = new User("RosalieMandel14", "Rosalie", "Mandel ", "456", Role.STUDENT);
         userRepository.persist(rosalie);
-        User sandy = new User("SandyTang24","Sandy", "Tang ");
+        User sandy = new User("SandyTang24", "Sandy", "Tang ", "sandypw", Role.TEACHER);
         userRepository.persist(sandy);
-        User anton = new User("Anton123","Anton", "Traxler");
+        User anton = new User("Anton123", "Anton", "Traxler", "akdjb", Role.TEACHER);
         userRepository.persist(anton);
-        User lisa = new User("Lisa124","Lisa", "Müller ");
+        User lisa = new User("Lisa124", "Lisa", "Müller ", "<jnov", Role.STUDENT);
         userRepository.persist(lisa);
-        User jonas = new User("JonasT123","Jonas", "Berg ");
+        User jonas = new User("JonasT123", "Jonas", "Berg ", "orslgn", Role.TEACHER);
         userRepository.persist(jonas);
 
         //Course
