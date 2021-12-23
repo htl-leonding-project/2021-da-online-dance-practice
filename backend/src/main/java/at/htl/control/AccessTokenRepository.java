@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Transactional
 public class AccessTokenRepository implements PanacheRepository<AccessToken> {
 
-    public AccessToken save(AccessToken accessToken){
+    public AccessToken save(AccessToken accessToken) {
         return getEntityManager().merge(accessToken);
     }
 
