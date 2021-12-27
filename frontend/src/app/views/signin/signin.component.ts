@@ -32,6 +32,7 @@ export class SigninComponent implements OnInit {
     this.auth.authenticate(this.usernameControl.value, this.passwordControl.value).then(value => {
       this.responseMessage = null;
       console.log(value);
+      this.auth.loggedInState = true;
     }).catch((error: HttpErrorResponse) => {
       if (error.status === 404) {
         this.responseMessage = 'Der User existiert nicht';
