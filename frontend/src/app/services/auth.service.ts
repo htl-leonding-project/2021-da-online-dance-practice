@@ -8,16 +8,12 @@ import {User} from "../models/models";
 })
 export class AuthService {
 
-  private readonly isLoggedInSubject: BehaviorSubject<boolean>;
   public user: User | null;
+  private readonly isLoggedInSubject: BehaviorSubject<boolean>;
 
   constructor(private readonly backend: BackendService) {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(false);
     this.user = null;
-  }
-
-  public authenticate(username: string, password: string): Promise<Object> {
-    return this.backend.post('user/authenticate', {username, password});
   }
 
   public get loggedInState(): boolean {
@@ -32,7 +28,16 @@ export class AuthService {
     return this.isLoggedInSubject;
   }
 
+  public authenticate(username: string, password: string): Promise<Object> {
+    return this.backend.post('user/authenticate', {username, password});
+  }
+
   public setUser(user: User | null) {
     this.user = user;
+  }
+
+  public signOut(): void {
+    this.isLoggedInSubject.next(false);
+    this.user = null;
   }
 }
