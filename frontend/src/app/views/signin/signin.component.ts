@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from "../../services/auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {User} from "../../models/models";
 
 @Component({
   selector: 'app-signin',
@@ -33,6 +34,7 @@ export class SigninComponent implements OnInit {
       this.responseMessage = null;
       console.log(value);
       this.auth.loggedInState = true;
+      this.auth.setUser(value as User);
     }).catch((error: HttpErrorResponse) => {
       if (error.status === 404) {
         this.responseMessage = 'Der User existiert nicht';
