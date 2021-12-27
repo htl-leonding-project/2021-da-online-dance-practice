@@ -8,6 +8,6 @@ export interface User {
 }
 
 export enum Role {
-  'TEACHER',
-  'STUDENT'
+  STUDENT = 'STUDENT',
+  TEACHER = 'TEACHER'
 }
