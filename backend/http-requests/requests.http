@@ -47,6 +47,7 @@ Accept: application/json
 
 ####
 
+
 DELETE http://localhost:8080/api/level/AH
 Accept: application/json
 
@@ -116,6 +117,16 @@ Content-Type: application/json
 
 #####
 GET http://localhost:8080/api/course
+Accept: application/json
+
+####
+
+#####
+GET http://localhost:8080/api/course/filesByCourse/1
+Accept: application/json
+
+####
+GET http://localhost:8080/api/course/findByLevel/GRUNDKURS
 Accept: application/json
 
 ####

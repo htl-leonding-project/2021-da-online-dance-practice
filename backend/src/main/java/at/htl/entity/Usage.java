@@ -7,6 +7,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "D_USAGE")
+@NamedQueries({
+        @NamedQuery(
+                name = "Usage.findByCourseId",
+                query = "select u.file from Usage u where u.course.id = :ID"
+        )
+})
 public class Usage extends PanacheEntityBase {
 
     @Id

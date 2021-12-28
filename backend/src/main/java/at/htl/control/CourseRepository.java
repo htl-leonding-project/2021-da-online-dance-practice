@@ -11,7 +11,7 @@ import java.util.List;
 public class CourseRepository implements PanacheRepository<Course> {
 
     public List<Course> findCourseByLevel(Level level) {
-        return find("id", level.id).list();
+        return find("level", level).list();
     }
 
 }

@@ -165,12 +165,17 @@ public class InitBean {
         //Usage
         Usage usage01 = new Usage(discofox,salsa);
         usageRepository.persist(usage01);
+
         Usage usage02 = new Usage(westcoastswing,wienerwalz);
         usageRepository.persist(usage02);
         Usage usage03 = new Usage(tanzclubs,salsa);
         usageRepository.persist(usage03);
         Usage usage04 = new Usage(pirvatstunden,wienerwalz);
         usageRepository.persist(usage04);
+        Usage usage05 = new Usage(discofox,wienerwalz);
+        usageRepository.persist(usage05);
+        Usage usage06 = new Usage(discofox,hiphop);
+        usageRepository.persist(usage06);
 
     }
 

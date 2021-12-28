@@ -1,5 +1,6 @@
 package at.htl.boundary;
 
+import at.htl.control.CourseRepository;
 import at.htl.control.FileRepository;
 import at.htl.control.UsageRepository;
 import at.htl.entity.ContentType;
@@ -35,6 +36,10 @@ public class FileEndpoint {
 
     @Inject
     UsageRepository usageRepository;
+
+    @Inject
+    CourseRepository courseRepository;
+
 
     @Context
     private ServletContext context;
@@ -140,4 +145,7 @@ public class FileEndpoint {
                     .build();
         }
     }
+
+
+
 }
