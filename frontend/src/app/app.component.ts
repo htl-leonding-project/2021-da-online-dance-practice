@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.loggedInStateAsObservable.subscribe(state => {
-      let redirectUrl: string | UrlTree = '/home';
+      let redirectUrl: string | UrlTree = '/level';
 
 
       if (state) {
