@@ -1,0 +1,4 @@
+<mat-list *ngIf="levels">
+  <mat-list-item *ngFor="let level of levels"
+                 routerLink="{{level.id.toLowerCase()}}/courses">{{level.description}}</mat-list-item>
+</mat-list>
