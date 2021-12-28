@@ -1,0 +1,3 @@
+<mat-list *ngIf="courses">
+  <mat-list-item *ngFor="let course of courses" routerLink="{{course.id}}">{{course.title}}</mat-list-item>
+</mat-list>
