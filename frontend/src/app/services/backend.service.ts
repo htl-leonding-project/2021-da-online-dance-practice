@@ -16,4 +16,8 @@ export class BackendService {
   public post(route: string, body: any): Promise<Object> {
     return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body));
   }
+
+  public get(route: string): Promise<Object> {
+    return firstValueFrom(this.http.get(`${this.baseUrl}/${route}`));
+  }
 }
