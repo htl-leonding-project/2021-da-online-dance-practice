@@ -143,8 +143,8 @@ public class InitBean {
 
         D_File bachata = new D_File("Bachata-OnlineTanzkurs.mov", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(bachata);
-        D_File hiphop = new D_File("HipHopBartSimpson.mov", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
-        fileRepository.persist(hiphop);
+/*        D_File hiphop = new D_File("HipHopBartSimpson.mov", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(hiphop);*/
         D_File file02 = new D_File("File02", "/cdb", "description" , ContentType.valueOf("VIDEO"));
         fileRepository.persist(file02);
         D_File file03 = new D_File("File03", "/bdc", "description", ContentType.valueOf("AUDIO"));
@@ -154,28 +154,45 @@ public class InitBean {
         D_File file05 = new D_File("File05", "/gfh","description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(file05);
 
-        D_File trybsp = new D_File("Komp.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
-        fileRepository.persist(trybsp);
         D_File salsa = new D_File("SalsaChrisFigurdesMonats.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(salsa);
-        D_File wienerwalz = new D_File("WienerWalzer.mp4", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        D_File wienerwalz = new D_File("WienerWalzer.mov", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(wienerwalz);
-
+        D_File hiphop = new D_File("HipHopBartSimpson.mov", "mediafiles/video","description", ContentType.valueOf("VIDEO"));
+        fileRepository.persist(hiphop);
 
         //Usage
         Usage usage01 = new Usage(discofox,salsa);
         usageRepository.persist(usage01);
-
-        Usage usage02 = new Usage(westcoastswing,wienerwalz);
+        Usage usage02 = new Usage(westcoastswing,sed);
         usageRepository.persist(usage02);
-        Usage usage03 = new Usage(tanzclubs,salsa);
+        Usage usage03 = new Usage(tanzclubs,mama);
         usageRepository.persist(usage03);
-        Usage usage04 = new Usage(pirvatstunden,wienerwalz);
+        Usage usage04 = new Usage(pirvatstunden,dancelife);
         usageRepository.persist(usage04);
         Usage usage05 = new Usage(discofox,wienerwalz);
         usageRepository.persist(usage05);
-        Usage usage06 = new Usage(discofox,hiphop);
-        usageRepository.persist(usage06);
+/*        Usage usage06 = new Usage(discofox,hiphop);
+        usageRepository.persist(usage06);*/
+        Usage usage07 = new Usage(discofox,roses);
+        usageRepository.persist(usage07);
+        Usage usage08 = new Usage(discofox,wonder);
+        usageRepository.persist(usage08);
+        Usage usage09 = new Usage(discofox,hiphop);
+        usageRepository.persist(usage09);
+        Usage usage10 = new Usage(westcoastswing,bang);
+        usageRepository.persist(usage10);
+        Usage usage11 = new Usage(westcoastswing,hold);
+        usageRepository.persist(usage11);
+        Usage usage12 = new Usage(tanzclubs,dancelife);
+        usageRepository.persist(usage12);
+        Usage usage13 = new Usage(tanzclubs,roses);
+        usageRepository.persist(usage13);
+        Usage usage14 = new Usage(pirvatstunden,hold);
+        usageRepository.persist(usage14);
+        Usage usage15 = new Usage(pirvatstunden,tango);
+        usageRepository.persist(usage15);
+
 
     }
 
