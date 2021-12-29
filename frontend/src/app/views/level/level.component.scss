@@ -71,3 +71,8 @@ h2 {
   margin-top: -2%;
 }
 
+table td:hover {
+  background-color: #ddd;
+  transition: all .25s ease-in-out;
+  border-radius: 25px;
+}
