@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../services/backend.service";
 import {Course} from "../../../models/models";
@@ -10,6 +10,8 @@ import {Course} from "../../../models/models";
 })
 export class CourseOverviewComponent implements OnInit {
   courses: Course[] | null;
+  @Input() courseSelected!: string | null;
+
 
   constructor(private readonly route: ActivatedRoute,
               private readonly backend: BackendService) {
