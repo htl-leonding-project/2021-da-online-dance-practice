@@ -1,4 +1,15 @@
-<mat-list *ngIf="levels">
-  <mat-list-item *ngFor="let level of levels"
-                 routerLink="{{level.id.toLowerCase()}}/courses">{{level.description}}</mat-list-item>
-</mat-list>
+<div class="flexContainer">
+  <div class="content-head-container">
+    <h1>Level</h1>
+    <h2>Wähle dein Level aus</h2>
+  </div>
+
+  <div class="content-body">
+    <table *ngIf="levels">
+      <tr>
+        <td *ngFor="let level of levels"
+                         routerLink="{{level.id.toLowerCase()}}/courses">{{level.description}}</td>
+      </tr>
+    </table>
+</div>
+</div>

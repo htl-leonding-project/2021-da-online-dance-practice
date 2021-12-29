@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BackendService} from "../../services/backend.service";
 import {Level} from "../../models/models";
 
@@ -9,6 +9,7 @@ import {Level} from "../../models/models";
 })
 export class LevelComponent implements OnInit {
 
+    @Output() levelSelected: EventEmitter<Object> = new EventEmitter<Object>();
   levels: Level[] | null;
 
   constructor(private readonly backend: BackendService) {
@@ -18,6 +19,7 @@ export class LevelComponent implements OnInit {
   ngOnInit(): void {
     this.backend.get('level').then(value => {
       this.levels = value as Level[];
+      this.levelSelected.emit();
     });
   }
 

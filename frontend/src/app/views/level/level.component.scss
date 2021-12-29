@@ -1,11 +1,11 @@
-.flexContainer {
+.flexContainer{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.content-head-container {
+.content-head-container{
   border-radius: 25px;
   padding: 20px;
   width: 30%;
@@ -17,33 +17,32 @@
   margin-top: 1%;
 }
 
-.content-body {
+.content-body{
   border-radius: 25px;
   padding: 20px;
   text-align: center;
   display: flex;
   justify-content: center;
-  width: 30%;
+  width: 80%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
 }
 
-table tr:not(:first-child) {
+table tr {
   cursor: pointer;
   transition: all .25s ease-in-out;
 }
 
-table tr:not(:first-child):hover {
-  background-color: #ddd;
+table tr{
+  background-color: #fff;
 }
 
 table, td, th {
-  border: 1px solid #ddd;
-  text-align: left;
+  border: 1px solid #ffffff;
 }
 
 table {
   border-collapse: collapse;
-  border-radius: 10%;
+  border-radius: 10% ;
   width: 100%;
 }
 
@@ -71,3 +70,4 @@ h2 {
   color: white;
   margin-top: -2%;
 }
+
