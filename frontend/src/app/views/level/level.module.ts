@@ -6,6 +6,14 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {CourseOverviewComponent} from './course-overview/course-overview.component';
 import {CourseContentComponent} from './course-overview/course-content/course-content.component';
+import {AudioInputComponent} from './course-overview/course-content/audio-input/audio-input.component';
+import {VideoInputComponent} from './course-overview/course-content/video-input/video-input.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatCardModule} from "@angular/material/card";
+import {MatIconModule} from "@angular/material/icon";
+import {FormsModule} from "@angular/forms";
+import {FlexModule} from "@angular/flex-layout";
 
 const routes: Routes = [
   {
@@ -32,13 +40,21 @@ const routes: Routes = [
   declarations: [
     LevelComponent,
     CourseOverviewComponent,
-    CourseContentComponent
+    CourseContentComponent,
+    AudioInputComponent,
+    VideoInputComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule,
+    MatSliderModule,
+    MatCardModule,
+    MatIconModule,
+    FormsModule,
+    FlexModule
   ]
 })
 export class LevelModule {
