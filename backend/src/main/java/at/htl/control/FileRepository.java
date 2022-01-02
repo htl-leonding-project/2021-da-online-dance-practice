@@ -19,6 +19,9 @@ public class FileRepository implements PanacheRepository<D_File> {
     @Inject
     EntityManager em;
 
+    @FormParam("uploadedFile")
+    public File file;
+
     public List<D_File> findFilesByCourse(Course course) {
         return find("course", course).list();
     }

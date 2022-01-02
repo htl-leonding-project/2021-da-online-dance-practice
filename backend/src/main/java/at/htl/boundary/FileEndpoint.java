@@ -31,6 +31,9 @@ import java.util.Map;
 public class FileEndpoint {
 
     @Inject
+    Logger LOG;
+
+    @Inject
     FileRepository fileRepository;
 
     @Inject
@@ -59,6 +62,7 @@ public class FileEndpoint {
     @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.TEXT_PLAIN)
     public Response uploadFile(MultipartFormDataInput input) throws IOException {
 
         String fileName = "";
