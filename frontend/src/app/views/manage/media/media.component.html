@@ -1,0 +1,23 @@
+<!--Menu-->
+<div id="menucontainer">
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Kurse verwalten</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="belowMenu">Zugangscode</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu" routerLink="media">Datein Hochladen</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+  </mat-menu>
+</div>
+
+<div id="form">
+  <form (ngSubmit)="submit()">
+    <p>
+      Wählen Sie eine Datei aus : <input type="file" (change)="onFileSelect($event)" name="uploadedFile"/>
+    </p>
+    <button mat-button type="submit">submit</button>
+  </form>
+</div>
