@@ -14,6 +14,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import {FlexModule} from "@angular/flex-layout";
+import {MatMenuModule} from '@angular/material/menu';
 
 const routes: Routes = [
   {
@@ -54,7 +55,8 @@ const routes: Routes = [
     MatCardModule,
     MatIconModule,
     FormsModule,
-    FlexModule
+    FlexModule,
+    MatMenuModule
   ]
 })
 export class LevelModule {

@@ -1,3 +1,19 @@
+<!--Menu-->
+<div id="menucontainer">
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Kurse verwalten</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="belowMenu">Zugangscode</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu" routerLink="/manage/media">Datein Hochladen</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+  </mat-menu>
+</div>
+
+<!--Level Tabelle-->
 <div class="flexContainer">
   <div class="content-head-container">
     <h1>Level</h1>
@@ -8,8 +24,8 @@
     <table *ngIf="levels">
       <tr>
         <td *ngFor="let level of levels"
-                         routerLink="{{level.id.toLowerCase()}}/courses">{{level.description}}</td>
+            routerLink="{{level.id.toLowerCase()}}/courses">{{level.description}}</td>
       </tr>
     </table>
-</div>
+  </div>
 </div>

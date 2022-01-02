@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'level',
     loadChildren: () => import('./views/level/level.module').then(m => m.LevelModule)
+  },
+  {
+    path: 'manage',
+    loadChildren: () => import('./views/manage/manage.module').then(m => m.ManageModule)
   }
 ];
 
