@@ -4,10 +4,10 @@ import at.htl.control.CourseRepository;
 import at.htl.control.FileRepository;
 import at.htl.control.UsageRepository;
 import at.htl.entity.ContentType;
-import at.htl.entity.Course;
 import at.htl.entity.D_File;
-import at.htl.entity.Level;
 import org.apache.commons.io.IOUtils;
+import org.jboss.logging.Logger;
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +39,7 @@ public class FileEndpoint {
     @Inject
     CourseRepository courseRepository;
 
+    private final String UPLOADED_FILE_PATH = "/opt/upload/";
 
     @Context
     private ServletContext context;
@@ -53,66 +53,114 @@ public class FileEndpoint {
         return Response.ok(hello).build();*/
     }
 
+    /**
+     * https://mkyong.com/webservices/jax-rs/file-upload-example-in-resteasy/
+     */
     @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(MultipartFormDataInput input) throws IOException {
+
+        String fileName = "";
+
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-        // Get file data to save
-        List<InputPart> inputParts = uploadForm.get("thumbnail");
+        List<InputPart> inputParts = uploadForm.get("uploadedFile");
+
         for (InputPart inputPart : inputParts) {
+
             try {
+
                 MultivaluedMap<String, String> header = inputPart.getHeaders();
-                String fileName = getFileName(header);
-                // convert the uploaded file to inputstream
+                fileName = getFileName(header);
+
+                //convert the uploaded file to inputstream
                 InputStream inputStream = inputPart.getBody(InputStream.class, null);
+
                 byte[] bytes = IOUtils.toByteArray(inputStream);
 
-                /*
-                 * TODO create folder target/mediafiles/video/ or target/mediafiles/video/
-                 *
-                 * following if statement is probably not validating if the mentioned dir exists in the target folder,
-                 * which is mandatory for quarkus?
-                 *
-                 * the media files should also be store at a lfs,
-                 * because the target dir gets cleaned each time quarkus starts
-                 *
-                 * */
+                //constructs upload file path
+                fileName = UPLOADED_FILE_PATH + fileName;
 
-                File customDir = new File("mediafiles/video");
-                if (!customDir.exists()) {
-                    customDir.mkdir();
-                }
-                fileName = customDir.getCanonicalPath() + File.separator + fileName;
                 writeFile(bytes, fileName);
-                return Response.status(200).entity("Uploaded file name : " + fileName+" . <br/> <a href='"+context.getContextPath()+"'>Back</a>").build();
-            } catch (Exception e) {
+
+                System.out.println("Done");
+
+            } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
-        return null;
+
+        return Response.status(200)
+                .entity("Hochladen von " + fileName + " war erfolgreich")
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "accept, origin, authorization, content-type, x-requested-with")
+                .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PATCH,PUT")
+                .header("Access-Control-Allow-Headers", "origin,x-requested-with,content-type,Accept, x-client-key, x-client-token, x-client-secret, Authorization")
+                .build();
+
     }
 
+
+
+//    /**
+//     * Quelle: https://stackoverflow.com/a/62134245
+//     *
+//     * @param upload
+//     * @return
+//     * @throws IOException
+//     */
+//    @POST
+//    @Path("/upload")
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
+//    public Response uploadFile(@MultipartForm FormData upload) throws IOException {
+//        LOG.infof("File path: %s", upload.file.getAbsolutePath());
+//        return Response.ok().build();
+//    }
+
     private String getFileName(MultivaluedMap<String, String> header) {
+        String finalFileName;
+
         String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
+
         for (String filename : contentDisposition) {
             if ((filename.trim().startsWith("filename"))) {
+
                 String[] name = filename.split("=");
-                String finalFileName = name[1].trim().replaceAll("\"", "");
+
+                finalFileName = name[1].trim().replaceAll("\"", "");
                 return finalFileName;
             }
         }
+
         return "unknown";
     }
 
-    private void writeFile(byte[] content, String filename) throws IOException {
-        System.out.println(filename);
-        File file = new File(filename);
+    //save to somewhere
+    private void writeFile(byte[] content, String filePath) throws IOException {
+        File file = new File(filePath);
+
         if (!file.exists()) {
             file.createNewFile();
         }
+
         FileOutputStream fop = new FileOutputStream(file);
+
         fop.write(content);
+
+        String[] fileTypeArray = filePath.split("\\.");
+        String[] parts = filePath.split("/");
+        String filename = parts[parts.length - 1];
+        System.out.println("filePath " + filePath);
+
+        if (fileTypeArray[1].equals("mp4") || fileTypeArray[1].equals("mov")) {
+            D_File file1 = new D_File(filename, file.getPath(), "", ContentType.VIDEO);
+            fileRepository.persist(file1);
+        } else if (fileTypeArray[1].equals("mp3")) {
+            D_File file1 = new D_File(filename, file.getPath(), "", ContentType.AUDIO);
+            fileRepository.persist(file1);
+        }
+
         fop.flush();
         fop.close();
     }
@@ -141,11 +189,10 @@ public class FileEndpoint {
         } catch (IllegalArgumentException e) {
             return Response
                     .status(400)
-                    .header("Reason","File with id" +id  + "does not exist")
+                    .header("Reason", "File with id" + id + "does not exist")
                     .build();
         }
     }
-
 
 
 }
