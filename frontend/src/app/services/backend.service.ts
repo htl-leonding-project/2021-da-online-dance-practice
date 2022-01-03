@@ -17,15 +17,23 @@ export class BackendService {
     return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body));
   }
 
+  public put(route: string, body: any): Promise<Object> {
+    return firstValueFrom(this.http.put(`${this.baseUrl}/${route}`, body));
+  }
+
   public get(route: string): Promise<Object> {
     return firstValueFrom(this.http.get(`${this.baseUrl}/${route}`));
   }
 
-  public postFile(route: string, body:any): Promise<Object> {
+  public postFile(route: string, body: any): Promise<Object> {
     return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body, {
       headers: {
-        'Content-Type' : 'multipart/form-data'
+        'Content-Type': 'multipart/form-data'
       }
     }))
+  }
+
+  public delete(route: string): Promise<Object> {
+    return firstValueFrom(this.http.delete(`${this.baseUrl}/${route}`));
   }
 }
