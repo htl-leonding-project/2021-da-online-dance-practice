@@ -22,14 +22,23 @@ public class User extends PanacheEntityBase {
     @Column(name = "U_LASTNAME")
     public String lastname;
 
+    @Column(name = "U_PASSWORD")
+    public String password;
+
+    @Enumerated
+    @Column(name = "U_ROLE")
+    public Role role;
+
     //region constructors
     public User() {
     }
 
-    public User(String username, String firstname, String lastname) {
+    public User(String username, String firstname, String lastname, String password, Role role) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.password = password;
+        this.role = role;
     }
     //endregion
 

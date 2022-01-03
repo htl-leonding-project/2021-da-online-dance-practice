@@ -47,6 +47,7 @@ Accept: application/json
 
 ####
 
+
 DELETE http://localhost:8080/api/level/AH
 Accept: application/json
 
@@ -87,21 +88,45 @@ Content-Type: application/json
 {
   "username": "Rosi12",
   "firstname": "Rosalie",
-  "lastname": "Mandel"
+  "lastname": "Mandel",
+  "password": "1234",
+  "role": "TEACHER"
 }
 
 
 ####
-GET http://localhost:8080/api/user/10
+GET http://localhost:8080/api/user/7
 Accept: application/json
 
 #####
 
-DELETE http://localhost:8080/api/user/10
+
+
+DELETE http://localhost:8080/api/user/7
 Accept: application/json
+
+###
+
+POST http://localhost:8080/api/user/authenticate
+Content-Type: application/json
+
+{
+  "username": "Rosi12"
+}
+
 
 #####
 GET http://localhost:8080/api/course
+Accept: application/json
+
+####
+
+#####
+GET http://localhost:8080/api/course/filesByCourse/1
+Accept: application/json
+
+####
+GET http://localhost:8080/api/course/findByLevel/GRUNDKURS
 Accept: application/json
 
 ####
@@ -174,4 +199,63 @@ Accept: application/json
 ###
 
 GET http://localhost:8080/dummy
+
+###
+
+POST  http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 2,
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "1",
+      "description": "einfach"
+    }
+  }
+}
+
+####
+
+POST  http://localhost:8080/api/accessToken/validate
+Content-Type: application/json
+
+{
+  "token": "LXFlh"
+}
+
+
+####
+
+GET http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+####
+
+PUT http://localhost:8080/api/accessToken
+Content-Type: application/json
+
+{
+  "token": "jArmy",
+  "daysValid": 15,
+  "course": {
+    "id": 2,
+    "title": "Rosalie",
+    "description": "Mandel",
+    "level": {
+      "id": "1",
+      "description": "einfach"
+    }
+  }
+}
+
+
+####
+
+DELETE http://localhost:8080/api/accessToken/GWZgA
+
+###
+
 

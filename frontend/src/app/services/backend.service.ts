@@ -1,16 +1,39 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  baseUrl = 'http://localhost:8080/';
+  private readonly baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {
+    this.baseUrl = environment.baseUrl
+  }
 
-  get(route: string): Observable<any>{
-    return this.http.get(this.baseUrl + route);
+  public post(route: string, body: any): Promise<Object> {
+    return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body));
+  }
+
+  public put(route: string, body: any): Promise<Object> {
+    return firstValueFrom(this.http.put(`${this.baseUrl}/${route}`, body));
+  }
+
+  public get(route: string): Promise<Object> {
+    return firstValueFrom(this.http.get(`${this.baseUrl}/${route}`));
+  }
+
+  public postFile(route: string, body: any): Promise<Object> {
+    return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }))
+  }
+
+  public delete(route: string): Promise<Object> {
+    return firstValueFrom(this.http.delete(`${this.baseUrl}/${route}`));
   }
 }

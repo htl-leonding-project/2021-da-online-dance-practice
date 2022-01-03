@@ -1,64 +1,52 @@
-import {Component, Input} from '@angular/core';
-import {ContentService, DFile} from './content.service';
-import {HttpClient, HttpEventType} from '@angular/common/http';
-import {publish} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
+import {ActivatedRoute, Router, UrlTree} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
   title = 'frontend';
-  videoSource = '';
-  audioSource = '';
-  audio: any;
-  files: DFile[];
-  fileName = '';
-  cards: ImyCard[];
-  value01: string | null = null;
-  value02: string | null = null;
 
-  constructor(private http: HttpClient, public contentService: ContentService) {
-    this.files = [];
+  constructor(private readonly auth: AuthService,
+              private readonly router: Router,
+              private readonly route: ActivatedRoute) {
 
-    contentService.getPath(32).subscribe(path => {
-      console.log(path);
-      this.videoSource = path;
+  }
+
+  ngOnInit(): void {
+    this.auth.loggedInStateAsObservable.subscribe(state => {
+      let redirectUrl: string | UrlTree = '/level';
+
+
+      if (state) {
+        this.route.queryParams.subscribe(value => {
+          if (value["redirectUrl"]) {
+            redirectUrl = value["redirectUrl"];
+          }
+        });
+      } else {
+        this.route.queryParams.subscribe(value => {
+          if (value["redirectUrl"]) {
+            redirectUrl = this.router.createUrlTree(
+              ['/signin'], {
+                queryParams: {
+                  redirectUrl: value["redirectUrl"]
+                }
+              }
+            );
+          } else {
+            redirectUrl = '/signin';
+          }
+        });
+      }
+
+      this.router.navigateByUrl(redirectUrl, {replaceUrl: true})
+        .catch(err => {
+          console.error(err);
+        });
     });
-
-    contentService.getFiles().subscribe(files => {
-      this.files = files;
-    });
-
-    this.cards = [{
-      title: 'abc',
-      text: 'cde'
-    }];
   }
-  onFileSelected(event: any): void {
-
-    const file: File = event.target.files[0];
-
-    if (file) {
-      this.fileName = file.name;
-      const formData = new FormData();
-      formData.append('thumbnail', file);
-      const upload$ = this.http.post('http://localhost:8080/api/file/upload', formData);
-      upload$.subscribe();
-    }
-  }
-
-  levelSelected($event: string): void  {
-    this.value01 = $event;
-  }
-
-  courseS($event: string): void  {
-    this.value02 = $event;
-  }
-}
-
-export interface ImyCard{
-  title: string;
-  text: string;
 }

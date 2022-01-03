@@ -2,7 +2,9 @@ package at.htl.boundary;
 
 import at.htl.control.CourseRepository;
 import at.htl.control.LevelRepository;
+import at.htl.control.UsageRepository;
 import at.htl.entity.Course;
+import at.htl.entity.D_File;
 import at.htl.entity.Level;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import java.util.List;
 
 @RequestScoped
 @Path("/course")
@@ -24,6 +27,9 @@ public class CourseEndpoint {
 
     @Inject
     LevelRepository levelRepository;
+
+    @Inject
+    UsageRepository usageRepository;
 
 
     @GET
@@ -39,9 +45,9 @@ public class CourseEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(String levelId, @Context UriInfo info, String title, String description) {
         Level level = levelRepository.findById(levelId);
-        Course course = new Course (title, description, level);
+        Course course = new Course(title, description, level);
         courseRepository.persist(course);
-        return Response.created(URI.create(info.getPath() + "/"+ course.id)).build();
+        return Response.created(URI.create(info.getPath() + "/" + course.id)).build();
     }
 
     @GET
@@ -66,15 +72,30 @@ public class CourseEndpoint {
         } catch (IllegalArgumentException e) {
             return Response
                     .status(400)
-                    .header("Reason","Course with id" +id  + "does not exist")
+                    .header("Reason", "Course with id" + id + "does not exist")
                     .build();
         }
     }
 
     @GET
+    @Path("/findByLevel/{levelId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response findCourseByLevel(Level level) {
+    public Response findCourseByLevel(@PathParam("levelId") String levelId) {
+        Level level = new Level(levelId.toUpperCase(),levelId.toUpperCase());
         return Response.ok().entity(courseRepository.findCourseByLevel(level)).build();
+    }
+
+
+    @GET
+    @Path("filesByCourse/{courseId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findMediaFileByCourse(@PathParam("courseId") String courseId) {
+        List<D_File> files =  usageRepository.findFilesByCourseId(Long.valueOf(courseId));
+        return Response
+                .ok(files)
+                // .entity(files)
+                .build();
     }
 }

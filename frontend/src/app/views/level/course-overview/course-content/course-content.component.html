@@ -1,0 +1,48 @@
+<!--
+<mat-list *ngIf="content">
+  <mat-list-item *ngFor="let dFile of content">{{dFile.name}}</mat-list-item>
+</mat-list>
+
+<mat-list *ngIf="content">
+  <mat-list-item *ngFor="let dFile of content">
+    <app-audio-input *ngIf="dFile.contentType === 'AUDIO'" [audio]=dFile></app-audio-input>
+  </mat-list-item>
+</mat-list>
+-->
+
+
+<mat-toolbar class="toolbar">
+  <span>Card view demo</span>
+  <div fxHide.lt-md>
+    <span class="column-label">Columns</span>
+    <mat-slider [(ngModel)]="gridColumns" [max]="4" [min]="3" [thumbLabel]="true">
+    </mat-slider>
+  </div>
+</mat-toolbar>
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="100px grid">
+    <mat-card *ngFor="let dfile of content" [fxFlex]="(100/(gridColumns+1)) + '%'" fxFlex.sm="33%" fxFlex.xs="100%">
+      <div *ngIf="content">
+        <div *ngFor="let num of [content.length]">
+          <mat-card-header *ngFor="let card of cards">
+            <mat-card-subtitle>
+              {{dfile.contentType}}
+              <mat-icon *ngIf="dfile.contentType === 'AUDIO'">audiotrack</mat-icon>
+              <mat-icon *ngIf="dfile.contentType === 'VIDEO'">music_video</mat-icon>
+            </mat-card-subtitle>
+            <mat-card-title>
+              {{dfile.name}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-audio-input *ngIf="dfile.contentType === 'AUDIO'" [audio]=dfile></app-audio-input>
+            <app-video-input *ngIf="dfile.contentType === 'VIDEO'" [video]=dfile></app-video-input>
+            {{dfile.description}}
+          </mat-card-content>
+
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="flexContainer">
+  <div class="content-head-container">
+    <h1>Kurs</h1>
+    <h2>Wähle deinen Kurs aus</h2>
+    <!--    <h2>gewähltes Level: {{courses}}</h2>-->
+  </div>
+
+  <div class="content-body">
+<table *ngIf="courses">
+  <tr>
+  <td *ngFor="let course of courses" routerLink="{{course.id}}">{{course.title}}</td>
+  </tr>
+</table>
+  </div>
+</div>

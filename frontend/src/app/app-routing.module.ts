@@ -1,16 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {DanceLevelComponent} from './dance-level/dance-level.component';
-import {DanceCourseComponent} from './dance-course/dance-course.component';
-import {ContentComponent} from './content/content.component';
-import {LevelWrapperComponent} from './level-wrapper/level-wrapper.component';
-import {CourseWrapperComponent} from './course-wrapper/course-wrapper.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-  { path: 'level-wrapper', component: LevelWrapperComponent },
-  { path: 'course-wrapper', component: CourseWrapperComponent },
-  { path: 'content-component', component: ContentComponent },
-  { path: '', component: DanceLevelComponent }
+  {
+    path: 'signin',
+    loadChildren: () => import('./views/signin/signin.module').then(m => m.SigninModule)
+  },
+  {
+    path: 'level',
+    loadChildren: () => import('./views/level/level.module').then(m => m.LevelModule)
+  },
+  {
+    path: 'manage',
+    loadChildren: () => import('./views/manage/manage.module').then(m => m.ManageModule)
+  }
 ];
 
 @NgModule({
