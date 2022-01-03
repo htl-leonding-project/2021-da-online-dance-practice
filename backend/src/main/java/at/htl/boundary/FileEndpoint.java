@@ -14,7 +14,6 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -42,10 +41,11 @@ public class FileEndpoint {
     @Inject
     CourseRepository courseRepository;
 
+    @Context
+    HttpHeaders requestHeaders;
+
     private final String UPLOADED_FILE_PATH = "/opt/upload/";
 
-    @Context
-    private ServletContext context;
 
 
     @GET
@@ -67,8 +67,12 @@ public class FileEndpoint {
 
         String fileName = "";
 
+        for (String key : requestHeaders.getRequestHeaders().keySet()) {
+            LOG.infof("%s: %s", key, requestHeaders.getRequestHeader(key));
+        }
+
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-        List<InputPart> inputParts = uploadForm.get("uploadedFile");
+        List<InputPart> inputParts = uploadForm.get("file");
 
         for (InputPart inputPart : inputParts) {
 
@@ -97,10 +101,10 @@ public class FileEndpoint {
 
         return Response.status(200)
                 .entity("Hochladen von " + fileName + " war erfolgreich")
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "accept, origin, authorization, content-type, x-requested-with")
-                .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PATCH,PUT")
-                .header("Access-Control-Allow-Headers", "origin,x-requested-with,content-type,Accept, x-client-key, x-client-token, x-client-secret, Authorization")
+//                .header("Access-Control-Allow-Origin", "*")
+//                .header("Access-Control-Allow-Headers", "accept, origin, authorization, content-type, x-requested-with")
+//                .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PATCH,PUT")
+//                .header("Access-Control-Allow-Headers", "origin,x-requested-with,content-type,Accept, x-client-key, x-client-token, x-client-secret, Authorization")
                 .build();
 
     }
