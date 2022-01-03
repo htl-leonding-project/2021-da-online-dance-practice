@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ManageAccesstokenComponent } from './manage-accesstoken.component';
+import {ManageAccesstokenComponent} from './manage-accesstoken.component';
 
 describe('ManageAccesstokenComponent', () => {
   let component: ManageAccesstokenComponent;
@@ -8,9 +8,9 @@ describe('ManageAccesstokenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageAccesstokenComponent ]
+      declarations: [ManageAccesstokenComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

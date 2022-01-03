@@ -66,7 +66,7 @@ export class ManageAccesstokenComponent implements OnInit {
   copyToken(token: string, tooltip: MatTooltip): void {
     this.clipboard.copy(token);
     tooltip.show();
-    setTimeout(() => tooltip.hide(),1500);
+    setTimeout(() => tooltip.hide(), 1500);
   }
 
   private formatDate(date: Date): string {

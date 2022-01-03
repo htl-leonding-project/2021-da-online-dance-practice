@@ -24,11 +24,13 @@
         <mat-icon (click)="edit(accessToken)">edit</mat-icon>
       </button>
 
-      <button mat-icon-button (mouseenter)="$event.stopImmediatePropagation()" (mouseleave)="$event.stopImmediatePropagation()" #tooltip="matTooltip" matTooltip="Token {{ accessToken.token }} wurde in die Zwischenablage kopiert">
+      <button #tooltip="matTooltip" (mouseenter)="$event.stopImmediatePropagation()"
+              (mouseleave)="$event.stopImmediatePropagation()" mat-icon-button
+              matTooltip="Token {{ accessToken.token }} wurde in die Zwischenablage kopiert">
         <mat-icon (click)="copyToken(accessToken.token,tooltip)">content_copy</mat-icon>
       </button>
     </div>
   </div>
 </div>
 
-<button mat-raised-button id="create-button" (click)="create()">AccessToken erstellen</button>
+<button (click)="create()" id="create-button" mat-raised-button>AccessToken erstellen</button>
