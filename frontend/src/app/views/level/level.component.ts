@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BackendService} from "../../services/backend.service";
 import {Level} from "../../models/models";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-level',
@@ -21,6 +22,7 @@ export class LevelComponent implements OnInit {
       this.levels = value as Level[];
       this.levelSelected.emit();
     });
+
   }
 
 
