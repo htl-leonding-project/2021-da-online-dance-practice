@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {ActivatedRoute, Router, UrlTree} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,12 @@ import {ActivatedRoute, Router, UrlTree} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
+  isLoggedInState: Observable<boolean>;
 
   constructor(private readonly auth: AuthService,
               private readonly router: Router,
               private readonly route: ActivatedRoute) {
-
+    this.isLoggedInState = this.auth.loggedInStateAsObservable;
   }
 
   ngOnInit(): void {
@@ -48,5 +50,9 @@ export class AppComponent implements OnInit {
           console.error(err);
         });
     });
+  }
+
+  logout() {
+    this.auth.signOut();
   }
 }

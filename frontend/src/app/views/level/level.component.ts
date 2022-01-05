@@ -9,7 +9,7 @@ import {Level} from "../../models/models";
 })
 export class LevelComponent implements OnInit {
 
-    @Output() levelSelected: EventEmitter<Object> = new EventEmitter<Object>();
+  @Output() levelSelected: EventEmitter<Object> = new EventEmitter<Object>();
   levels: Level[] | null;
 
   constructor(private readonly backend: BackendService) {

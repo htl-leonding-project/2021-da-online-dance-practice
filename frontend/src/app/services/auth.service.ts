@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BackendService} from "./backend.service";
 import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../models/models";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   public user: User | null;
   private readonly isLoggedInSubject: BehaviorSubject<boolean>;
 
-  constructor(private readonly backend: BackendService) {
+  constructor(private readonly backend: BackendService, private readonly router: Router) {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(false);
     this.user = null;
   }
@@ -39,5 +40,6 @@ export class AuthService {
   public signOut(): void {
     this.isLoggedInSubject.next(false);
     this.user = null;
+    this.router.navigateByUrl('/signin')
   }
 }
