@@ -1,0 +1,9 @@
+
+<div id="form">
+  <form (ngSubmit)="submit()">
+    <p>
+      Wählen Sie eine Datei aus : <input type="file" (change)="onFileSelect($event)" name="uploadedFile"/>
+    </p>
+    <button mat-button type="submit">submit</button>
+  </form>
+</div>
