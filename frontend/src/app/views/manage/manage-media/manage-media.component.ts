@@ -5,8 +5,8 @@ import {BackendService} from '../../../services/backend.service';
 
 @Component({
   selector: 'app-media',
-  templateUrl: './manage-media.component.html',
-  styleUrls: ['./manage-media.component.scss']
+  templateUrl: './media.component.html',
+  styleUrls: ['./media.component.scss']
 })
 export class ManageMediaComponent implements OnInit {
   public readonly baseUrl:string;

@@ -4,7 +4,7 @@ import {ManageComponent} from './manage.component';
 import {ManageMediaComponent} from './manage-media/manage-media.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {ManageCourseComponent} from './manage-course/manage-course.component';
 import {ManageAccesstokenComponent} from './manage-accesstoken/manage-accesstoken.component';
@@ -58,7 +58,8 @@ const routes: Routes = [
     MatNativeDateModule,
     MatIconModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class ManageModule { }

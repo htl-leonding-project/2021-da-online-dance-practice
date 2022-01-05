@@ -14,6 +14,8 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @RequestScoped
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Path("/user")
 public class UserEndpoint {
 
@@ -28,8 +30,6 @@ public class UserEndpoint {
 
     @POST
     @Path("/create")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response create(User user, @Context UriInfo info) {
         userRepository.persist(user);
         return Response.created(URI.create(info.getPath() + "/" + user.id)).build();
@@ -37,16 +37,12 @@ public class UserEndpoint {
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") long id) {
         return Response.ok(userRepository.findById(id)).build();
     }
 
     @DELETE
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
             userRepository.deleteById(id);
@@ -55,8 +51,8 @@ public class UserEndpoint {
                     .build();
         } catch (IllegalArgumentException e) {
             return Response
-                    .status(400)
-                    .header("Reason", "User with id" + id + "does not exist")
+                    .status(Response.Status.BAD_REQUEST)
+                    .header("Reason", "User with id " + id + " does not exist")
                     .build();
         }
     }
@@ -69,8 +65,6 @@ public class UserEndpoint {
      */
     @POST
     @Path("/authenticate")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response authenticate(JsonValue jsonValue) {
         if (jsonValue.getValueType().equals(JsonValue.ValueType.OBJECT)) {
             try {
