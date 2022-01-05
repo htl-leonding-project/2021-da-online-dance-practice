@@ -1,6 +1,7 @@
 <div *ngIf="isLoggedInState|async" id="menucontainer">
   <button mat-button routerLink="/manage">Verwalten</button>
   <button (click)="logout()" mat-button>Logout</button>
+  <button mat-button routerLink="/level">Dance-Practice</button>
 </div>
 
 <router-outlet></router-outlet>
