@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ManageComponent} from './manage.component';
-import {MediaComponent} from './media/media.component';
+import {ManageMediaComponent} from './manage-media/manage-media.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {ManageCourseComponent} from './manage-course/manage-course.component';
 import {ManageAccesstokenComponent} from './manage-accesstoken/manage-accesstoken.component';
@@ -16,6 +16,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {DetailedAccesstokenComponent} from './manage-accesstoken/detailed-accesstoken/detailed-accesstoken.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {DetailedCourseComponent} from './manage-course/detailed-course/detailed-course.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,8 @@ const routes: Routes = [
     component: ManageComponent
   },
   {
-    path: 'media',
-    component: MediaComponent
+    path: 'manage-media',
+    component: ManageMediaComponent
   },
   {
     path: 'manage-course',
@@ -39,10 +40,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ManageComponent,
-    MediaComponent,
+    ManageMediaComponent,
     ManageCourseComponent,
     ManageAccesstokenComponent,
-    DetailedAccesstokenComponent
+    DetailedAccesstokenComponent,
+    DetailedCourseComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ const routes: Routes = [
     MatNativeDateModule,
     MatIconModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class ManageModule { }

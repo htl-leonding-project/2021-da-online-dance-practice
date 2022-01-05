@@ -7,14 +7,13 @@ import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonValue;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/accessToken")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Path("/accessToken")
 public class AccessTokenEndpoint {
 
     @Inject
@@ -33,7 +32,6 @@ public class AccessTokenEndpoint {
     }
 
     @PUT
-    @Transactional
     public Response update(AccessToken token) {
         AccessToken accessToken = repository.find("token", token.token)
                 .stream()

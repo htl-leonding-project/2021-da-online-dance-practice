@@ -51,6 +51,7 @@ th, td {
   padding: 15px;
   font-style: normal;
   font-family: Arial, 'light';
+  letter-spacing: 2px;
 }
 
 input {
@@ -62,6 +63,7 @@ h1 {
   font-family: Arial, 'light';
   color: white;
   font-size: 30px;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -70,6 +72,7 @@ h2 {
   font-family: Arial, 'light';
   color: white;
   margin-top: -2%;
+  letter-spacing: 2px;
 }
 
 table td:hover {
@@ -78,18 +81,3 @@ table td:hover {
   border-radius: 25px;
 }
 
-
-//menu
-button{
-  font-style: normal;
-  font-family: Arial, 'light';
-  font-size: 20px;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-#menucontainer{
-  border-bottom: 1px solid black;
-  margin-bottom: 4%;
-  display: flex;
-}

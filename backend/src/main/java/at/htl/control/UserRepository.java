@@ -10,5 +10,4 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserRepository implements PanacheRepository<User> {
 
-
 }
