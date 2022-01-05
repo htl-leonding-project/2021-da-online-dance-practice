@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ManageComponent} from './manage.component';
-import {MediaComponent} from './media/media.component';
+import {ManageMediaComponent} from './manage-media/manage-media.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {FormsModule} from '@angular/forms';
@@ -24,8 +24,8 @@ const routes: Routes = [
     component: ManageComponent
   },
   {
-    path: 'media',
-    component: MediaComponent
+    path: 'manage-media',
+    component: ManageMediaComponent
   },
   {
     path: 'manage-course',
@@ -40,7 +40,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ManageComponent,
-    MediaComponent,
+    ManageMediaComponent,
     ManageCourseComponent,
     ManageAccesstokenComponent,
     DetailedAccesstokenComponent,

@@ -1,1 +1,14 @@
-<button routerLink="media">media</button>
+<!--Menu-->
+<div id="menucontainer">
+  <button [matMenuTriggerFor]="aboveMenu" mat-button routerLink="/manage/manage-course">Kurse verwalten</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+  </mat-menu>
+
+  <button [matMenuTriggerFor]="belowMenu" mat-button routerLink="/manage/manage-accesstoken">Accesstoken</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+  </mat-menu>
+
+  <button [matMenuTriggerFor]="beforeMenu" mat-button routerLink="/manage/manage-media">media</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+  </mat-menu>
+</div>
