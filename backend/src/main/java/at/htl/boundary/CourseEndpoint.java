@@ -59,36 +59,56 @@ public class CourseEndpoint {
         return Response.ok(courseRepository.findById(id)).build();
     }
 
+//    @DELETE
+//    @Path("/{title}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Transactional
+//    public Response delete(@PathParam("title") String title) {
+//
+//        Course course = courseRepository.find("title", title)
+//                .stream()
+//                .findFirst()
+//                .orElse(null);
+//
+//        if (course != null) {
+//            courseRepository.delete("title", course.title);
+//            return Response.ok().build();
+//        } else {
+//            return Response.status(Response.Status.NOT_FOUND).build();
+//        }
+//       /* try {
+//            courseRepository.delete(title);
+//            return Response
+//                    .noContent()
+//                    .build();
+//        } catch (IllegalArgumentException e) {
+//            return Response
+//                    .status(400)
+//                    .header("Reason", "Course with id" + title + "does not exist")
+//                    .build();
+//        }*/
+//    }
+
     @DELETE
-    @Path("/{title}")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response delete(@PathParam("title") String title) {
-
-        Course course = courseRepository.find("title", title)
-                .stream()
-                .findFirst()
-                .orElse(null);
-
-        if (course != null) {
-            courseRepository.delete("title", course.title);
-            return Response.ok().build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-       /* try {
-            courseRepository.delete(title);
+    public Response delete(@PathParam("id") Long id) {
+        try {
+            courseRepository.deleteById(id);
             return Response
                     .noContent()
                     .build();
         } catch (IllegalArgumentException e) {
             return Response
                     .status(400)
-                    .header("Reason", "Course with id" + title + "does not exist")
+                    .header("Reason", "Course with id" + id + "does not exist")
                     .build();
-        }*/
+        }
     }
+
 
     @GET
     @Path("/findByLevel/{levelId}")
