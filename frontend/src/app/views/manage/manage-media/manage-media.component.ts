@@ -4,9 +4,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {BackendService} from '../../../services/backend.service';
 
 @Component({
-  selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss']
+  selector: 'app-manage-media',
+  templateUrl: './manage-media.component.html',
+  styleUrls: ['./manage-media.component.scss']
 })
 export class ManageMediaComponent implements OnInit {
   public readonly baseUrl:string;
