@@ -3,6 +3,7 @@ package at.htl.boundary;
 import at.htl.control.CourseRepository;
 import at.htl.control.LevelRepository;
 import at.htl.control.UsageRepository;
+import at.htl.entity.AccessToken;
 import at.htl.entity.Course;
 import at.htl.entity.D_File;
 import at.htl.entity.Level;
@@ -59,22 +60,34 @@ public class CourseEndpoint {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{title}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response delete(@PathParam("id") Long id) {
-        try {
-            courseRepository.deleteById(id);
+    public Response delete(@PathParam("title") String title) {
+
+        Course course = courseRepository.find("title", title)
+                .stream()
+                .findFirst()
+                .orElse(null);
+
+        if (course != null) {
+            courseRepository.delete("title", course.title);
+            return Response.ok().build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+       /* try {
+            courseRepository.delete(title);
             return Response
                     .noContent()
                     .build();
         } catch (IllegalArgumentException e) {
             return Response
                     .status(400)
-                    .header("Reason", "Course with id" + id + "does not exist")
+                    .header("Reason", "Course with id" + title + "does not exist")
                     .build();
-        }
+        }*/
     }
 
     @GET
