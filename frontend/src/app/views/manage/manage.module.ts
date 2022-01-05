@@ -16,6 +16,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {DetailedAccesstokenComponent} from './manage-accesstoken/detailed-accesstoken/detailed-accesstoken.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {DetailedCourseComponent} from './manage-course/detailed-course/detailed-course.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
     MediaComponent,
     ManageCourseComponent,
     ManageAccesstokenComponent,
-    DetailedAccesstokenComponent
+    DetailedAccesstokenComponent,
+    DetailedCourseComponent
   ],
   imports: [
     CommonModule,
