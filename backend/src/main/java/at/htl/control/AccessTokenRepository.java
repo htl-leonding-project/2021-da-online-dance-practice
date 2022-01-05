@@ -31,6 +31,7 @@ public class AccessTokenRepository implements PanacheRepository<AccessToken> {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -39,6 +40,7 @@ public class AccessTokenRepository implements PanacheRepository<AccessToken> {
         if (accessToken.activationDate != null) {
             return accessToken;
         }
+
         accessToken.activationDate = LocalDate.now();
         return getEntityManager().merge(accessToken);
     }

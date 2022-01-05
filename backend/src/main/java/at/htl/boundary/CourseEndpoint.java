@@ -19,6 +19,8 @@ import java.net.URI;
 import java.util.List;
 
 @RequestScoped
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Path("/course")
 public class CourseEndpoint {
 
@@ -31,7 +33,6 @@ public class CourseEndpoint {
     @Inject
     UsageRepository usageRepository;
 
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
@@ -40,29 +41,25 @@ public class CourseEndpoint {
 
     @POST
     @Path("/create")
-    @Transactional
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response create(String levelId, @Context UriInfo info, String title, String description) {
         Level level = levelRepository.findById(levelId);
         Course course = new Course(title, description, level);
+
         courseRepository.persist(course);
-        return Response.created(URI.create(info.getPath() + "/" + course.id)).build();
+
+        return Response
+                .created(URI.create(info.getPath() + "/" + course.id))
+                .build();
     }
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") long id) {
         return Response.ok(courseRepository.findById(id)).build();
     }
 
     @DELETE
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
+    @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
             courseRepository.deleteById(id);
@@ -71,31 +68,26 @@ public class CourseEndpoint {
                     .build();
         } catch (IllegalArgumentException e) {
             return Response
-                    .status(400)
-                    .header("Reason", "Course with id" + id + "does not exist")
+                    .status(Response.Status.BAD_REQUEST)
+                    .header("Reason", "Course with id " + id + " does not exist")
                     .build();
         }
     }
 
     @GET
     @Path("/findByLevel/{levelId}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response findCourseByLevel(@PathParam("levelId") String levelId) {
-        Level level = new Level(levelId.toUpperCase(),levelId.toUpperCase());
+        Level level = new Level(levelId.toUpperCase(), levelId.toUpperCase());
         return Response.ok().entity(courseRepository.findCourseByLevel(level)).build();
     }
 
 
     @GET
-    @Path("filesByCourse/{courseId}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response findMediaFileByCourse(@PathParam("courseId") String courseId) {
-        List<D_File> files =  usageRepository.findFilesByCourseId(Long.valueOf(courseId));
+    @Path("/filesByCourse/{courseId}")
+    public Response findMediaFileByCourse(@PathParam("courseId") long courseId) {
+        List<D_File> files = usageRepository.findFilesByCourseId(courseId);
         return Response
                 .ok(files)
-                // .entity(files)
                 .build();
     }
 }
