@@ -78,7 +78,7 @@ public class FileEndpoint {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/delete/{id}")
     public Response findById(@PathParam("id") long id) {
         return Response.ok(fileRepository.findById(id)).build();
     }
@@ -87,9 +87,9 @@ public class FileEndpoint {
     @Path("{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
-            fileRepository.delete(fileRepository.findById(id));
+            fileRepository.deleteById(id);
             return Response
-                    .noContent()
+                    .ok()
                     .build();
         } catch (IllegalArgumentException e) {
             return Response
