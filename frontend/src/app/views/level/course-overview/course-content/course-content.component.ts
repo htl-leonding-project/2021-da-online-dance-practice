@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
-import {DFile} from "../../../../models/models";
+import {Course, DFile} from '../../../../models/models';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-course-content',
@@ -12,15 +13,19 @@ export class CourseContentComponent implements OnInit {
   content: DFile[] | null;
   cards: ImyCard[];
   gridColumns = 4;
+  public courseSelected: string | null;
+  public levelSelected: string | null;
 
 
   constructor(private readonly route: ActivatedRoute,
-              private readonly backend: BackendService) {
+              private readonly backend: BackendService, private http: HttpClient) {
     this.content = null;
     this.cards = [{
       title: 'abc',
       text: 'cde'
     }];
+    this.courseSelected = null;
+    this.levelSelected = null;
   }
 
   ngOnInit(): void {
@@ -29,6 +34,19 @@ export class CourseContentComponent implements OnInit {
         console.log(content)
         this.content = content as DFile[];
       })
+    });
+    this.route.paramMap.subscribe(params => {
+      this.courseSelected = params.get("id");
+      const courseId = params.get('courseId');
+      this.backend.get(`course/${courseId}`).then(course => {
+             this.courseSelected = (course as Course).title;
+            console.log(course)
+          }
+        );
+    });
+
+    this.route.paramMap.subscribe(params => {
+      this.levelSelected = params.get("id");
     });
   }
 

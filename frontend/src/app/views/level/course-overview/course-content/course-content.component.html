@@ -11,6 +11,7 @@
 -->
 
 
+
 <mat-toolbar class="toolbar">
   <span>Card view demo</span>
   <div fxHide.lt-md>
@@ -21,6 +22,10 @@
 </mat-toolbar>
 
 <div class="content">
+  <div class="title">
+  <h1>gewähltes Level: {{levelSelected}}</h1>
+  <h1>gewählter Kurs: {{courseSelected}}</h1>
+  </div>
   <div fxLayout="row wrap" fxLayoutGap="100px grid">
     <mat-card *ngFor="let dfile of content" [fxFlex]="(100/(gridColumns+1)) + '%'" fxFlex.sm="33%" fxFlex.xs="100%">
       <div *ngIf="content">
@@ -40,7 +45,6 @@
             <app-video-input *ngIf="dfile.contentType === 'VIDEO'" [video]=dfile></app-video-input>
             {{dfile.description}}
           </mat-card-content>
-
         </div>
       </div>
     </mat-card>

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../services/backend.service";
-import {Course} from "../../../models/models";
+import {Course, Level} from '../../../models/models';
 
 @Component({
   selector: 'app-course-overview',
@@ -11,11 +11,13 @@ import {Course} from "../../../models/models";
 export class CourseOverviewComponent implements OnInit {
   courses: Course[] | null;
   @Input() courseSelected!: string | null;
+  public levelSelected: string | null;
 
 
   constructor(private readonly route: ActivatedRoute,
               private readonly backend: BackendService) {
     this.courses = null;
+    this.levelSelected = null;
   }
 
   ngOnInit(): void {
@@ -24,6 +26,10 @@ export class CourseOverviewComponent implements OnInit {
         this.courses = courses as Course[];
 
       });
+    });
+
+    this.route.paramMap.subscribe(params => {
+      this.levelSelected = params.get("id");
     });
   }
 
