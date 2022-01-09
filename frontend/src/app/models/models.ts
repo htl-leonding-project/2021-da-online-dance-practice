@@ -40,3 +40,9 @@ export interface AccessToken {
   expireDate?: Date,
   isEditable?: boolean
 }
+
+
+export interface Usage {
+  course: Course,
+  file: DFile
+}

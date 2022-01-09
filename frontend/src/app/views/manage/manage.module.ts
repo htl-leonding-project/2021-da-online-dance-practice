@@ -17,6 +17,7 @@ import {DetailedAccesstokenComponent} from './manage-accesstoken/detailed-access
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {DetailedCourseComponent} from './manage-course/detailed-course/detailed-course.component';
+import { DetailedMediaComponent } from './manage-media/detailed-media/detailed-media.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,8 @@ const routes: Routes = [
     ManageCourseComponent,
     ManageAccesstokenComponent,
     DetailedAccesstokenComponent,
-    DetailedCourseComponent
+    DetailedCourseComponent,
+    DetailedMediaComponent
   ],
   imports: [
     CommonModule,

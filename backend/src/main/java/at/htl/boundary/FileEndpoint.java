@@ -30,6 +30,7 @@ public class FileEndpoint {
     HttpHeaders requestHeaders;
 
     @GET
+    @Path("/findall")
     public Response findAll() {
         return Response.ok(fileRepository.listAll()).build();
     }

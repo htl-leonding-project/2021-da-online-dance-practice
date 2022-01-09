@@ -1,7 +1,8 @@
-<div *ngIf="isLoggedInState|async" id="menucontainer">
-  <button mat-button routerLink="/manage">Verwalten</button>
-  <button mat-button routerLink="/level">Dance-Practice</button>
-  <button (click)="logout()" mat-button>Abmelden</button>
+<div *ngIf="isLoggedInState|async" class="menucontainer">
+  <button (click)="logout()" mat-button >Abmelden</button>
+  <button mat-button routerLink="/level" >Dance-Practice</button>
+  <button mat-button routerLink="/manage" >Verwalten</button>
 </div>
+
 
 <router-outlet></router-outlet>
