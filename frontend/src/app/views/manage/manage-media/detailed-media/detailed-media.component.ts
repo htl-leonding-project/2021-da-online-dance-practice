@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AccessToken, Course, Usage} from "../../../../models/models";
-import {BackendService} from "../../../../services/backend.service";
+import {Course, Usage} from "../../../../models/models";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {BackendService} from "../../../../services/backend.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -48,5 +48,6 @@ export class DetailedMediaComponent implements OnInit {
       this.uploadForm.get("file")?.setValue(event.target.files[0]);
     }
   }
+
 
 }
