@@ -42,8 +42,8 @@ export class ManageCourseComponent implements OnInit {
   }
 
   delete(course: Course) {
-    this.backend.delete(`course/${course.title}`).then(() => {
-      this.courses = this.courses!.filter(c => c.title !== course.title);
+    this.backend.delete(`course/${course.id}`).then(() => {
+      this.courses = this.courses!.filter(c => c.id !== course.id);
     })
   }
 
