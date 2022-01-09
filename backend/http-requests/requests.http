@@ -150,7 +150,7 @@ Accept: application/json
 
 #####
 
-DELETE http://localhost:8080/api/course/9
+DELETE http://localhost:8080/api/course/1
 Accept: application/json
 
 #####
