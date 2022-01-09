@@ -1,0 +1,18 @@
+<div *ngIf="usage">
+  <mat-form-field appearance="fill">
+    <mat-select [(value)]="usage.course">
+      <mat-option *ngFor="let course of courses" [value]="course">{{ course.title }}</mat-option>
+    </mat-select>
+    <mat-hint>für welchen kurs gilt dieser Datei</mat-hint>
+  </mat-form-field>
+</div>
+
+
+<div id="form">
+  <form (ngSubmit)="submit()" [formGroup]="uploadForm">
+    <p>
+      Wählen Sie eine Datei aus : <input (change)="onFileSelect($event)" name="file" type="file"/>
+    </p>
+    <button mat-button type="submit">submit</button>
+  </form>
+</div>

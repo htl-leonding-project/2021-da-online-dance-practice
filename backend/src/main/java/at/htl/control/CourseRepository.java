@@ -16,4 +16,6 @@ public class CourseRepository implements PanacheRepository<Course> {
         return find("level", level).list();
     }
 
+
+
 }
