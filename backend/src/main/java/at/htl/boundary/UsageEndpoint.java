@@ -54,7 +54,7 @@ public class UsageEndpoint {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"TEACHER","STUDENT"})
+    @RolesAllowed({"TEACHER", "STUDENT"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(usageRepository.findById(id)).build();
     }

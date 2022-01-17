@@ -2,9 +2,7 @@ package at.htl.boundary;
 
 import at.htl.control.LevelRepository;
 import at.htl.entity.Level;
-import io.quarkus.security.jpa.Roles;
 
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -43,7 +41,7 @@ public class LevelEndpoint {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"STUDENT","TEACHER"})
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findById(@PathParam("id") String id) {
         return Response.ok(levelRepository.findById(id)).build();
     }

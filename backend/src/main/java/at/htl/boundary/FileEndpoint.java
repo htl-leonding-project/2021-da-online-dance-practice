@@ -82,7 +82,7 @@ public class FileEndpoint {
 
     @GET
     @Path("{id}")
-    @RolesAllowed({"STUDENT","TEACHER"})
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(fileRepository.findById(id)).build();
     }

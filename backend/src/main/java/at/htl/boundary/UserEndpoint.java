@@ -79,7 +79,7 @@ public class UserEndpoint {
                     return Response.status(Response.Status.NOT_FOUND).build();
                 }
 
-                if (BcryptUtil.matches(jsonValue.asJsonObject().getString("password"),user.password)) {
+                if (BcryptUtil.matches(jsonValue.asJsonObject().getString("password"), user.password)) {
                     return Response.ok(user).build();
                 }
 
