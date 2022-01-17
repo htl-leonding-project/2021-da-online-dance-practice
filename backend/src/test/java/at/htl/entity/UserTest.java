@@ -18,7 +18,7 @@ class UserTest {
     public void create() {
 
 
-        User user = new User("rosi1234", "Rosalie", "Mandel", "fkjan", Role.TEACHER);
+        User user = new User("rosi1234", "Rosalie", "Mandel", "fkjan", "STUDENT");
         user.persist();
 
     }
