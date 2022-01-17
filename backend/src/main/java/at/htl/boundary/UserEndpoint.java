@@ -2,6 +2,7 @@ package at.htl.boundary;
 
 import at.htl.control.UserRepository;
 import at.htl.entity.User;
+import io.quarkus.elytron.security.common.BcryptUtil;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -78,13 +79,13 @@ public class UserEndpoint {
                     return Response.status(Response.Status.NOT_FOUND).build();
                 }
 
-                if (user.password.equals(jsonValue.asJsonObject().getString("password"))) {
+                if (BcryptUtil.matches(jsonValue.asJsonObject().getString("password"),user.password)) {
                     return Response.ok(user).build();
                 }
 
                 return Response.status(Response.Status.UNAUTHORIZED).build();
             } catch (Exception e) {
-                return Response.status(Response.Status.BAD_REQUEST).build();
+                return Response.status(Response.Status.NOT_MODIFIED).build();
             }
         }
 

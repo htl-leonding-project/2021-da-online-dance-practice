@@ -2,7 +2,10 @@ package at.htl.boundary;
 
 import at.htl.control.LevelRepository;
 import at.htl.entity.Level;
+import io.quarkus.security.jpa.Roles;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -23,6 +26,7 @@ public class LevelEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("TEACHER")
     public Response findAll() {
         return Response.ok(levelRepository.listAll()).build();
     }
@@ -30,6 +34,7 @@ public class LevelEndpoint {
 
     @POST
     @Path("/create")
+    @RolesAllowed("TEACHER")
     public Response create(Level level, @Context UriInfo info) {
         levelRepository.persist(level);
         return Response.created(URI.create(info.getPath() + "/" + level.id)).build();
@@ -38,12 +43,14 @@ public class LevelEndpoint {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"STUDENT","TEACHER"})
     public Response findById(@PathParam("id") String id) {
         return Response.ok(levelRepository.findById(id)).build();
     }
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") String id) {
         try {
             levelRepository.deleteById(id);

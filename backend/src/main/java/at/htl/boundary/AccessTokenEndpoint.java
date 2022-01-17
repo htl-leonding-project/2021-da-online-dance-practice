@@ -3,6 +3,8 @@ package at.htl.boundary;
 import at.htl.control.AccessTokenRepository;
 import at.htl.entity.AccessToken;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
@@ -20,11 +22,13 @@ public class AccessTokenEndpoint {
     AccessTokenRepository repository;
 
     @GET
+    @RolesAllowed("TEACHER")
     public Response getAll() {
         return Response.ok(repository.findAll().list()).build();
     }
 
     @POST
+    @RolesAllowed("TEACHER")
     public Response create(AccessToken accessToken) {
         repository.persist(accessToken);
 
@@ -32,6 +36,7 @@ public class AccessTokenEndpoint {
     }
 
     @PUT
+    @RolesAllowed("TEACHER")
     public Response update(AccessToken token) {
         AccessToken accessToken = repository.find("token", token.token)
                 .stream()
@@ -48,6 +53,7 @@ public class AccessTokenEndpoint {
 
     @DELETE
     @Path("/{token}")
+    @RolesAllowed("TEACHER")
     public Response delete(@PathParam("token") String token) {
         AccessToken accessToken = repository.find("token", token)
                 .stream()
@@ -64,6 +70,7 @@ public class AccessTokenEndpoint {
 
     @POST
     @Path("/validate")
+    @PermitAll
     public Response validate(JsonValue jsonValue) {
         if (jsonValue.getValueType().equals(JsonValue.ValueType.OBJECT)) {
             try {
