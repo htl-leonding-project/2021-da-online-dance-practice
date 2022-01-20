@@ -3,6 +3,7 @@ package at.htl.boundary;
 import at.htl.control.FileRepository;
 import at.htl.entity.D_File;
 import org.apache.commons.io.IOUtils;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
@@ -10,21 +11,26 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Map;
 
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Consumes({"video/mp4",MediaType.APPLICATION_OCTET_STREAM})
 @Path("/file")
-public class FileEndpoint {
 
+public class FileEndpoint {
     @Inject
     FileRepository fileRepository;
+
+    @Inject
+    @ConfigProperty(name = "dancepractice.image.path")
+    String imagePath;
 
     @Context
     HttpHeaders requestHeaders;
@@ -38,7 +44,7 @@ public class FileEndpoint {
     /**
      * https://mkyong.com/webservices/jax-rs/file-upload-example-in-resteasy/
      */
-    @POST
+/*    @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/")
     public Response uploadFile(MultipartFormDataInput input, @Context UriInfo uri) throws IOException {
@@ -75,6 +81,24 @@ public class FileEndpoint {
                     .entity("the file could not be persisted")
                     .build();
         }
+    }*/
+
+
+    @POST
+    @Path("/{imagename}")
+    @Transactional
+    public Response upload2(InputStream inputStream,@PathParam("imagename") String imagename){
+        var fileEntry = fileRepository.createFile(imagename);
+        File file = new File(imagePath,imagename); // suuperVideo.mp4 erstezen durch filename aus db, mit der id imageID
+        try(var os = new FileOutputStream(file)) {
+            inputStream.transferTo(os);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Response.ok().build();
     }
 
     @GET

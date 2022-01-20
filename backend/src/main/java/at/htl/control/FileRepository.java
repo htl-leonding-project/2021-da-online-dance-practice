@@ -15,7 +15,7 @@ import java.io.IOException;
 @Transactional
 public class FileRepository implements PanacheRepository<D_File> {
 
-    private final String TARGET_UPLOAD_FOLDER = "mediafiles/upload/";
+    public final String TARGET_UPLOAD_FOLDER = "mediafiles/upload/";
 
     public String getFileName(MultivaluedMap<String, String> header) {
         String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
@@ -61,6 +61,12 @@ public class FileRepository implements PanacheRepository<D_File> {
         fop.close();
 
         return null;
+    }
+
+    public D_File createFile(String filename){
+        return getEntityManager().merge(
+                new D_File(filename, filename, "", ContentType.VIDEO)
+        );
     }
 
 }

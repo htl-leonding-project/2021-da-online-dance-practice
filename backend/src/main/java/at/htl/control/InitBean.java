@@ -96,7 +96,7 @@ public class InitBean {
         fileRepository.persist(california);
         D_File wonder = new D_File("06_lwonderwhy-03-slow-waltz.wav", "mediafiles/audio", "description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(wonder);
-        D_File promises = new D_File("07-Promises-TanzorchesterKlausHallen-(ChartbreakerVol. 21)-ZL- PP,EN.mp3", "mediafiles/audio", "description", ContentType.valueOf("AUDIO"));
+        D_File promises = new D_File("07-Promises-TanzorchesterKlausHallen-(ChartbreakerVol.21)-ZL-PP,EN.mp3", "mediafiles/audio", "description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(promises);
         D_File fading = new D_File("08-Fading-TanzorchesterKlausHallen-(ChartbreakerVol.21)-ZL-PP,EN.mp3", "mediafiles/audio", "description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(california);
@@ -152,16 +152,16 @@ public class InitBean {
         D_File file05 = new D_File("File05", "/gfh", "description", ContentType.valueOf("AUDIO"));
         fileRepository.persist(file05);
 
-        D_File salsa = new D_File("SalsaChrisFigurdesMonats.mp4", "mediafiles/video", "description", ContentType.valueOf("VIDEO"));
-        fileRepository.persist(salsa);
+        //D_File salsa = new D_File("SalsaChrisFigurdesMonats.mp4", "mediafiles/video", "description", ContentType.valueOf("VIDEO"));
+        //fileRepository.persist(salsa);
         D_File wienerwalz = new D_File("WienerWalzer.mov", "mediafiles/video", "description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(wienerwalz);
         D_File hiphop = new D_File("HipHopBartSimpson.mov", "mediafiles/video", "description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(hiphop);
 
         //Usage
-        Usage usage01 = new Usage(discofox, salsa);
-        usageRepository.persist(usage01);
+       // Usage usage01 = new Usage(discofox, salsa);
+        //usageRepository.persist(usage01);
         Usage usage02 = new Usage(westcoastswing, sed);
         usageRepository.persist(usage02);
         Usage usage03 = new Usage(tanzclubs, mama);
