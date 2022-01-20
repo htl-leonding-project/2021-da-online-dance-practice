@@ -1,21 +1,28 @@
 import {Injectable} from '@angular/core';
-import {BackendService} from "./backend.service";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, firstValueFrom, Observable} from "rxjs";
 import {User} from "../models/models";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private readonly baseUrl: string;
   public user: User | null;
   private readonly isLoggedInSubject: BehaviorSubject<boolean>;
 
-  constructor(private readonly backend: BackendService, private readonly router: Router) {
+  constructor(private readonly router: Router,
+              private readonly http: HttpClient) {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(false);
     this.user = null;
+    this._password = null;
+    this.baseUrl = environment.baseUrl
   }
+
+  private _password: string | null;
 
   public get loggedInState(): boolean {
     return this.isLoggedInSubject.value;
@@ -29,8 +36,13 @@ export class AuthService {
     return this.isLoggedInSubject;
   }
 
+  public get password(): string | null {
+    return this._password;
+  }
+
   public authenticate(username: string, password: string): Promise<Object> {
-    return this.backend.post('user/authenticate', {username, password});
+    this._password = password;
+    return firstValueFrom(this.http.post(`${this.baseUrl}/user/authenticate`, {username, password}));
   }
 
   public setUser(user: User | null) {

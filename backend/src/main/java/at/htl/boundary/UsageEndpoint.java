@@ -7,6 +7,7 @@ import at.htl.entity.Course;
 import at.htl.entity.D_File;
 import at.htl.entity.Usage;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -33,12 +34,14 @@ public class UsageEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("TEACHER")
     public Response findAll() {
         return Response.ok(usageRepository.listAll()).build();
     }
 
     @POST
     @Path("/create/{courseId}/{fileId}")
+    @RolesAllowed("TEACHER")
     public Response create(@PathParam("courseId") long courseId, @PathParam("fileId") long fileId, @Context UriInfo info) {
         Course course = courseRepository.findById(courseId);
         D_File file = fileRepository.findById(fileId);
@@ -51,12 +54,14 @@ public class UsageEndpoint {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"TEACHER", "STUDENT"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(usageRepository.findById(id)).build();
     }
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") Long id) {
         try {
             usageRepository.deleteById(id);

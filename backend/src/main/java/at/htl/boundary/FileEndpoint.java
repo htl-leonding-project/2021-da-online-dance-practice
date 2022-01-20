@@ -7,6 +7,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -37,6 +38,7 @@ public class FileEndpoint {
 
     @GET
     @Path("/findall")
+    @RolesAllowed("TEACHER")
     public Response findAll() {
         return Response.ok(fileRepository.listAll()).build();
     }
@@ -47,6 +49,7 @@ public class FileEndpoint {
 /*    @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/")
+    @RolesAllowed("TEACHER")
     public Response uploadFile(MultipartFormDataInput input, @Context UriInfo uri) throws IOException {
         String fileName;
         D_File file = null;
@@ -102,13 +105,15 @@ public class FileEndpoint {
     }
 
     @GET
-    @Path("/delete/{id}")
+    @Path("{id}")
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(fileRepository.findById(id)).build();
     }
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") Long id) {
         try {
             fileRepository.deleteById(id);

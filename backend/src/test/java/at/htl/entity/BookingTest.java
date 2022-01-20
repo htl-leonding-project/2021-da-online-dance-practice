@@ -20,7 +20,7 @@ class BookingTest {
     public void create() {
 
 
-        User samuel = new User("samu123", "Samuel", "Haus", "ksnlf", Role.TEACHER);
+        User samuel = new User("samu123", "Samuel", "Haus", "ksnlf", "STUDENT");
         samuel.persist();
 
         Level level = new Level("Gold","1. Level");

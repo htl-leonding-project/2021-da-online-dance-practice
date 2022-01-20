@@ -3,11 +3,11 @@ package at.htl.boundary;
 import at.htl.control.CourseRepository;
 import at.htl.control.LevelRepository;
 import at.htl.control.UsageRepository;
-import at.htl.entity.AccessToken;
 import at.htl.entity.Course;
 import at.htl.entity.D_File;
 import at.htl.entity.Level;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -35,12 +35,14 @@ public class CourseEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findAll() {
         return Response.ok(courseRepository.listAll()).build();
     }
 
     @POST
     @Path("/create")
+    @RolesAllowed("TEACHER")
     public Response create(String levelId, @Context UriInfo info, String title, String description) {
         Level level = levelRepository.findById(levelId);
         Course course = new Course(title, description, level);
@@ -54,6 +56,7 @@ public class CourseEndpoint {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(courseRepository.findById(id)).build();
     }
@@ -91,6 +94,7 @@ public class CourseEndpoint {
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") Long id) {
         try {
             courseRepository.deleteById(id);
@@ -108,6 +112,7 @@ public class CourseEndpoint {
 
     @GET
     @Path("/findByLevel/{levelId}")
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findCourseByLevel(@PathParam("levelId") String levelId) {
         Level level = new Level(levelId.toUpperCase(), levelId.toUpperCase());
         return Response.ok().entity(courseRepository.findCourseByLevel(level)).build();
@@ -116,6 +121,7 @@ public class CourseEndpoint {
 
     @GET
     @Path("/filesByCourse/{courseId}")
+    @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findMediaFileByCourse(@PathParam("courseId") long courseId) {
         List<D_File> files = usageRepository.findFilesByCourseId(courseId);
         return Response
