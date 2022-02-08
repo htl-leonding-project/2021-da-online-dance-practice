@@ -13,6 +13,7 @@ export class AuthService {
   private readonly baseUrl: string;
   public user: User | null;
   private readonly isLoggedInSubject: BehaviorSubject<boolean>;
+  private token: string | null;
 
   constructor(private readonly router: Router,
               private readonly http: HttpClient) {
@@ -20,6 +21,7 @@ export class AuthService {
     this.user = null;
     this._password = null;
     this.baseUrl = environment.baseUrl
+    this.token = null;
   }
 
   private _password: string | null;
@@ -54,4 +56,13 @@ export class AuthService {
     this.user = null;
     this.router.navigateByUrl('/signin')
   }
+
+  public getToken(): string | null {
+    return this.token;
+  }
+
+  public setToken(token: string): void {
+    this.token = token;
+  }
+
 }

@@ -203,6 +203,7 @@ GET http://localhost:8080/dummy
 ###
 
 POST  http://localhost:8080/api/accessToken
+Authorization: Basic RosalieMandel14:$2a$10$iESvXX2nMlj.6fOyj0Zs0eDeX4MQAxd9LpXPikp3OXx8yYfz9qit.
 Content-Type: application/json
 
 {
@@ -223,7 +224,7 @@ POST  http://localhost:8080/api/accessToken/validate
 Content-Type: application/json
 
 {
-  "token": "LXFlh"
+  "token": "nVhMT"
 }
 
 

@@ -23,6 +23,14 @@
             type="button"
             (click)="signIn()"
             [disabled]="usernameControl.hasError('required')
-            || passwordControl.hasError('required')">Anmelden</button>
+            || passwordControl.hasError('required')">Anmelden
+    </button>
+  </div>
+  <div class="button-wrapper">
+    <button (click)="signInWithAccessToken()"
+            color="primary"
+            mat-raised-button
+            type="button">Anmelden mit Zugangscode
+    </button>
   </div>
 </form>

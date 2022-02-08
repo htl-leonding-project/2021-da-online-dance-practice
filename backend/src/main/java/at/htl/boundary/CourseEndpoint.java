@@ -1,12 +1,16 @@
 package at.htl.boundary;
 
+import at.htl.control.AccessTokenRepository;
 import at.htl.control.CourseRepository;
 import at.htl.control.LevelRepository;
 import at.htl.control.UsageRepository;
+import at.htl.entity.AccessToken;
 import at.htl.entity.Course;
 import at.htl.entity.D_File;
 import at.htl.entity.Level;
+import org.jboss.logging.Logger;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -32,6 +36,12 @@ public class CourseEndpoint {
 
     @Inject
     UsageRepository usageRepository;
+
+    @Inject
+    AccessTokenRepository accessTokenRepository;
+
+    @Inject
+    Logger logger;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -120,7 +130,7 @@ public class CourseEndpoint {
 
 
     @GET
-    @Path("/filesByCourse/{courseId}")
+    @Path("/filesByCourse/{courseId}/user")
     @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findMediaFileByCourse(@PathParam("courseId") long courseId) {
         List<D_File> files = usageRepository.findFilesByCourseId(courseId);
@@ -129,7 +139,32 @@ public class CourseEndpoint {
                 .build();
     }
 
+    @GET
+    @Path("/filesByCourse/{courseId}/token")
+    @PermitAll
+    public Response findMediaFileByCourseWithToken(@PathParam("courseId") long courseId, @HeaderParam("X-Token") String token) {
+        AccessToken accessToken = accessTokenRepository.find("token", token)
+                .stream()
+                .findFirst()
+                .orElse(null);
 
+        logger.info(token);
+        if (accessToken != null) {
+            accessToken = accessTokenRepository.activateToken(accessToken);
+
+
+            if (accessTokenRepository.validate(accessToken) && accessToken.course.id == courseId) {
+                List<D_File> files = usageRepository.findFilesByCourseId(courseId);
+                return Response
+                        .ok(files)
+                        .build();
+            }
+        }
+
+        return Response
+                .status(Response.Status.UNAUTHORIZED)
+                .build();
+    }
 
 
 }
