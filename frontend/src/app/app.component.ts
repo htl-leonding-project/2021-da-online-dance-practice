@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {ActivatedRoute, Router, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
-import {User} from "./models/models";
+import {User, UserCredential} from "./models/models";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +22,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const credentials: UserCredential = JSON.parse(sessionStorage.getItem('user') || 'null') as UserCredential;
+    if (credentials) {
+      this.auth.authenticate(credentials.username, credentials.password).then(value => {
+        this.auth.loggedInState = true;
+        this.auth.setUser(value as User);
+      })
+    }
     this.auth.loggedInStateAsObservable.subscribe(state => {
       let redirectUrl: string | UrlTree = '/level';
 
