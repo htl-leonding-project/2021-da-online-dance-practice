@@ -3,6 +3,7 @@ import {Course, Usage} from "../../../../models/models";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BackendService} from "../../../../services/backend.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-detailed-media',
@@ -19,7 +20,8 @@ export class DetailedMediaComponent implements OnInit {
   constructor(private readonly backend: BackendService,
               private formBuilder: FormBuilder,
               private readonly dialogRef: MatDialogRef<DetailedMediaComponent>,
-              @Inject(MAT_DIALOG_DATA) private readonly data: Usage ) {
+              @Inject(MAT_DIALOG_DATA) private readonly data: Usage,
+              private _snackBar: MatSnackBar) {
     this.usage = data || {};
     this.courses = null;
     this.uploadForm = this.formBuilder.group({
@@ -36,26 +38,12 @@ export class DetailedMediaComponent implements OnInit {
     });
   }
 
-  //ausgewählter kurs soll auch noch ans backend geschickt werden mit dem hochgeladenen file
-  //alter upload
-/*  submit() {
-    const formData = new FormData();
-    formData.append("file", this.uploadForm.get("file")?.value);
-    this.backend.post("file", formData).then(console.log);
-    alert("file is uploaded")
-
-    this.dialogRef.close(this.usage);
-  }*/
-
   async submit() {
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("file")?.value);
-   // let fileToBlob = async (file:any) => new Blob([new Uint8Array(await file.arrayBuffer())], {type: file.type });
 
     if(this.uploadForm.get("file")){
-      //const imagename = (this.uploadForm.get("file")!.value as HTMLInputElement).files[0].name;
       const imagename = this.uploadForm.get("file")?.value.name
-      console.log("imagename "+JSON.stringify(imagename));
 
       let file = this.uploadForm.get("file")?.value;
 
@@ -64,16 +52,20 @@ export class DetailedMediaComponent implements OnInit {
         alert("file to big")
       }
 
-      console.log("File: ",file)
-
       const blobToUpload = await this.fileToBlob(file);
-      console.log("file "+JSON.stringify(blobToUpload));
-      console.log("blobToUpload", blobToUpload)
-      await this.backend.postFile('', blobToUpload, imagename,this.selectedCourse!,this.uploadForm.get("description")?.value);
-
-      //this.backend.postFile('', fileToBlob(this.uploadForm.get("file")?.value), imagename).then(console.log);
+      this.backend.postFile('', blobToUpload, imagename,this.selectedCourse!,this.uploadForm.get("description")?.value).then(() => {
+        this.openSnackBar("Datei hochladen war erfolgreich!")
+        this.close()
+      })
     }
-    //this.dialogRef.close(this.usage);
+  }
+
+  close(): void{
+    this.dialogRef.close();
+  }
+
+  openSnackBar(message: string):void {
+    this._snackBar.open(message,"",{duration: 2500});
   }
 
 ///
