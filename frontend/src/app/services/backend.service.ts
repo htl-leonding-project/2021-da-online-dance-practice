@@ -15,27 +15,21 @@ export class BackendService {
   }
 
 
-  public post(route: string, body: any): Promise<Object> {
-    return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body, {
-      headers: {
-        Authorization: this.getAuthContent()
-      }
+  public post<T>(route: string, body: any): Promise<T> {
+    return firstValueFrom(this.http.post<T>(`${this.baseUrl}/${route}`, body, {
+      headers: this.buildHeader()
     }));
   }
 
   public put(route: string, body: any): Promise<Object> {
     return firstValueFrom(this.http.put(`${this.baseUrl}/${route}`, body, {
-      headers: {
-        Authorization: this.getAuthContent()
-      }
+      headers: this.buildHeader()
     }));
   }
 
   public get(route: string): Promise<Object> {
     return firstValueFrom(this.http.get(`${this.baseUrl}/${route}`, {
-      headers: {
-        Authorization: this.getAuthContent()
-      }
+      headers: this.buildHeader()
     }));
   }
 
@@ -50,10 +44,22 @@ export class BackendService {
 
   public delete(route: string): Promise<Object> {
     return firstValueFrom(this.http.delete(`${this.baseUrl}/${route}`, {
-      headers: {
-        Authorization: this.getAuthContent()
-      }
+      headers: this.buildHeader()
     }));
+  }
+
+  private buildHeader(): any {
+    if (this.auth.getToken()) {
+      return {
+        'X-Token': this.auth.getToken()
+      }
+    } else if (this.auth.user) {
+      return {
+        Authorization: this.getAuthContent()
+      };
+    } else {
+      return {};
+    }
   }
 
   private getAuthContent() {
