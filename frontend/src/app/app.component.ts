@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {ActivatedRoute, Router, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
+import {User, UserCredential} from "./models/models";
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,23 @@ import {Observable} from "rxjs";
 export class AppComponent implements OnInit {
   title = 'frontend';
   isLoggedInState: Observable<boolean>;
+  user: User | null;
 
   constructor(private readonly auth: AuthService,
               private readonly router: Router,
               private readonly route: ActivatedRoute) {
     this.isLoggedInState = this.auth.loggedInStateAsObservable;
+    this.user = null;
   }
 
   ngOnInit(): void {
+    const credentials: UserCredential = JSON.parse(sessionStorage.getItem('user') || 'null') as UserCredential;
+    if (credentials) {
+      this.auth.authenticate(credentials.username, credentials.password).then(value => {
+        this.auth.loggedInState = true;
+        this.auth.setUser(value as User);
+      })
+    }
     this.auth.loggedInStateAsObservable.subscribe(state => {
       let redirectUrl: string | UrlTree = '/level';
 
@@ -50,6 +60,11 @@ export class AppComponent implements OnInit {
           console.error(err);
         });
     });
+
+
+    this.auth.userObservable.subscribe(user => {
+      this.user = user
+    })
   }
 
   logout() {

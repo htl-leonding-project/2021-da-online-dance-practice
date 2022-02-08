@@ -24,7 +24,7 @@ public class LevelEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("TEACHER")
+    @RolesAllowed({"TEACHER","STUDENT"})
     public Response findAll() {
         return Response.ok(levelRepository.listAll()).build();
     }

@@ -1,10 +1,8 @@
-export interface User {
+export interface User extends UserCredential {
   firstname: string,
   id: number,
   lastname: string,
-  password: string,
   role: Role,
-  username: string
 }
 
 export enum Role {
@@ -52,4 +50,9 @@ export interface AccessTokenResponse {
 export interface Usage {
   course: Course,
   file: DFile
+}
+
+export interface UserCredential {
+  username: string,
+  password: string
 }
