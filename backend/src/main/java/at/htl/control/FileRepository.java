@@ -15,7 +15,7 @@ import java.io.IOException;
 @Transactional
 public class FileRepository implements PanacheRepository<D_File> {
 
-    public final String TARGET_UPLOAD_FOLDER = "mediafiles/upload/";
+    public final String TARGET_UPLOAD_FOLDER = "Downloads/";
 
     public String getFileName(MultivaluedMap<String, String> header) {
         String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
@@ -31,8 +31,14 @@ public class FileRepository implements PanacheRepository<D_File> {
         return "unknown";
     }
 
+    public File imageHome(){
+        var home = System.getProperty("user.home");
+        var homeFolder = new File(home);
+        return homeFolder;
+    }
+
     public D_File writeFile(byte[] content, String fileName) throws IOException {
-        File outputDir = new File(TARGET_UPLOAD_FOLDER);
+        File outputDir = new File(imageHome(),TARGET_UPLOAD_FOLDER);
         File file = new File(TARGET_UPLOAD_FOLDER + fileName);
 
         if (!outputDir.exists()) {

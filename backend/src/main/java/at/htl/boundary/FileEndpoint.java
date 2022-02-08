@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.transaction.Transactional;
+import javax.transaction.UserTransaction;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.*;
@@ -29,12 +30,11 @@ public class FileEndpoint {
     @Inject
     FileRepository fileRepository;
 
-    @Inject
-    @ConfigProperty(name = "dancepractice.image.path")
-    String imagePath;
-
     @Context
     HttpHeaders requestHeaders;
+
+    @Inject
+    UserTransaction transaction;
 
     @GET
     @Path("/findall")
@@ -92,7 +92,7 @@ public class FileEndpoint {
     @Transactional
     public Response upload2(InputStream inputStream,@PathParam("imagename") String imagename){
         var fileEntry = fileRepository.createFile(imagename);
-        File file = new File(imagePath,imagename); // suuperVideo.mp4 erstezen durch filename aus db, mit der id imageID
+        File file = new File(fileRepository.imageHome()+"/"+fileRepository.TARGET_UPLOAD_FOLDER,imagename); // suuperVideo.mp4 erstezen durch filename aus db, mit der id imageID
         try(var os = new FileOutputStream(file)) {
             inputStream.transferTo(os);
 
