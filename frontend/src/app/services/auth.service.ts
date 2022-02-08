@@ -43,9 +43,9 @@ export class AuthService {
     return this._password;
   }
 
-  public authenticate(username: string, password: string): Promise<Object> {
+  public authenticate(username: string, password: string): Promise<User> {
     this._password = password;
-    return firstValueFrom(this.http.post(`${this.baseUrl}/user/authenticate`, {username, password}));
+    return firstValueFrom(this.http.post<User>(`${this.baseUrl}/user/authenticate`, {username, password}));
   }
 
   public get userObservable(): Observable<User | null> {
@@ -64,6 +64,7 @@ export class AuthService {
     this.isLoggedInSubject.next(false);
     this.userSubject.next(null);
     this.router.navigateByUrl('/signin')
+    sessionStorage.removeItem('user');
   }
 
   public getToken(): string | null {
