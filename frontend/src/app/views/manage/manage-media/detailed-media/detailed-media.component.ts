@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Course, Usage} from "../../../../models/models";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BackendService} from "../../../../services/backend.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
@@ -13,6 +13,7 @@ export class DetailedMediaComponent implements OnInit {
   usage : Usage | null;
   courses : Course [] |null;
   uploadForm: FormGroup;
+  selectedCourse: Course | null;
 
 
   constructor(private readonly backend: BackendService,
@@ -22,14 +23,16 @@ export class DetailedMediaComponent implements OnInit {
     this.usage = data || {};
     this.courses = null;
     this.uploadForm = this.formBuilder.group({
-      file: ['']
+      file: [''],
+      description: ['',Validators.required]
     })
+    this.selectedCourse = null;
   }
 
   ngOnInit(): void {
     this.backend.get('course').then(value => {
       this.courses = value as Course[];
-
+      this.selectedCourse = this.courses[0];
     });
   }
 
@@ -55,6 +58,11 @@ export class DetailedMediaComponent implements OnInit {
       console.log("imagename "+JSON.stringify(imagename));
 
       let file = this.uploadForm.get("file")?.value;
+
+      //überprüfen ob file zu groß
+      if(file.size > 1024000000){
+        alert("file to big")
+      }
 
       console.log("File: ",file)
 
