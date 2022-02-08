@@ -10,24 +10,14 @@
 </mat-list>
 -->
 
-
-
-<mat-toolbar class="toolbar">
-  <span>Card view demo</span>
-  <div fxHide.lt-md>
-    <span class="column-label">Columns</span>
-    <mat-slider [(ngModel)]="gridColumns" [max]="4" [min]="3" [thumbLabel]="true">
-    </mat-slider>
-  </div>
-</mat-toolbar>
-
 <div class="content">
   <div class="title">
   <h1>gewähltes Level: {{levelSelected}}</h1>
   <h1>gewählter Kurs: {{courseSelected}}</h1>
   </div>
-  <div fxLayout="row wrap" fxLayoutGap="100px grid">
-    <mat-card *ngFor="let dfile of content" [fxFlex]="(100/(gridColumns+1)) + '%'" fxFlex.sm="33%" fxFlex.xs="100%">
+
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <mat-card *ngFor="let dfile of content">
       <div *ngIf="content">
         <div *ngFor="let num of [content.length]">
           <mat-card-header *ngFor="let card of cards">
@@ -43,7 +33,10 @@
           <mat-card-content>
             <app-audio-input *ngIf="dfile.contentType === 'AUDIO'" [audio]=dfile></app-audio-input>
             <app-video-input *ngIf="dfile.contentType === 'VIDEO'" [video]=dfile></app-video-input>
-            {{dfile.description}}
+            <br>
+            <div id="desc">
+              {{dfile.description}}
+            </div>
           </mat-card-content>
         </div>
       </div>
