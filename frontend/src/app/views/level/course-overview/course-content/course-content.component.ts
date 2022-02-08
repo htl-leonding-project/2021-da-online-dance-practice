@@ -31,7 +31,7 @@ export class CourseContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(value => {
-      let path = '';
+      let path;
       if (this.auth.user) {
         path = `course/filesByCourse/${value["courseId"]}/user`
       } else {
