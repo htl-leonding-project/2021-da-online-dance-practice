@@ -69,7 +69,7 @@ export class DetailedMediaComponent implements OnInit {
       const blobToUpload = await this.fileToBlob(file);
       console.log("file "+JSON.stringify(blobToUpload));
       console.log("blobToUpload", blobToUpload)
-      await this.backend.postFile('', blobToUpload, imagename);
+      await this.backend.postFile('', blobToUpload, imagename,this.selectedCourse!,this.uploadForm.get("description")?.value);
 
       //this.backend.postFile('', fileToBlob(this.uploadForm.get("file")?.value), imagename).then(console.log);
     }

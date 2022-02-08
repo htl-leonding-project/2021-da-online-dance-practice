@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {firstValueFrom} from "rxjs";
 import {AuthService} from "./auth.service";
+import {Course} from "../models/models";
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,8 @@ export class BackendService {
     }));
   }
 
-  public postFile(route: string, body: Blob, imagename:string): Promise<Object> {
-    let resp = this.http.post(`${this.baseUrl}/file/${imagename}`, body, {
+  public postFile(route: string, body: Blob, imagename:string, course:Course, description:string): Promise<Object> {
+    let resp = this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}`, body, {
       // headers: {
       //   'Content-Type': 'multipart/form-data',
       //   Authorization: this.getAuthContent()
