@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatButtonModule} from "@angular/material/button";
     ReactiveFormsModule,
     MatToolbarModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
