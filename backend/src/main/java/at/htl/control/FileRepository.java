@@ -71,8 +71,17 @@ public class FileRepository implements PanacheRepository<D_File> {
     }
 
     public D_File createFile(String filename, String path ,String description){
+
+       String[] filenameParts = filename.split("\\.");
+        ContentType contentType = null;
+
+        if (filenameParts[1].equals("mp4") || filenameParts[1].equals("mov")) {
+            contentType = ContentType.VIDEO;
+        } else if (filenameParts[1].equals("mp3")) {
+            contentType = ContentType.AUDIO;
+        }
         return getEntityManager().merge(
-                new D_File(filename, path, description, ContentType.VIDEO)
+                new D_File(filename, path, description, contentType)
         );
     }
 
