@@ -12,10 +12,8 @@ import {AuthService} from "../../../../services/auth.service";
 export class CourseContentComponent implements OnInit {
   content: DFile[] | null;
   cards: ImyCard[];
-  gridColumns = 4;
   public courseSelected: string | null;
   public levelSelected: string | null;
-
 
   constructor(private readonly route: ActivatedRoute,
               private readonly backend: BackendService,
@@ -57,9 +55,6 @@ export class CourseContentComponent implements OnInit {
     });
   }
 
-  toggleGridColumns(): any {
-    this.gridColumns = this.gridColumns === 4 ? 5 : 4;
-  }
 }
 
 export interface ImyCard {
