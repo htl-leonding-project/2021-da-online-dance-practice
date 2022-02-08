@@ -37,6 +37,7 @@ export class SigninComponent implements OnInit {
       console.log(value);
       this.auth.loggedInState = true;
       this.auth.setUser(value as User);
+      sessionStorage.setItem('user', JSON.stringify({username: value.username, password: this.auth.password}));
     }).catch((error: HttpErrorResponse) => {
       if (error.status === 404) {
         this.responseMessage = 'Der User existiert nicht';
