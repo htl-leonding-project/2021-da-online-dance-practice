@@ -11,7 +11,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
-    MatDialogModule
-    MatButtonModule,
+    MatDialogModule,
     MatSnackBarModule
   ],
   providers: [],
