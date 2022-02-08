@@ -17,6 +17,7 @@ export class DetailedMediaComponent implements OnInit {
   selectedCourse: Course | null;
 
 
+
   constructor(private readonly backend: BackendService,
               private formBuilder: FormBuilder,
               private readonly dialogRef: MatDialogRef<DetailedMediaComponent>,
