@@ -42,6 +42,13 @@ export interface AccessToken {
 }
 
 
+export interface AccessTokenResponse {
+  token: string,
+  courseId: number,
+  levelId: string,
+  isValid: boolean
+}
+
 export interface Usage {
   course: Course,
   file: DFile
