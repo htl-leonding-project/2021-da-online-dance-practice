@@ -41,14 +41,9 @@ export class BackendService {
   }
 
   public postFile(route: string, body: Blob, imagename:string, course:Course, description:string): Promise<Object> {
-    let resp = this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}`, body, {
-      // headers: {
-      //   'Content-Type': 'multipart/form-data',
-      //   Authorization: this.getAuthContent()
-      // }
-    });
-    console.log("Open resp is: ",resp);
-    return firstValueFrom(resp);
+    return firstValueFrom(
+      this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}`, body)
+    );
   }
 
   public delete(route: string): Promise<Object> {
