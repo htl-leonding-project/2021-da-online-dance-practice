@@ -29,6 +29,9 @@ public class InitBean {
     @Inject
     UsageRepository usageRepository;
 
+    @Inject
+    AccessTokenRepository accessTokenRepository;
+
     void onStart(@Observes StartupEvent event) {
         initDb();
     }
@@ -190,5 +193,9 @@ public class InitBean {
         usageRepository.persist(usage14);
         Usage usage15 = new Usage(pirvatstunden, tango);
         usageRepository.persist(usage15);
+
+
+        AccessToken accessToken = new AccessToken(discofox);
+        accessTokenRepository.persist(accessToken);
     }
 }
