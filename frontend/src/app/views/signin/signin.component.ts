@@ -3,6 +3,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from "../../services/auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {User} from "../../models/models";
+import {MatDialog} from "@angular/material/dialog";
+import {AccesstokenPopupComponent} from "./accesstoken-popup/accesstoken-popup.component";
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +17,7 @@ export class SigninComponent implements OnInit {
   public readonly passwordControl: FormControl;
   public responseMessage: string | null;
 
-  constructor(private readonly auth: AuthService) {
+  constructor(private readonly auth: AuthService, private readonly dialog: MatDialog) {
     this.responseMessage = null;
     this.usernameControl = new FormControl('', [
       Validators.required
@@ -45,5 +47,9 @@ export class SigninComponent implements OnInit {
       }
       console.log(error)
     })
+  }
+
+  signInWithAccessToken(): void {
+    this.dialog.open(AccesstokenPopupComponent);
   }
 }

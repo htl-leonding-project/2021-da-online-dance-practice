@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { AccesstokenPopupComponent } from './accesstoken-popup/accesstoken-popup.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SigninComponent
+    SigninComponent,
+    AccesstokenPopupComponent
   ],
   imports: [
     CommonModule,
