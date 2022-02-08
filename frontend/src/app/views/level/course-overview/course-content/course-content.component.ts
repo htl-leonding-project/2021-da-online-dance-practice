@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Course, DFile} from '../../../../models/models';
 import {HttpClient} from '@angular/common/http';
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'app-course-content',
@@ -18,7 +19,8 @@ export class CourseContentComponent implements OnInit {
 
 
   constructor(private readonly route: ActivatedRoute,
-              private readonly backend: BackendService, private http: HttpClient) {
+              private readonly backend: BackendService,
+              private readonly auth: AuthService) {
     this.content = null;
     this.cards = [{
       title: 'abc',
@@ -30,7 +32,13 @@ export class CourseContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(value => {
-      this.backend.get(`course/filesByCourse/${value["courseId"]}`).then(content => {
+      let path = '';
+      if(this.auth.user){
+        path = `course/filesByCourse/${value["courseId"]}/user`
+      }else {
+        path = `course/filesByCourse/${value["courseId"]}/token`
+      }
+      this.backend.get(path).then(content => {
         console.log(content)
         this.content = content as DFile[];
       })
