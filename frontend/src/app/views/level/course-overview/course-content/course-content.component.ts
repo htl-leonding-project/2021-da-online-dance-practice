@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Course, DFile} from '../../../../models/models';
-import {HttpClient} from '@angular/common/http';
 import {AuthService} from "../../../../services/auth.service";
 
 @Component({
@@ -33,9 +32,9 @@ export class CourseContentComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(value => {
       let path = '';
-      if(this.auth.user){
+      if (this.auth.user) {
         path = `course/filesByCourse/${value["courseId"]}/user`
-      }else {
+      } else {
         path = `course/filesByCourse/${value["courseId"]}/token`
       }
       this.backend.get(path).then(content => {
