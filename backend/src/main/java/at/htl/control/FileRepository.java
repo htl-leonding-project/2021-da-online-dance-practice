@@ -37,6 +37,7 @@ public class FileRepository implements PanacheRepository<D_File> {
         return homeFolder;
     }
 
+    //old upload
     public D_File writeFile(byte[] content, String fileName) throws IOException {
         File outputDir = new File(imageHome(),TARGET_UPLOAD_FOLDER);
         File file = new File(TARGET_UPLOAD_FOLDER + fileName);
@@ -69,9 +70,9 @@ public class FileRepository implements PanacheRepository<D_File> {
         return null;
     }
 
-    public D_File createFile(String filename){
+    public D_File createFile(String filename, String path ,String description){
         return getEntityManager().merge(
-                new D_File(filename, filename, "", ContentType.VIDEO)
+                new D_File(filename, path, description, ContentType.VIDEO)
         );
     }
 
