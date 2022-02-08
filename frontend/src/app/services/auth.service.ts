@@ -11,17 +11,18 @@ import {environment} from "../../environments/environment";
 export class AuthService {
 
   private readonly baseUrl: string;
-  public user: User | null;
   private readonly isLoggedInSubject: BehaviorSubject<boolean>;
+  private readonly userSubject: BehaviorSubject<User | null>;
   private token: string | null;
+
 
   constructor(private readonly router: Router,
               private readonly http: HttpClient) {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(false);
-    this.user = null;
     this._password = null;
     this.baseUrl = environment.baseUrl
     this.token = null;
+    this.userSubject = new BehaviorSubject<User | null>(null);
   }
 
   private _password: string | null;
@@ -47,13 +48,21 @@ export class AuthService {
     return firstValueFrom(this.http.post(`${this.baseUrl}/user/authenticate`, {username, password}));
   }
 
+  public get userObservable(): Observable<User | null> {
+    return this.userSubject;
+  }
+
+  public get user(): User | null {
+    return this.userSubject.value;
+  }
+
   public setUser(user: User | null) {
-    this.user = user;
+    this.userSubject.next(user);
   }
 
   public signOut(): void {
     this.isLoggedInSubject.next(false);
-    this.user = null;
+    this.userSubject.next(null);
     this.router.navigateByUrl('/signin')
   }
 
