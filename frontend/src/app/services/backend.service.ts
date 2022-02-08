@@ -39,13 +39,15 @@ export class BackendService {
     }));
   }
 
-  public postFile(route: string, body: any): Promise<Object> {
-    return firstValueFrom(this.http.post(`${this.baseUrl}/${route}`, body, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: this.getAuthContent()
-      }
-    }))
+  public postFile(route: string, body: Blob, imagename:string): Promise<Object> {
+    let resp = this.http.post(`${this.baseUrl}/file/${imagename}`, body, {
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      //   Authorization: this.getAuthContent()
+      // }
+    });
+    console.log("Open resp is: ",resp);
+    return firstValueFrom(resp);
   }
 
   public delete(route: string): Promise<Object> {
