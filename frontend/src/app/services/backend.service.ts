@@ -22,26 +22,26 @@ export class BackendService {
     }));
   }
 
-  public put(route: string, body: any): Promise<Object> {
-    return firstValueFrom(this.http.put(`${this.baseUrl}/${route}`, body, {
+  public put<T>(route: string, body: any): Promise<T> {
+    return firstValueFrom(this.http.put<T>(`${this.baseUrl}/${route}`, body, {
       headers: this.buildHeader()
     }));
   }
 
-  public get(route: string): Promise<Object> {
-    return firstValueFrom(this.http.get(`${this.baseUrl}/${route}`, {
+  public get<T>(route: string): Promise<T> {
+    return firstValueFrom(this.http.get<T>(`${this.baseUrl}/${route}`, {
       headers: this.buildHeader()
     }));
   }
 
-  public postFile(route: string, body: Blob, imagename:string, course:Course, description:string): Promise<Object> {
+  public postFile(route: string, body: Blob, imagename: string, course: Course, name: string, description: string): Promise<Object> {
     return firstValueFrom(
-      this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}`, body)
+      this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}&name=${name}`, body)
     );
   }
 
-  public delete(route: string): Promise<Object> {
-    return firstValueFrom(this.http.delete(`${this.baseUrl}/${route}`, {
+  public delete<T>(route: string): Promise<T> {
+    return firstValueFrom(this.http.delete<T>(`${this.baseUrl}/${route}`, {
       headers: this.buildHeader()
     }));
   }
