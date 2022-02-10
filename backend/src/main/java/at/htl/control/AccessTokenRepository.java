@@ -14,22 +14,36 @@ public class AccessTokenRepository implements PanacheRepository<AccessToken> {
     public AccessToken save(AccessToken accessToken) {
         return getEntityManager().merge(accessToken);
     }
-
     public boolean validate(AccessToken accessToken) {
-
         if (accessToken == null) {
             return false;
         }
-        if (accessToken.daysValid == null && accessToken.expireDate == null
-                && accessToken.activationDate != null) {
+
+        if (accessToken.getActivationDate() != null && accessToken.getActivationDate().isAfter(LocalDate.now())) {
+            // not yet activated
+            return false;
+        }
+
+        if (accessToken.getDaysValid() == null && accessToken.getExpireDate() == null && accessToken.getActivationDate() != null) {
+            // infinite token when activation date is set
             return true;
-        } else if (accessToken.activationDate != null) {
-            if (accessToken.daysValid != null
-                    && accessToken.activationDate.plusDays(accessToken.daysValid).isAfter(LocalDate.now())) {
-                return true;
-            } else if (accessToken.expireDate != null && LocalDate.now().isBefore(accessToken.expireDate)) {
-                return true;
-            }
+        }
+
+        if (accessToken.getDaysValid() != null && accessToken.getExpireDate() == null && accessToken.getActivationDate() != null) {
+            // days valid is set
+            return accessToken.getDaysValid() >= 0 && accessToken.getActivationDate().plusDays(accessToken.getDaysValid()).isAfter(LocalDate.now());
+        }
+
+        if (accessToken.getDaysValid() == null && accessToken.getExpireDate() != null && accessToken.getActivationDate() != null) {
+            // expire date is set
+            return accessToken.getActivationDate().isBefore(LocalDate.now()) && accessToken.getExpireDate().isAfter(LocalDate.now());
+        }
+
+        if (accessToken.getDaysValid() != null && accessToken.getExpireDate() != null && accessToken.getActivationDate() != null) {
+            // all three are set
+            return accessToken.getDaysValid() >= 0
+                    && accessToken.getActivationDate().plusDays(accessToken.getDaysValid()).isAfter(LocalDate.now())
+                    && accessToken.getActivationDate().plusDays(accessToken.getDaysValid()).isBefore(accessToken.getExpireDate());
         }
 
         return false;
