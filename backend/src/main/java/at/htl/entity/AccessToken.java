@@ -42,5 +42,19 @@ public class AccessToken extends PanacheEntityBase {
         this.token = RandomStringUtils.randomAlphabetic(5);
     }
 
+    public LocalDate getActivationDate() {
+        return activationDate;
+    }
 
+    public void setActivationDate(LocalDate activationDate) {
+        this.activationDate = activationDate;
+    }
+
+    public Integer getDaysValid() {
+        return daysValid;
+    }
+
+    public LocalDate getExpireDate() {
+        return expireDate;
+    }
 }
