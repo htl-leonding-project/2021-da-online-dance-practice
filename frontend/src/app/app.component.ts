@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
-import {ActivatedRoute, Router, UrlTree} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
 import {User, UserCredential} from "./models/models";
 
@@ -13,12 +13,14 @@ export class AppComponent implements OnInit {
   title = 'frontend';
   isLoggedInState: Observable<boolean>;
   user: User | null;
+  currentTab: string;
 
   constructor(private readonly auth: AuthService,
               private readonly router: Router,
               private readonly route: ActivatedRoute) {
     this.isLoggedInState = this.auth.loggedInStateAsObservable;
     this.user = null;
+    this.currentTab = "";
   }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit {
       })
     }
     this.auth.loggedInStateAsObservable.subscribe(state => {
-      let redirectUrl: string | UrlTree = '/level';
+      let redirectUrl: string | UrlTree = '/home';
 
 
       if (state) {
@@ -61,6 +63,11 @@ export class AppComponent implements OnInit {
         });
     });
 
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentTab = event.url;
+      }
+    })
 
     this.auth.userObservable.subscribe(user => {
       this.user = user

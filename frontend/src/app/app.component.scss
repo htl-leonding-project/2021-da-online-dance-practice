@@ -1,8 +1,6 @@
-
-//menu
 button {
   font-style: normal;
-  font-family: Arial, 'light';
+
   font-size: 25px;
   margin-top: 1%;
   margin-bottom: 1%;
@@ -16,7 +14,6 @@ button {
   align-content: space-between;
   margin-bottom: 4%;
   color: #038f80;
-  font-family: Arial, 'light';
   flex-wrap: wrap;
   row-gap: 10px;
   column-gap: 10em;
@@ -27,10 +24,12 @@ button {
   flex: 1;
 }
 
-button:hover {
+button:hover, .selected {
   background-color: #F8F8F8;
   transition: all .25s ease-in-out;
-  border-radius: 25px;
+  border-radius: 15px;
   color: #038f80;
 }
+
+
 
