@@ -17,5 +17,8 @@ public class CourseRepository implements PanacheRepository<Course> {
     }
 
 
+    public Course save(Course course) {
+        return getEntityManager().merge(course);
+    }
 
 }
