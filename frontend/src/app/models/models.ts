@@ -43,6 +43,7 @@ export interface AccessToken {
 export interface AccessTokenResponse {
   token: string,
   courseId: number,
+  courseName: string,
   levelId: string,
   isValid: boolean
 }
