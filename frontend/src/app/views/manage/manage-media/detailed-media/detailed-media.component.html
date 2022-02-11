@@ -1,6 +1,6 @@
 <div *ngIf="usage" [formGroup]="uploadForm">
   <mat-form-field appearance="fill">
-    <mat-select [(value)]="selectedCourse" id="selectMenu">
+    <mat-select [(value)]="selectedCourse">
       <mat-option *ngFor="let course of courses" [value]="course">{{ course.title }}</mat-option>
     </mat-select>
     <mat-hint>Zuweisung der Datei zum Kurs</mat-hint>
@@ -16,13 +16,13 @@
 </div>
 
 
-<div id="form">
+<div id="formContainer">
   <form (ngSubmit)="submit()" [formGroup]="uploadForm">
-    <p>
-      Wählen Sie eine Datei aus : <input (change)="onFileSelect($event)" name="file" type="file" id="selectFile"/>
+    <p id="textContainer">
+      Wählen Sie eine Datei aus : <input id="buttonCreate" (change)="onFileSelect($event)" name="file" type="file"/>
     </p>
+    <button id="upload" mat-button type="submit">Hochladen</button>
+    <button mat-button (click)="close()" color="warn">Abbrechen</button>
   </form>
 </div>
 
-<button mat-button type="submit">Hochladen</button>
-<button mat-button (click)="close()" color="warn">Abbrechen</button>
