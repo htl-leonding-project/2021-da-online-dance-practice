@@ -16,7 +16,7 @@ export interface Level {
 }
 
 export interface Course {
-  id: number,
+  id?: number,
   title: string,
   description: string,
   level: Level
