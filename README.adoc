@@ -1,0 +1,24 @@
+= How to start our projekt
+
+== backend
+* in terminal go to backend directory
+** cd backend
+*  create the database
+** ./postgres-create-db.sh
+* then start the database
+** ./postgres-start.sh
+* if you want to stop the database use the following command in the terminal
+** ./postgres-stop.sh
+* then start quarkus with
+** ./mvnw clean compile quarkus:dev
+
+
+== frontend
+before starting frontend: load videos and audios in assets directory
+
+* go to frontend directory
+** cd frontend
+* in terminal download dependencies
+** npm install
+* then start with
+** ng serve
