@@ -85,6 +85,7 @@ public class AccessTokenEndpoint {
                     JsonObjectBuilder builder = Json.createObjectBuilder()
                             .add("token", accessToken.token)
                             .add("courseId", accessToken.course.id)
+                            .add("courseName", accessToken.course.title)
                             .add("levelId", accessToken.course.level.id)
                             .add("isValid", isValid);
 
