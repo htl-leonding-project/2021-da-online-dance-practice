@@ -50,7 +50,7 @@ export class DetailedMediaComponent implements OnInit {
 
       //überprüfen ob file zu groß
       if(file.size > 1024000000){
-        alert("file to big")
+        alert("Datei is zu groß!")
       }
 
       const blobToUpload = await this.fileToBlob(file);
