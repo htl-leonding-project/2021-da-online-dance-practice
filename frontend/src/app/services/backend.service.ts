@@ -34,9 +34,9 @@ export class BackendService {
     }));
   }
 
-  public postFile(route: string, body: Blob, imagename: string, course: Course, name: string, description: string): Promise<Object> {
+  public postFile(route: string, body: Blob, imagename: string, course: Course, description: string): Promise<Object> {
     return firstValueFrom(
-      this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}&name=${name}`, body)
+      this.http.post(`${this.baseUrl}/file/${imagename}?courseId=${course.id}&description=${description}`, body)
     );
   }
 
