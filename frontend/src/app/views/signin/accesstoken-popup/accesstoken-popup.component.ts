@@ -34,9 +34,9 @@ export class AccesstokenPopupComponent implements OnInit {
         token: this.accesstokenControl.value
       }).then(token => {
           if (token.isValid) {
-            this.auth.setToken(token.token);
+            this.auth.setToken(token);
             this.dialogRef.close();
-            this.router.navigateByUrl(`level/${token.levelId.toLowerCase()}/courses/${token.courseId}`);
+            this.router.navigateByUrl(`accesstoken-home`);
           }
         }
       );

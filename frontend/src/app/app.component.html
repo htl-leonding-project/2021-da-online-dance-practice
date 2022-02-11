@@ -1,8 +1,8 @@
-<div *ngIf="(isLoggedInState|async) && user" class="menucontainer">
-  <button *ngIf="user.role === 'TEACHER'" [class.selected]="currentTab === '/manage'" mat-button routerLink="/manage">
+<div *ngIf="(isLoggedInState|async) || (token|async)" class="menucontainer">
+  <button *ngIf="user?.role === 'TEACHER'" [class.selected]="currentTab === '/manage'" mat-button routerLink="/manage">
     Verwalten
   </button>
-  <button [class.selected]="currentTab === '/home'" mat-button routerLink="/home">Dance-Practice</button>
+  <button [class.selected]="currentTab === '/home' || (token|async)" mat-button routerLink="/home" [disabled]="!!(token|async)" >Dance-Practice</button>
   <button (click)="logout()" mat-button>
     <mat-icon>logout</mat-icon>
   </button>
