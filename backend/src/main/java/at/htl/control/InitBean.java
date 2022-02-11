@@ -149,7 +149,7 @@ public class InitBean {
         D_File bachata = new D_File("Bachata-OnlineTanzkurs", "mediafiles/video/Bachata-OnlineTanzkurs.mov", "description", ContentType.valueOf("VIDEO"));
         fileRepository.persist(bachata);
 
-        D_File wienerwalz = new D_File("WienerWalzer", "mediafiles/video/WienerWalzer.mov", "dorfi is soooo lieeebbb" +
+        D_File wienerwalz = new D_File("WienerWalzer", "mediafiles/video/WienerWalzer.mov", "beschreibung babafb" +
                 "iasjdivpaiüsdvihadbfvjbajdfbvbadjbfjvbadjbfjvhbadfj  " +
                 "absjdfbvasdb fjvhbadfsbvjhbdfj", ContentType.valueOf("VIDEO"));
         fileRepository.persist(wienerwalz);
