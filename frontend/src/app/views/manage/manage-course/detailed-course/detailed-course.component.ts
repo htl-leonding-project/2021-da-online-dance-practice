@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Course} from '../../../../models/models';
-import {FormControl, Validators} from '@angular/forms';
+import {Course, Level} from '../../../../models/models';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BackendService} from '../../../../services/backend.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
@@ -11,24 +11,29 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 })
 export class DetailedCourseComponent implements OnInit {
 
-  course: Course| null;
-  courses: Course[] | null;
-  courseControl: FormControl;
+  selectedLevel: Level| null;
+  levels: Level[] | null;
+  formGroup: FormGroup;
 
   constructor(private readonly backend: BackendService,
               private readonly dialogRef: MatDialogRef<DetailedCourseComponent>,
               @Inject(MAT_DIALOG_DATA) private readonly data: Course) {
 
-    this.courses = null;
-    this.course = data || {};
-    this.courseControl = new FormControl('', [
-      Validators.required
-    ])
+    this.levels = null;
+    this.selectedLevel = null;
+    this.formGroup = new FormGroup( {
+      title: new FormControl( this.data?.title || "",[Validators.required]),
+      description: new FormControl(this.data?.description || "",[Validators.required])
+    })
   }
 
   ngOnInit(): void {
-    this.backend.get('course').then(value => {
-      this.courses = value as Course[];
+    this.backend.get('level').then(value => {
+      this.levels = value as Level[];
+      this.selectedLevel = this.data?.level || this.levels[0];
+      if (this.data?.level) {
+        this.selectedLevel = this.levels.find(l => l.id === this.data?.level.id) || this.levels[0]
+      }
     })
   }
 
@@ -37,6 +42,12 @@ export class DetailedCourseComponent implements OnInit {
   }
 
   save(): void {
-    this.dialogRef.close(this.course);
+    const course: Course= {
+      title: this.formGroup.get('title')?.value,
+      description: this.formGroup.get('description')?.value,
+      level: this.selectedLevel!,
+      id: this.data?.id
+    }
+    this.dialogRef.close(course);
   }
 }
