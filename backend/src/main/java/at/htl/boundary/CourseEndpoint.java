@@ -53,16 +53,15 @@ public class CourseEndpoint {
     @POST
     @Path("/create")
     @RolesAllowed("TEACHER")
-    public Response create(String levelId, @Context UriInfo info, String title, String description) {
-        Level level = levelRepository.findById(levelId);
-        Course course = new Course(title, description, level);
+    public Response create(@Context UriInfo info, Course course) {
 
         courseRepository.persist(course);
 
         return Response
-                .created(URI.create(info.getPath() + "/" + course.id))
+                .ok(course)
                 .build();
     }
+
 
     @GET
     @Path("/{id}")
@@ -70,37 +69,6 @@ public class CourseEndpoint {
     public Response findById(@PathParam("id") long id) {
         return Response.ok(courseRepository.findById(id)).build();
     }
-
-//    @DELETE
-//    @Path("/{title}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Transactional
-//    public Response delete(@PathParam("title") String title) {
-//
-//        Course course = courseRepository.find("title", title)
-//                .stream()
-//                .findFirst()
-//                .orElse(null);
-//
-//        if (course != null) {
-//            courseRepository.delete("title", course.title);
-//            return Response.ok().build();
-//        } else {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//       /* try {
-//            courseRepository.delete(title);
-//            return Response
-//                    .noContent()
-//                    .build();
-//        } catch (IllegalArgumentException e) {
-//            return Response
-//                    .status(400)
-//                    .header("Reason", "Course with id" + title + "does not exist")
-//                    .build();
-//        }*/
-//    }
 
     @DELETE
     @Path("/{id}")
@@ -119,6 +87,14 @@ public class CourseEndpoint {
         }
     }
 
+    @PUT
+    @Path("/{id}")
+    @RolesAllowed({"STUDENT", "TEACHER"})
+    public Response update(@PathParam("id") long id, Course course) {
+
+        return Response
+                .ok(courseRepository.save(course)).build();
+    }
 
     @GET
     @Path("/findByLevel/{levelId}")
