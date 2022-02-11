@@ -29,6 +29,9 @@ const routes: Routes = [
     VideoComponent,
     AudioComponent
   ],
+  exports: [
+    MediaContentComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

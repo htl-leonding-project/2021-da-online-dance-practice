@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
 
   selectLevel(level: Level): void {
     this.selectedLevel = level;
+    this.selectedCourse = null;
   }
 
   selectCourse(course: Course): void {
