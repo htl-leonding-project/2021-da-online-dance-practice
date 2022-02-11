@@ -1,25 +1,26 @@
-<div *ngIf="course">
+<form [formGroup]="formGroup">
   <h2>Neuen Kurs erstellen </h2>
 
 
   <mat-form-field appearance="fill">
     <mat-label>Titel</mat-label>
-    <input matInput>
+    <input formControlName="title" name="title" matInput>
   </mat-form-field>
-<br>
+  <br>
   <mat-form-field appearance="fill">
     <mat-label>Beschreibung</mat-label>
-    <input matInput>
+    <input formControlName="description" name="description" matInput>
   </mat-form-field>
-<br>
+
+  <mat-form-field *ngIf="levels" appearance="fill">
+    <mat-select [(value)]="selectedLevel">
+      <mat-option *ngFor="let level of levels" [value]="level">{{ level.description }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
 
   <button (click)="cancel()" color="warn" mat-raised-button>Abbrechen</button>
   <button (click)="save()" color="primary" mat-raised-button>Speichern</button>
 
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-select [(value)]="course.level.description">-->
-<!--      <mat-option *ngFor="let course of courses" [value]="course">{{ course.level.description}}</mat-option>-->
-<!--    </mat-select>-->
-<!--  </mat-form-field>-->
 
-</div>
+</form>
