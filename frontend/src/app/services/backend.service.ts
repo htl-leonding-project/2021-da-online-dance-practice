@@ -47,9 +47,9 @@ export class BackendService {
   }
 
   private buildHeader(): any {
-    if (this.auth.getToken()) {
+    if (this.auth.token) {
       return {
-        'X-Token': this.auth.getToken()
+        'X-Token': this.auth.token?.token
       }
     } else if (this.auth.user) {
       return {

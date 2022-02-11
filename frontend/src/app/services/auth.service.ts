@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom, Observable} from "rxjs";
-import {User} from "../models/models";
+import {AccessTokenResponse, User} from "../models/models";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
@@ -13,7 +13,7 @@ export class AuthService {
   private readonly baseUrl: string;
   private readonly isLoggedInSubject: BehaviorSubject<boolean>;
   private readonly userSubject: BehaviorSubject<User | null>;
-  private token: string | null;
+  private tokenSubject: BehaviorSubject<AccessTokenResponse | null>;
 
 
   constructor(private readonly router: Router,
@@ -21,7 +21,7 @@ export class AuthService {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(false);
     this._password = null;
     this.baseUrl = environment.baseUrl
-    this.token = null;
+    this.tokenSubject = new BehaviorSubject<AccessTokenResponse | null>(null);
     this.userSubject = new BehaviorSubject<User | null>(null);
   }
 
@@ -60,19 +60,24 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
+  public get token(): AccessTokenResponse | null {
+    return this.tokenSubject.value;
+  }
+
   public signOut(): void {
     this.isLoggedInSubject.next(false);
     this.userSubject.next(null);
+    this.tokenSubject.next(null);
     this.router.navigateByUrl('/signin')
     sessionStorage.removeItem('user');
   }
 
-  public getToken(): string | null {
-    return this.token;
+  public getToken(): Observable<AccessTokenResponse | null> {
+    return this.tokenSubject;
   }
 
-  public setToken(token: string): void {
-    this.token = token;
+  public setToken(token: AccessTokenResponse): void {
+    this.tokenSubject.next(token);
   }
 
 }

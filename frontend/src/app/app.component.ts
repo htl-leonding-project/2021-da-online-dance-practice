@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {ActivatedRoute, NavigationEnd, Router, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
-import {User, UserCredential} from "./models/models";
+import {AccessTokenResponse, User, UserCredential} from "./models/models";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   isLoggedInState: Observable<boolean>;
   user: User | null;
   currentTab: string;
+  token: Observable<AccessTokenResponse | null>;
 
   constructor(private readonly auth: AuthService,
               private readonly router: Router,
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     this.isLoggedInState = this.auth.loggedInStateAsObservable;
     this.user = null;
     this.currentTab = "";
+    this.token = this.auth.getToken();
   }
 
   ngOnInit(): void {
