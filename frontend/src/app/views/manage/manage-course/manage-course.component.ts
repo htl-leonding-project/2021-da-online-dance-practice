@@ -33,9 +33,11 @@ export class ManageCourseComponent implements OnInit {
   create(): void {
     this.dialog.open(DetailedCourseComponent).afterClosed().subscribe(value => {
       if (value) {
-        this.backend.post('course', this.buildCourseObjectForServer(value as Course))
-          .then(value => {
-            this.courses?.push(value as Course);
+        console.log(value);
+        this.backend.post('course/create', value)
+          .then(course => {
+            console.log(course)
+            this.courses?.push(course as Course);
           });
       }
     });
@@ -52,22 +54,21 @@ export class ManageCourseComponent implements OnInit {
       data: {...course}
     }).afterClosed().subscribe(value => {
       if (value) {
-        this.backend.put('course', this.buildCourseObjectForServer(value as Course))
+        this.backend.put(`course/${value.id}`, value)
           .then(value => {
             const course = value as Course;
-            const index = this.courses!.findIndex(c => c.title === course.title);
+            const index = this.courses!.findIndex(c => c.id === course.id);
             this.courses![index] = course;
           });
       }
     });
   }
 
-
-  private buildCourseObjectForServer(course: Course) {
+  private createObjectForServer(course: Course) {
     return {
       title: course.title,
-      description: course.description,
-      level: course.level.description
-    };
+      description: course.title,
+      levelId: course.level.id
+    }
   }
 }

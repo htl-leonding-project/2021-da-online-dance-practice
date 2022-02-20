@@ -22,31 +22,20 @@
     }
 
     &:nth-child(2n) {
-      background: rgba(3, 143, 128, 0.80);
+      background: rgba(3, 143, 128, 0.30);
     }
 
     p {
       text-align: center;
     }
-
-    .token {
-      width: 10%;
-    }
-
-    .course {
+    .title {
       width: 30%;
     }
-
-    .activationDate {
-      width: 17.5%;
+    .description{
+      width: 35%;
     }
-
-    .expireDate {
-      width: 17.5%;
-    }
-
-    .daysValid {
-      width: 10%;
+    .level {
+      width: 20%;
     }
 
     .button-wrapper {
