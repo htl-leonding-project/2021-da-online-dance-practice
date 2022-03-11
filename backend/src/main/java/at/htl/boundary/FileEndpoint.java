@@ -119,29 +119,36 @@ public class FileEndpoint {
 
         Course course = courseRepository.find("id", courseId).stream().findFirst().orElse(null);
         usageRepository.persist(new Usage(course, fileEntry));
-        return Response.ok().build();
+        return Response.ok().entity(fileEntry).build();
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @RolesAllowed({"STUDENT", "TEACHER"})
     public Response findById(@PathParam("id") long id) {
         return Response.ok(fileRepository.findById(id)).build();
     }
 
     @DELETE
-    @Path("{id}")
-    @RolesAllowed("TEACHER")
+    @Path("/{id}")
+    @Transactional
+    //@RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") Long id) {
         try {
+            boolean exists = usageRepository.usageExists(id);
+            if(exists){
+                usageRepository.deleteUsageByFileId(id);
+            }
             fileRepository.deleteById(id);
+
             return Response
                     .ok()
                     .build();
         } catch (IllegalArgumentException e) {
+            System.out.println(e);
             return Response
                     .status(400)
-                    .header("Reason", "File with id" + id + "does not exist")
+                    .header("Reason", "File with id " + id + " does not exist")
                     .build();
         }
     }
