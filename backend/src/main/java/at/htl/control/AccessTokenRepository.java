@@ -4,6 +4,8 @@ import at.htl.entity.AccessToken;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 
@@ -57,6 +59,20 @@ public class AccessTokenRepository implements PanacheRepository<AccessToken> {
 
         accessToken.activationDate = LocalDate.now();
         return getEntityManager().merge(accessToken);
+    }
+
+    public void deleteAccessTokenByCourseId(Long courseId) {
+        Query typedQuery = getEntityManager()
+                .createQuery("delete from AccessToken a where a.course.id = :ID")
+                .setParameter("ID", courseId);
+        typedQuery.executeUpdate();
+    }
+
+    public boolean accessTokenExistsInCourse(Long courseId) {
+        TypedQuery<Long> typedQuery = getEntityManager()
+                .createNamedQuery("AccessToken.accessTokenExistsInCourse",Long.class)
+                .setParameter("ID", courseId);
+        return typedQuery.getSingleResult() > 0;
     }
 
 }
