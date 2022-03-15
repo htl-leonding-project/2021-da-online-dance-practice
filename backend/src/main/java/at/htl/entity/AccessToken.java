@@ -8,6 +8,16 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "D_ACCESS_TOKEN")
+@NamedQueries({
+        @NamedQuery(
+                name = "AccessToken.accessTokenExistsInCourse",
+                query = "select count(a) from AccessToken a where a.course.id = :ID"
+        ),
+        @NamedQuery(
+                name = "AccessToken.accessTokenExists",
+                query = "select count(a) from AccessToken a where a.course.id = :ID"
+        )
+})
 public class AccessToken extends PanacheEntityBase {
 
     @Id
