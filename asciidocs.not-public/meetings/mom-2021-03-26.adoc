@@ -1,4 +1,4 @@
-#= Online Perfektion#
+= Online Perfektion
 Thomas W. Stütz
 1.0.0, 2021-03-26: First Meeting and Kickoff
 ifndef::imagesdir[:imagesdir: images]
