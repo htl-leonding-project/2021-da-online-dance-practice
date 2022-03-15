@@ -26,11 +26,15 @@ Man muss beachten das beachten das man sich selbst keine konkurenz macht -> desw
 
 == Ausgewählte Aspekte
 
+=== Besondere Codestellen
+Authentication
+
 === Probleme
 
 Fileupload, Cors, Deployment,
 
-=== Besondere Codestellen
+
+
 
 == Deployment
 
