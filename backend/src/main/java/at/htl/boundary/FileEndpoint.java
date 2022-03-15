@@ -16,6 +16,7 @@ import javax.transaction.UserTransaction;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.*;
+import java.nio.file.Paths;
 
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
@@ -97,8 +98,11 @@ public class FileEndpoint {
                             @PathParam("imagename") String imagename,
                             @QueryParam("description") String description,
                             @QueryParam("courseId") long courseId) {
-        String path = fileRepository.imageHome() + "/" + fileRepository.TARGET_UPLOAD_FOLDER;
-        D_File fileEntry = fileRepository.createFile(imagename, path ,description);
+        //String path = fileRepository.imageHome() + "/" + fileRepository.TARGET_UPLOAD_FOLDER;
+        String lastdir = imagename.contains(".mp4") || imagename.contains(".mov") ? "video/" : "audio/";
+        String path = Paths.get("").toAbsolutePath() +  "/src/main/resources/META-INF/resources/" + fileRepository.TARGET_UPLOAD_FOLDER + lastdir;
+
+        D_File fileEntry = fileRepository.createFile(imagename, fileRepository.TARGET_UPLOAD_FOLDER + lastdir + imagename ,description);
         File file = new File(path, imagename);
         try (var os = new FileOutputStream(file)) {
             inputStream.transferTo(os);
