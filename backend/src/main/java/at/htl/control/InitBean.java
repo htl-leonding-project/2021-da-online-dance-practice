@@ -149,7 +149,7 @@ public class InitBean {
         D_File bachata = new D_File("Bachata-OnlineTanzkurs", "mediafiles/video/Bachata-OnlineTanzkurs.mov", "Nun können Sie direkt mit Ihren Tanzeinheiten starten!", ContentType.valueOf("VIDEO"));
         fileRepository.persist(bachata);
 
-        D_File hiphop = new D_File("HipHopBartSimpson !!", "mediafiles/video/SalsaChrisFigurdesMonats.mp4", "Der HipHopBartSimpson Streetdance gehört zum Tanzstil Hip-Hop. Haben wir Ihre Aufmerksamkeit geweckt?", ContentType.valueOf("VIDEO"));
+        D_File hiphop = new D_File("HipHopBartSimpson !!", "mediafiles/video/SalsaChrisFigurdesMonats.mp4", "Der HipHopBartSimpson Streetdance gehört zum Tanzstil Hip-Hop.", ContentType.valueOf("VIDEO"));
         fileRepository.persist(hiphop);
 
         D_File wienerwalz = new D_File("WienerWalzer", "mediafiles/video/WienerWalzer.mp4", "Hier Lernen Sie die Grundlagen des Wiener Walzers!", ContentType.valueOf("VIDEO"));
