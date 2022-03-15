@@ -6,27 +6,16 @@ import at.htl.control.UsageRepository;
 import at.htl.entity.Course;
 import at.htl.entity.D_File;
 import at.htl.entity.Usage;
-import org.apache.commons.io.IOUtils;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
-
-import org.jboss.resteasy.plugins.providers.multipart.InputPart;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-import javax.json.JsonValue;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.*;
-import java.net.http.HttpRequest;
-import java.util.List;
-import java.util.Map;
 
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
@@ -135,7 +124,7 @@ public class FileEndpoint {
     //@RolesAllowed("TEACHER")
     public Response delete(@PathParam("id") Long id) {
         try {
-            boolean exists = usageRepository.usageExists(id);
+            boolean exists = usageRepository.usageExistsInFile(id);
             if(exists){
                 usageRepository.deleteUsageByFileId(id);
             }
