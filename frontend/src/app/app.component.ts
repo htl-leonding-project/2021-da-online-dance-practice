@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
-import {ActivatedRoute, NavigationEnd, Router, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
+
+import {ActivatedRoute, NavigationEnd, Router, UrlTree} from "@angular/router";
 import {AccessTokenResponse, User, UserCredential} from "./models/models";
 
 @Component({
